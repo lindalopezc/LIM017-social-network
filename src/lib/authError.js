@@ -3,7 +3,7 @@
 /* eslint-disable quotes */
 /* eslint-disable import/newline-after-import */
 /* eslint-disable indent */
-import { wrongPassword } from "../main";
+import { wrongPassword } from "../main.js";
 
 export const authError = (message) => {
     switch (message) {
@@ -17,7 +17,6 @@ export const authError = (message) => {
         wrongPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
         break;
     default:
-        return false;
+        console.log('Otro error');
     }
-    return false;
 }
