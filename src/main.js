@@ -8,3 +8,6 @@ document.getElementById('link-register').addEventListener('click', () => {
     document.getElementById('register-section').style.display = 'block';
     document.getElementById('login-section').style.display = 'none';
 });
+
+// Llamando al contenedor de errores:
+export const wrongPassword = document.getElementById('wrong-password');

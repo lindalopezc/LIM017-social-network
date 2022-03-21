@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable semi */
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable eol-last */
@@ -7,12 +8,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
-// import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-analytics.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { authError } from './lib/authError';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: 'AIzaSyAdfUjeKGbV3sdoMqcYIVg0pEzOBLaihlo',
     authDomain: 'slowly-la.firebaseapp.com',
@@ -46,6 +43,7 @@ document.getElementById('login-btn').addEventListener('click', () => {
             const errorMessage = error.message;
             const invalidEmail = document.getElementById('invalid-email');
             invalidEmail.innerText = 'Correo invalido';
+            authError(errorMessage);
 
         });
 
@@ -62,18 +60,8 @@ document.getElementById('register-btn').addEventListener('click', () => {
         })
         .catch((error) => {
             const errorCode = error.code;
-            console.log(errorCode)
             const errorMessage = error.message;
-            console.log(errorMessage)
-            const wrongPassword = document.getElementById('wrong-password');
-            if (errorMessage == 'Firebase: Error (auth/email-already-in-use).') {
-                wrongPassword.innerText = 'El correo ingresado ya está en uso';
-            } else if (errorMessage == 'Firebase: Error (auth/invalid-email).') {
-                wrongPassword.innerText = 'El correo ingresado es inválido';
-            } else {
-                wrongPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
-            }
-
+            authError(errorMessage);
         })
 
 });
