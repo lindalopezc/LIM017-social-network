@@ -8,7 +8,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
-import { authError } from './lib/authError';
+import { authError } from './lib/authError.js';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyAdfUjeKGbV3sdoMqcYIVg0pEzOBLaihlo',
@@ -44,13 +44,14 @@ document.getElementById('login-btn').addEventListener('click', () => {
             const invalidEmail = document.getElementById('invalid-email');
             invalidEmail.innerText = 'Correo invalido';
             authError(errorMessage);
-
         });
 
 });
+
 document.getElementById('register-btn').addEventListener('click', () => {
     const registerEmail = document.getElementById('register-email').value;
     const registerPassword = document.getElementById('register-password').value;
+
     createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
         .then((userCredential) => {
             // Signed in
@@ -61,6 +62,8 @@ document.getElementById('register-btn').addEventListener('click', () => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            console.log('errorCode:', errorCode);
+            console.log('errorMessage:', errorMessage);
             authError(errorMessage);
         })
 

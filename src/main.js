@@ -10,4 +10,5 @@ document.getElementById('link-register').addEventListener('click', () => {
 });
 
 // Llamando al contenedor de errores:
+// export const wrongPassword = document.getElementById('wrong-password');
 export const wrongPassword = document.getElementById('wrong-password');
