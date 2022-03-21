@@ -74,9 +74,6 @@ document.getElementById('register-btn').addEventListener('click', () => {
                 wrongPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
             }
 
-
-
-
         })
 
 });
