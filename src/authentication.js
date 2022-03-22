@@ -1,3 +1,5 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable semi */
 /* eslint-disable no-multiple-empty-lines */
@@ -9,6 +11,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import { authError } from './lib/authError.js';
+import { registerEmail, registerPassword, loginEmail, loginPassword } from './main.js';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyAdfUjeKGbV3sdoMqcYIVg0pEzOBLaihlo',
@@ -26,11 +29,7 @@ const auth = getAuth(app);
 // const analytics = getAnalytics(app);
 document.getElementById('login-btn').addEventListener('click', () => {
 
-    const loginEmail = document.getElementById('login-email').value;
-    const loginPassword = document.getElementById('login-password').value;
-
-
-    signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
@@ -41,20 +40,15 @@ document.getElementById('login-btn').addEventListener('click', () => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            const invalidEmail = document.getElementById('invalid-email');
-            invalidEmail.innerText = 'Correo invalido';
-            authError(errorMessage);
+            authError(errorCode);
         });
 
 });
 
-document.getElementById('register-btn').addEventListener('click', () => {
-    const registerEmail = document.getElementById('register-email').value;
-    const registerPassword = document.getElementById('register-password').value;
+export const createUser = () => {
 
-    createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+        createUserWithEmailAndPassword(auth, registerEmail.value, registerPassword.value)
         .then((userCredential) => {
-            // Signed in
             const user = userCredential.user;
             document.getElementById('welcome-page').style.display = 'block';
             document.getElementById('register-section').style.display = 'none';
@@ -62,9 +56,6 @@ document.getElementById('register-btn').addEventListener('click', () => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log('errorCode:', errorCode);
-            console.log('errorMessage:', errorMessage);
-            authError(errorMessage);
+            authError(errorCode);
         })
-
-});
+}

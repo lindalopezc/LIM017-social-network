@@ -1,22 +1,51 @@
+/* eslint-disable no-fallthrough */
+/* eslint-disable import/no-cycle */
+/* eslint-disable object-curly-newline */
 /* eslint-disable eol-last */
 /* eslint-disable semi */
 /* eslint-disable quotes */
 /* eslint-disable import/newline-after-import */
 /* eslint-disable indent */
-import { wrongPassword } from "../main.js";
+import {
+    wrongEmail, // hemos borrado wrongPassword por ahora
+    invalidEmail,
+    invalidPassword,
+    errorDefault,
+    registerEmail,
+    registerPassword,
+    loginEmail,
+    loginPassword,
+    minPassword,
+} from "../main.js";
 
-export const authError = (message) => {
-    switch (message) {
-        case 'Firebase: Error (auth/email-already-in-use).':
-            wrongPassword.innerText = 'El correo ingresado ya está en uso';
+export const authError = (code) => {
+    switch (code) {
+        case 'auth/email-already-in-use':
+            wrongEmail.innerText = 'El correo ingresado ya está en uso';
+            registerEmail.style.borderColor = '#F62D2D';
+            break
+        case 'auth/weak-password':
+            minPassword.style.color = 'red'
+            minPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
+            registerPassword.style.borderColor = '#F62D2D';
             break;
-        case 'Firebase: Error (auth/invalid-email).':
-            wrongPassword.innerText = 'El correo ingresado es inválido';
+        case 'auth/invalid-email':
+            wrongEmail.innerText = 'El correo ingresado es inválido';
+            registerEmail.style.borderColor = '#F62D2D';
             break;
-        case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
-            wrongPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
+        case 'auth/user-not-found':
+            invalidEmail.innerText = 'No hay usuario registrado con ese correo., verifica e intente de nuevo.';
+            loginEmail.style.borderColor = '#F62D2D';
+            break;
+        case 'auth/wrong-password':
+            invalidPassword.innerText = 'La contraseña no es válida, verifica e intente de nuevo.';
+            loginPassword.style.borderColor = '#F62D2D';
+            break;
+        case 'auth/email-already-exists':
+            invalidEmail.innerText = 'El correo electrónico proporcionado esta siendo utilizado por otro miembro., verifica e intente de nuevo.';
+            loginEmail.style.borderColor = '#F62D2D';
             break;
         default:
-            console.log('Otro error');
+            errorDefault.innerText = code;
     }
 }
