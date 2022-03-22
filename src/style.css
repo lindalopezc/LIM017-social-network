@@ -1,3 +1,7 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FAF6F1;
+}
 .logo {
     width: 199px;
     height: 64px;
@@ -18,20 +22,27 @@
 .input {
     width: 176px;
     height: 30px;
-    margin-bottom: 11px;
+    margin-bottom: 5.5px;
+    margin-top: 5.5px;
     border-radius: 8px;
     border:solid 1px #C0BEBE ;
     font-size: 11px;
     padding-left: 14px;
     color: #575353;
     outline-color: #575353;
+    background-color: white;
 }
 
 .button {
-    width: 176px;
+    width: 190px;
     height: 36px;
     background-color: #34332F;
     color: #fff;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    margin-top: 5.5px;
 }
 
 #login-section {
@@ -42,13 +53,53 @@
     display: none;
 }
 
-#register-section > div{
+#register-section > div, #login-section > div {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-#register-section > div> h1{
+#register-section > div> h4, #login-section > div > h4{
     margin-top: 0px;
     margin-bottom: 11px;
     font-size: 20px;
+    font-weight: 500;
+}
+#wrong-email{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 7px;
+    color:red;
+}
+#wrong-password, .error-default, #invalid-email, #invalid-password{
+    font-size: 7px;
+    color:red;
+}
+form > div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 176px;
+    padding-left: 14px;
+}
+form > div > p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 7px;
+}
+.text-bottom{
+    font-size: 11px;
+}
+.img-networks{
+    width: 26px;
+    height: 26px;
+}
+.links{
+    color:#2029FE;
+}
+#min-password{
+    color:#AF8462;
+    font-size: 7px;
+}
+#register-section, #login-section{
+    margin-top: 75px;
 }

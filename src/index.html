@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,500;0,600;1,100;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,48 +15,53 @@
         <section id="register-section">
             <div>
                 <img src="img/LETRAS1.png" class="logo" alt="logo">
-                <h1>Regístrate</h1>
+                <h4>Regístrate</h4>
             </div>
             <div>
                 <form action="" class="form">
                     <input type="text" placeholder="Nombre" class="input" id="register-name"></input>
                     <input type="email" placeholder="Email" class="input" id="register-email"></input>
+                    <div><p id="wrong-email"></p></div>
                     <input type="password" placeholder="Contraseña" class="input" id="register-password"></input>
+                    <div id="min-password"><p>Mínimo 6 caracteres</p></div>
                     <input type="password" placeholder="Confirmar contraseña" class="input" id="register-confirm"></input>
-                    <p id="wrong-password"></p>
+                    <div><p id="wrong-password"></p></div> <!--Este id es para cuando las contraseñas no coincidan-->
                     <input type="button" class="button" value="Regístrate" id="register-btn"></input>
+                    <div><p class="error-default"></p></div>
                 </form>
             </div>
             <div>
-                <p id="text-bottom">o con tus redes sociales</p>
+                <p class="text-bottom">o con tus redes sociales</p>
                 <div id="social-networks">
                     <a href="#"><img src="img\google-plus.png" alt="google plus icon" class="img-networks"></a>
                     <a href="#"><img src="img\facebook.png" alt="facebook icon" class="img-networks"></a>
                 </div>
-                <p id="register">Ya tengo una cuenta. <span><a href="#" id="link-login">Iniciar sesión</a></span></p>
+                <p class="text-bottom">Ya tengo una cuenta. <span><a href="#" id="link-login" class="links">Iniciar sesión</a></span></p>
 
             </div>
         </section>
         <section id="login-section">
             <div>
                 <img src="img/LETRAS1.png" class="logo" alt="logo">
-                <h1>Iniciar Sesión</h1>
+                <h4>Iniciar Sesión</h4>
             </div>
             <div>
                 <form action="" class="form">
                     <input type="email" placeholder="Email" class="input" id="login-email"></input>
-                    <p id="invalid-email"></p>
+                    <div><p id="invalid-email"></p></div>
                     <input type="password" placeholder="Contraseña" class="input" id="login-password"></input>
+                    <div><p id="invalid-password"></p></div>
                     <input type="button" class="button" value="Iniciar sesión" id="login-btn"></input>
+                    <div><p class="error-default"></p></div>
                 </form>
             </div>
             <div>
-                <p id="text-bottom">o con tus redes sociales</p>
+                <p class="text-bottom">o con tus redes sociales</p>
                 <div id="social-networks">
                     <a href="#"><img src="img\google-plus.png" alt="google plus icon" class="img-networks"></a>
                     <a href="#"><img src="img\facebook.png" alt="facebook icon" class="img-networks"></a>
                 </div>
-                <p id="login">¿No tienes una cuenta?. <span><a href="#" id="link-register">Regístrate</a></span></p>
+                <p class="text-bottom">¿No tienes una cuenta?. <span><a href="#" id="link-register" class = "links">Regístrate</a></span></p>
 
             </div>
         </section>
@@ -63,9 +69,8 @@
             <p id="title-page">Bienvenido</p>
         </section>
     </main>
-    <script type="module" src="autentication.js"></script>
     <script type="module" src="main.js"></script>
-
+    <script type="module" src="authentication.js"></script>
     <script type="module" src="lib/authError.js"></script>
 
 </body>
