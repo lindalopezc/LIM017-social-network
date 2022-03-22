@@ -9,7 +9,11 @@
 /* eslint-disable import/no-unresolved */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
+import { getAuth,
+        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
+        signInWithPopup,
+        GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import { authError } from './lib/authError.js';
 import { registerEmail, registerPassword, loginEmail, loginPassword } from './main.js';
 
@@ -26,8 +30,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider(app);
 // const analytics = getAnalytics(app);
-document.getElementById('login-btn').addEventListener('click', () => {
+
+export const signIn = () => {
 
     signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
         .then((userCredential) => {
@@ -42,20 +48,38 @@ document.getElementById('login-btn').addEventListener('click', () => {
             const errorMessage = error.message;
             authError(errorCode);
         });
-
-});
+}
 
 export const createUser = () => {
 
-        createUserWithEmailAndPassword(auth, registerEmail.value, registerPassword.value)
-        .then((userCredential) => {
-            const user = userCredential.user;
+    createUserWithEmailAndPassword(auth, registerEmail.value, registerPassword.value)
+    .then((userCredential) => {
+        const user = userCredential.user;
+        document.getElementById('welcome-page').style.display = 'block';
+        document.getElementById('register-section').style.display = 'none';
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        authError(errorCode);
+    })
+
+}
+
+// Autenticación con Google:
+export const signGoogle = () => {
+
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
             document.getElementById('welcome-page').style.display = 'block';
             document.getElementById('register-section').style.display = 'none';
-        })
-        .catch((error) => {
+        }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            authError(errorCode);
-        })
+            const email = error.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+        });
 }
