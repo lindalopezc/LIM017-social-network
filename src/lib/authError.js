@@ -17,7 +17,6 @@ export const authError = (message) => {
             wrongPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
             break;
         default:
-            return false;
+            console.log('Otro error');
     }
-    return false;
 }
