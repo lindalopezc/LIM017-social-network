@@ -1,8 +1,13 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable import/named */
 /* eslint-disable import/no-cycle */
 /* eslint-disable eol-last */
 /* eslint-disable indent */
-import { createUser, signIn, signGoogle } from './authentication.js';
+import {
+    createUser,
+    signIn,
+    signGoogle,
+    signFacebook } from './authentication.js';
 
 document.getElementById('link-login').addEventListener('click', () => {
     document.getElementById('register-section').style.display = 'none';
@@ -36,3 +41,7 @@ export const errorDefault = document.getElementsByClassName('error-default');
 // Implementamos evento de botón 'Google':
 document.getElementsByClassName('sign-google')[0].addEventListener('click', signGoogle);
 document.getElementsByClassName('sign-google')[1].addEventListener('click', signGoogle);
+
+// Implementamos evento de botón 'Google':
+document.getElementsByClassName('sign-facebook')[0].addEventListener('click', signFacebook);
+document.getElementsByClassName('sign-facebook')[1].addEventListener('click', signFacebook);
