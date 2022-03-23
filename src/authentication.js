@@ -78,6 +78,7 @@ export const signGoogle = () => {
             const token = credential.accessToken;
             const user = result.user;
             document.getElementById('welcome-page').style.display = 'block';
+            document.getElementById('login-section').style.display = 'none';
             document.getElementById('register-section').style.display = 'none';
         }).catch((error) => {
             const errorCode = error.code;
@@ -88,24 +89,24 @@ export const signGoogle = () => {
 }
 
 // acceso con Facebook
-export const signFacebook = () => {
+// export const signFacebook = () => {
 
-    signInWithPopup(auth, providerFacebook)
-        .then((result) => {
-            const user = result.user;
-            const credential = FacebookAuthProvider.credentialFromResult(result);
-            const accessToken = credential.accessToken;
-            document.getElementById('welcome-page').style.display = 'block';
-            document.getElementById('register-section').style.display = 'none';
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            const email = error.email;
-            const credential = FacebookAuthProvider.credentialFromError(error);
-  });
+//     signInWithPopup(auth, providerFacebook)
+//         .then((result) => {
+//             const user = result.user;
+//             const credential = FacebookAuthProvider.credentialFromResult(result);
+//             const accessToken = credential.accessToken;
+//             document.getElementById('welcome-page').style.display = 'block';
+//             document.getElementById('register-section').style.display = 'none';
+//         })
+//         .catch((error) => {
+//             const errorCode = error.code;
+//             const errorMessage = error.message;
+//             const email = error.email;
+//             const credential = FacebookAuthProvider.credentialFromError(error);
+//   });
 
-}
+// }
 
 //   signInWithRedirect(auth, providerFacebook);
 
