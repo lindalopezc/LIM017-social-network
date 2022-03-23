@@ -7,7 +7,8 @@ import {
     createUser,
     signIn,
     signGoogle,
-    signFacebook } from './authentication.js';
+    // signFacebook
+} from './authentication.js';
 
 document.getElementById('link-login').addEventListener('click', () => {
     document.getElementById('register-section').style.display = 'none';
@@ -43,5 +44,5 @@ document.getElementsByClassName('sign-google')[0].addEventListener('click', sign
 document.getElementsByClassName('sign-google')[1].addEventListener('click', signGoogle);
 
 // Implementamos evento de botón 'Google':
-document.getElementsByClassName('sign-facebook')[0].addEventListener('click', signFacebook);
-document.getElementsByClassName('sign-facebook')[1].addEventListener('click', signFacebook);
+// document.getElementsByClassName('sign-facebook')[0].addEventListener('click', signFacebook);
+// document.getElementsByClassName('sign-facebook')[1].addEventListener('click', signFacebook);
