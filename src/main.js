@@ -43,6 +43,6 @@ export const errorDefault = document.getElementsByClassName('error-default');
 document.getElementsByClassName('sign-google')[0].addEventListener('click', signGoogle);
 document.getElementsByClassName('sign-google')[1].addEventListener('click', signGoogle);
 
-// Implementamos evento de botón 'Google':
+// Implementamos evento de botón 'Facebook':
 // document.getElementsByClassName('sign-facebook')[0].addEventListener('click', signFacebook);
 // document.getElementsByClassName('sign-facebook')[1].addEventListener('click', signFacebook);

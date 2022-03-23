@@ -80,6 +80,7 @@ export const signGoogle = () => {
             const token = credential.accessToken;
             const user = result.user;
             document.getElementById('welcome-page').style.display = 'block';
+            document.getElementById('login-section').style.display = 'none';
             document.getElementById('register-section').style.display = 'none';
             document.getElementById('login-section').style.display = 'none';
         }).catch((error) => {
