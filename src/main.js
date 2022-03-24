@@ -8,7 +8,15 @@ import {
     signIn,
     signGoogle,
     // signFacebook
- } from './authentication.js';
+} from './authentication.js';
+
+
+const rootDiv = document.getElementById('root');
+
+
+
+
+
 
 document.getElementById('link-login').addEventListener('click', () => {
     document.getElementById('register-section').style.display = 'none';
