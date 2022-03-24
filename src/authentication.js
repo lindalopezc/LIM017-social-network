@@ -9,14 +9,16 @@
 /* eslint-disable import/no-unresolved */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
-import { getAuth,
-        signInWithEmailAndPassword,
-        createUserWithEmailAndPassword,
-        signInWithPopup,
-        GoogleAuthProvider,
-        FacebookAuthProvider,
-        signInWithRedirect,
-        getRedirectResult } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signInWithPopup,
+    GoogleAuthProvider,
+    FacebookAuthProvider,
+    signInWithRedirect,
+    getRedirectResult,
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import { authError } from './lib/authError.js';
 import { registerEmail, registerPassword, loginEmail, loginPassword } from './main.js';
 
@@ -56,16 +58,16 @@ export const signIn = () => {
 export const createUser = () => {
 
     createUserWithEmailAndPassword(auth, registerEmail.value, registerPassword.value)
-    .then((userCredential) => {
-        const user = userCredential.user;
-        document.getElementById('welcome-page').style.display = 'block';
-        document.getElementById('register-section').style.display = 'none';
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        authError(errorCode);
-    })
+        .then((userCredential) => {
+            const user = userCredential.user;
+            document.getElementById('welcome-page').style.display = 'block';
+            document.getElementById('register-section').style.display = 'none';
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            authError(errorCode);
+        })
 
 }
 
@@ -110,17 +112,17 @@ export const signGoogle = () => {
 
 //   signInWithRedirect(auth, providerFacebook);
 
-  /* getRedirectResult(auth)
-    .then((result) => {
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-    }).catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        // AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
-        // ...
-    }); */
+/* getRedirectResult(auth)
+  .then((result) => {
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+  }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.email;
+      // AuthCredential type that was used.
+      const credential = FacebookAuthProvider.credentialFromError(error);
+      // ...
+  }); */
