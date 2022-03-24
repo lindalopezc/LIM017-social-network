@@ -9,6 +9,17 @@ import {
     signGoogle,
     // signFacebook
 } from './authentication.js';
+<<<<<<< HEAD
+=======
+
+
+const rootDiv = document.getElementById('root');
+
+
+
+
+
+>>>>>>> d32642388c64042def2c26af2afbc2f9c732ad35
 
 document.getElementById('link-login').addEventListener('click', () => {
     document.getElementById('register-section').style.display = 'none';
