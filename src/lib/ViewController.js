@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable eol-last */
 /* eslint-disable quotes */
 /* eslint-disable semi */

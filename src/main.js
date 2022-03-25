@@ -8,18 +8,18 @@ import {
 } from './authentication.js';
 
 // Inputs de correo y contraseña de sección Regístrate:
-const inputEmail = document.getElementById('register-email');
-export const registerEmail = (inputEmail) ? inputEmail.value : 'hola';
+// const inputEmail = document.getElementById('register-email');
+// export const registerEmail = (inputEmail) ? inputEmail.value : 'hola';
 
-const inputPassword = document.getElementById('register-password');
-export const registerPassword = (inputPassword) ? inputPassword.value : 'hola';
+// const inputPassword = document.getElementById('register-password');
+// export const registerPassword = (inputPassword) ? inputPassword.value : 'hola';
 
-// Inputs de correo y contraseña de sección Iniciar Sesión:
-const inputLoginEmail = document.getElementById('login-email');
-export const loginEmail = (inputLoginEmail) ? inputLoginEmail.value : 'hola';
+// // Inputs de correo y contraseña de sección Iniciar Sesión:
+// const inputLoginEmail = document.getElementById('login-email');
+// export const loginEmail = (inputLoginEmail) ? inputLoginEmail.value : 'hola';
 
-const inputLoginPassword = document.getElementById('login-password');
-export const loginPassword = (inputLoginPassword) ? inputLoginPassword.value : 'hola';
+// const inputLoginPassword = document.getElementById('login-password');
+// export const loginPassword = (inputLoginPassword) ? inputLoginPassword.value : 'hola';
 
 // Implementando el evento de botón Regístrate y para iniciar sesión:
 
