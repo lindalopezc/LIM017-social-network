@@ -117,7 +117,7 @@ export const login = () => {
 
     aLinkRegister.addEventListener('click', () => onNavigate('/register'));
     aLinkGoogle.addEventListener('click', signGoogle);
-    loginBtn.addEventListener('click', () => signIn(inputEmail.value, inputPassword.value, pInvalidEmail, pInvalidPassword, pErrorDefault));
+    loginBtn.addEventListener('click', () => signIn(inputEmail, inputPassword, pInvalidEmail, pInvalidPassword, pErrorDefault));
 
     return loginSection;
 }

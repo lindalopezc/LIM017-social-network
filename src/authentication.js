@@ -49,7 +49,7 @@ export const signIn = (
     loginErrorDefault,
 ) => {
 
-    signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
@@ -91,7 +91,7 @@ export const createUser = (
     registerErrorDefault,
 ) => {
 
-    createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+    createUserWithEmailAndPassword(auth, registerEmail.value, registerPassword.value)
         .then((userCredential) => {
             const user = userCredential.user;
             onNavigate('/home');
