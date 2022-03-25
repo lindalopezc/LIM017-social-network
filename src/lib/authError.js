@@ -1,3 +1,5 @@
+/* eslint-disable import/named */
+/* eslint-disable no-import-assign */
 /* eslint-disable no-fallthrough */
 /* eslint-disable import/no-cycle */
 /* eslint-disable object-curly-newline */
@@ -10,7 +12,8 @@ import {
     wrongEmail, // hemos borrado wrongPassword por ahora
     invalidEmail,
     invalidPassword,
-    errorDefault,
+    loginErrorDefault,
+    registerErrorDefault,
     registerEmail,
     registerPassword,
     loginEmail,
@@ -30,7 +33,7 @@ export const authError = (code) => {
             registerPassword.style.borderColor = '#F62D2D';
             break;
         case 'auth/invalid-email':
-            wrongEmail.innerText = 'El correo ingresado es inválido';
+            wrongEmail.textContent = 'El correo ingresado es inválido';
             registerEmail.style.borderColor = '#F62D2D';
             break;
         case 'auth/user-not-found':
@@ -46,6 +49,7 @@ export const authError = (code) => {
             loginEmail.style.borderColor = '#F62D2D';
             break;
         default:
-            errorDefault.innerText = code;
+            loginErrorDefault.innerText = code;
+            registerErrorDefault.innerText = code;
     }
 }

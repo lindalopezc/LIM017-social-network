@@ -20,6 +20,7 @@ import {
     getRedirectResult,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import { authError } from './lib/authError.js';
+import { onNavigate } from './lib/ViewController.js';
 import { registerEmail, registerPassword, loginEmail, loginPassword } from './main.js';
 
 const firebaseConfig = {
@@ -40,12 +41,11 @@ const providerFacebook = new FacebookAuthProvider();
 
 export const signIn = () => {
 
-    signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
+    signInWithEmailAndPassword(auth, loginEmail, loginPassword)
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            document.getElementById('welcome-page').style.display = 'block';
-            document.getElementById('login-section').style.display = 'none';
+            onNavigate('/home');
 
         })
         .catch((error) => {
@@ -60,8 +60,7 @@ export const createUser = () => {
     createUserWithEmailAndPassword(auth, registerEmail.value, registerPassword.value)
         .then((userCredential) => {
             const user = userCredential.user;
-            document.getElementById('welcome-page').style.display = 'block';
-            document.getElementById('register-section').style.display = 'none';
+            onNavigate('/home');
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -79,10 +78,7 @@ export const signGoogle = () => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             const user = result.user;
-            document.getElementById('welcome-page').style.display = 'block';
-            document.getElementById('login-section').style.display = 'none';
-            document.getElementById('register-section').style.display = 'none';
-            document.getElementById('login-section').style.display = 'none';
+            onNavigate('/home');
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;

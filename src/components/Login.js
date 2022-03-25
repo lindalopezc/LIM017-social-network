@@ -1,3 +1,6 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-multi-spaces */
+/* eslint-disable import/no-cycle */
 /* eslint-disable eol-last */
 /* eslint-disable semi */
 /* eslint-disable indent */
@@ -5,12 +8,17 @@
 /* eslint-disable spaced-comment */
 /* eslint-disable max-len */
 
+import { onNavigate } from '../lib/ViewController.js';
+import { signIn, signGoogle } from '../authentication.js';
+
+
+
 export const login = () => {
     const loginSection = document.createElement('section');
     loginSection.setAttribute('id', 'login-section');
     const firstDiv = document.createElement('div');
     const logo = document.createElement('img');
-    logo.setAttribute('src', 'img/LETRAS1.png');
+    logo.setAttribute('src', './img/LETRAS1.png');
     logo.setAttribute('alt', 'logo');
     logo.setAttribute('class', 'logo');
     const loginTitle = document.createElement('h4');
@@ -56,6 +64,7 @@ export const login = () => {
     const divErrorDefault = document.createElement('div');
     const pErrorDefault = document.createElement('p');
     pErrorDefault.setAttribute('class', 'error-default');
+    pErrorDefault.setAttribute('id', 'login-error-default');
     divErrorDefault.appendChild(pErrorDefault);
 
     formLogin.appendChild(inputEmail);
@@ -89,13 +98,13 @@ export const login = () => {
     pLittleTextBottom.textContent = '¿No tienes cuenta?';
 
     const span = document.createElement('span');
-    const aLinkLogin = document.createElement('a');
-    aLinkLogin.setAttribute('href', '#');
-    aLinkLogin.setAttribute('id', 'link-register');
-    aLinkLogin.setAttribute('class', 'links');
-    aLinkLogin.textContent = 'Regístrate';
+    const aLinkRegister = document.createElement('a');
+    aLinkRegister.setAttribute('href', '/register');
+    aLinkRegister.setAttribute('id', 'link-register');
+    aLinkRegister.setAttribute('class', 'links');
+    aLinkRegister.textContent = 'Regístrate';
 
-    span.appendChild(aLinkLogin);
+    span.appendChild(aLinkRegister);
     pLittleTextBottom.appendChild(span);
 
     thirdDiv.appendChild(pTextBottom);
@@ -105,38 +114,10 @@ export const login = () => {
     loginSection.appendChild(firstDiv);
     loginSection.appendChild(secondDiv);
     loginSection.appendChild(thirdDiv);
+
+    aLinkRegister.addEventListener('click', () => onNavigate('/register'));
+    loginBtn.addEventListener('click', signIn);
+    aLinkGoogle.addEventListener('click', signGoogle);
+
+    return loginSection;
 }
-
-
-
-
-
-
-
-
-
-/* <section id="login-section">
-            <div>
-                <img src="img/LETRAS1.png" class="logo" alt="logo">
-                <h4>Iniciar Sesión</h4>
-            </div>
-            <div>
-                <form action="" class="form">
-                    <input type="email" placeholder="Email" class="input" id="login-email"></input>
-                    <div><p id="invalid-email"></p></div>
-                    <input type="password" placeholder="Contraseña" class="input" id="login-password"></input>
-                    <div><p id="invalid-password"></p></div>
-                    <input type="button" class="button" value="Iniciar sesión" id="login-btn"></input>
-                    <div><p class="error-default"></p></div>
-                </form>
-            </div>
-            <div>
-                <p class="text-bottom">o con tus redes sociales</p>
-                <div id="social-networks">
-                    <a href="#"><img src="img\google.png" alt="google plus icon" class="img-networks sign-google"></a>
-                    <!-- <a href="#"><img src="img\facebook.png" alt="facebook icon" class="img-networks sign-facebook"></a> -->
-                </div>
-                <p class="text-bottom">¿No tienes una cuenta?. <span><a href="#" id="link-loformLogin" class = "links">Regístrate</a></span></p>
-
-            </div>
-        </section>*/

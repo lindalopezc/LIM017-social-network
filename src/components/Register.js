@@ -1,20 +1,25 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable quotes */
+/* eslint-disable eol-last */
 /* eslint-disable padded-blocks */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable indent */
 
+import { onNavigate } from "../lib/ViewController.js";
+import { createUser, signGoogle } from "../authentication.js";
+
 /* eslint-disable max-len */
-export const Register = () => {
+export const register = () => {
     const registerSection = document.createElement('section');
     registerSection.setAttribute('id', 'register-section');
     const firstDiv = document.createElement('div');
     const logo = document.createElement('img');
-    logo.setAttribute('src', 'img/LETRAS1.png');
+    logo.setAttribute('src', './img/LETRAS1.png');
     logo.setAttribute('alt', 'logo');
     logo.setAttribute('class', 'logo');
     const registerTitle = document.createElement('h4');
     registerTitle.textContent = 'Regístrate';
 
-    registerSection.appendChild(firstDiv);
     firstDiv.appendChild(logo);
     firstDiv.appendChild(registerTitle);
 
@@ -73,6 +78,7 @@ export const Register = () => {
     const divErrorDefault = document.createElement('div');
     const pErrorDefault = document.createElement('p');
     pErrorDefault.setAttribute('class', 'error-default');
+    pErrorDefault.setAttribute('id', 'register-error-default');
     divErrorDefault.appendChild(pErrorDefault);
 
     formRegister.appendChild(inputName);
@@ -84,7 +90,7 @@ export const Register = () => {
     formRegister.appendChild(divWrongPassword);
     formRegister.appendChild(registerBtn);
     formRegister.appendChild(divErrorDefault);
-    
+
     const thirdDiv = document.createElement('div');
     const pTextBottom = document.createElement('p');
     pTextBottom.setAttribute('class', 'text-bottom');
@@ -92,14 +98,14 @@ export const Register = () => {
 
     const divSocialNetworks = document.createElement('div');
     divSocialNetworks.setAttribute('id', 'social-networks');
-    
+
     const aLinkGoogle = document.createElement('a');
     aLinkGoogle.setAttribute('href', '#');
     const imgGoogle = document.createElement('img');
     imgGoogle.setAttribute('src', 'img/google.png');
     imgGoogle.setAttribute('alt', 'google logo');
     imgGoogle.className = 'img-networks sign-google';
-    
+
     aLinkGoogle.appendChild(imgGoogle);
     divSocialNetworks.appendChild(aLinkGoogle);
 
@@ -109,11 +115,11 @@ export const Register = () => {
 
     const span = document.createElement('span');
     const aLinkLogin = document.createElement('a');
-    aLinkLogin.setAttribute('href', '#');
+    aLinkLogin.setAttribute('href', '/login');
     aLinkLogin.setAttribute('id', 'link-login');
     aLinkLogin.setAttribute('class', 'links');
     aLinkLogin.text = 'Iniciar sesión';
-    
+
     span.appendChild(aLinkLogin);
     pLittleTextBottom.appendChild(span);
 
@@ -125,33 +131,10 @@ export const Register = () => {
     registerSection.appendChild(secondDiv);
     registerSection.appendChild(thirdDiv);
 
+    aLinkLogin.addEventListener('click', () => onNavigate('/login'));
+    registerBtn.addEventListener('click', createUser);
+    aLinkGoogle.addEventListener('click', signGoogle);
+
+    return registerSection;
+
 };
-
-/* <section id="register-section">
-            <div>
-                <img src="img/LETRAS1.png" class="logo" alt="logo">
-                <h4>Regístrate</h4>
-            </div>
-            <div>
-                <form action="" class="form">
-                    <input type="text" placeholder="Nombre" class="input" id="register-name"></input>
-                    <input type="email" placeholder="Email" class="input" id="register-email"></input>
-                    <div><p id="wrong-email"></p></div>
-                    <input type="password" placeholder="Contraseña" class="input" id="register-password"></input>
-                    <div id="min-password"><p>Mínimo 6 caracteres</p></div>
-                    <input type="password" placeholder="Confirmar contraseña" class="input" id="register-confirm"></input>
-                    <div><p id="wrong-password"></p></div> <!--Este id es para cuando las contraseñas no coincidan-->
-                    <input type="button" class="button" value="Regístrate" id="register-btn"></input>
-                    <div><p class="error-default"></p></div>
-                </form>
-            </div>
-            <div>
-                <p class="text-bottom">o con tus redes sociales</p>
-                <div id="social-networks">
-                    <a href="#"><img src="img\google.png" alt="google plus icon" class="img-networks sign-google" ></a>
-                    <!-- <a href="#"><img src="img\facebook.png" alt="facebook icon" class="img-networks sign-facebook"></a> -->
-                </div>
-                <p class="text-bottom">Ya tengo una cuenta. <span><a href="#" id="link-login" class="links">Iniciar sesión</a></span></p>
-
-            </div>
-        </section> */

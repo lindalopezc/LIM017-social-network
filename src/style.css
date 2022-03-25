@@ -1,7 +1,8 @@
-*{
+* {
     font-family: 'Montserrat', sans-serif;
     background-color: #FAF6F1;
 }
+
 .logo {
     width: 199px;
     height: 64px;
@@ -25,7 +26,7 @@
     margin-bottom: 5.5px;
     margin-top: 5.5px;
     border-radius: 8px;
-    border:solid 1px #C0BEBE ;
+    border: solid 1px #C0BEBE;
     font-size: 11px;
     padding-left: 14px;
     color: #575353;
@@ -45,61 +46,69 @@
     margin-top: 5.5px;
 }
 
-#login-section {
-    display: none;
-}
-
-#welcome-page {
-    display: none;
-}
-
-#register-section > div, #login-section > div {
+#register-section>div,
+#login-section>div {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-#register-section > div> h4, #login-section > div > h4{
+
+#register-section>div>h4,
+#login-section>div>h4 {
     margin-top: 0px;
     margin-bottom: 11px;
     font-size: 20px;
     font-weight: 500;
 }
-#wrong-email{
+
+#wrong-email {
     margin-top: 0px;
     margin-bottom: 0px;
     font-size: 7px;
-    color:red;
+    color: red;
 }
-#wrong-password, .error-default, #invalid-email, #invalid-password{
+
+#wrong-password,
+.error-default,
+#invalid-email,
+#invalid-password {
     font-size: 7px;
-    color:red;
+    color: red;
 }
-form > div{
+
+form>div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 176px;
     padding-left: 14px;
 }
-form > div > p{
+
+form>div>p {
     margin-top: 0px;
     margin-bottom: 0px;
     font-size: 7px;
 }
-.text-bottom{
+
+.text-bottom {
     font-size: 11px;
 }
-.img-networks{
+
+.img-networks {
     width: 26px;
     height: 26px;
 }
-.links{
-    color:#2029FE;
+
+.links {
+    color: #2029FE;
 }
-#min-password{
-    color:#AF8462;
+
+#min-password {
+    color: #AF8462;
     font-size: 7px;
 }
-#register-section, #login-section{
+
+#register-section,
+#login-section {
     margin-top: 75px;
 }
