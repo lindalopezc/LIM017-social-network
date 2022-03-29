@@ -26,13 +26,17 @@ export const onNavigate = (pathname) => {
 
     rootDiv.appendChild(routes[pathname]());
 }
-
 const component = routes[window.location.pathname];
+// Es el compomente por defecto que carga la ruta,
+// en este caso es el welcome y se ejecuta solo una vez
 
-window.onpopstate = () => {
-    while (rootDiv.firstChild) {
-        rootDiv.removeChild(rootDiv.firstChild);
-    }
-    rootDiv.appendChild(component());
-};
+// window.onpopstate = () => {
+//     debugger
+//     component = routes[window.location.pathname];
+//     while (rootDiv.firstChild) {
+//         rootDiv.removeChild(rootDiv.firstChild);
+//     }
+//     rootDiv.appendChild(component());
+// };
+
 rootDiv.appendChild(component());
