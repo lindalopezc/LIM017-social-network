@@ -116,8 +116,12 @@ export const login = () => {
     loginSection.appendChild(thirdDiv);
 
     aLinkRegister.addEventListener('click', () => onNavigate('/register'));
+<<<<<<< HEAD
     loginBtn.addEventListener('click', () => signIn(inputEmail, inputPassword, pInvalidEmail, pInvalidPassword, pErrorDefault));
+=======
+>>>>>>> 3c9c1089815ca20705de0cf29ade7a6a135992c1
     aLinkGoogle.addEventListener('click', signGoogle);
+    loginBtn.addEventListener('click', () => signIn(inputEmail, inputPassword, pInvalidEmail, pInvalidPassword, pErrorDefault));
 
     return loginSection;
 }

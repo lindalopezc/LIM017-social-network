@@ -11,13 +11,19 @@ import { onNavigate } from "../lib/ViewController.js";
 export const welcome = () => {
 
     const welcomeSection = document.createElement('section');
-    const divImg = document.createElement('div');
-    const welcomeImg = document.createElement('img');
-    welcomeImg.setAttribute('src', './img/LETRAS1.png');
-    welcomeImg.setAttribute('alt', 'Imagen de bienvenida');
-    welcomeImg.setAttribute('class', 'logo'); //Cambiar por clase o id, temporal
+    welcomeSection.setAttribute('id', 'welcome-section');
 
-    divImg.appendChild(welcomeImg);
+    const divLogo = document.createElement('div');
+    divLogo.setAttribute('id', 'div-logo');
+    const imgLogo = document.createElement('img');
+    imgLogo.setAttribute('src', '../img/logoblanco.png');
+    imgLogo.setAttribute('alt', 'Imagen de bienvenida');
+    imgLogo.setAttribute('class', 'logo'); //Cambiar por clase o id, temporal
+    divLogo.appendChild(imgLogo);
+
+    const divTextWelcome = document.createElement('div');
+    divTextWelcome.setAttribute('id', 'div-text-welcome');
+    divTextWelcome.textContent = 'Únete a esta comunidad y dale una segunda oportunidad a las prendas que ya no uses.';
 
     const divBtn = document.createElement('div');
     divBtn.setAttribute('class', 'div-btn');
@@ -33,7 +39,8 @@ export const welcome = () => {
     divBtn.appendChild(loginBtn);
     divBtn.appendChild(registerBtn);
 
-    welcomeSection.appendChild(divImg);
+    welcomeSection.appendChild(divLogo);
+    welcomeSection.appendChild(divTextWelcome);
     welcomeSection.appendChild(divBtn);
 
     loginBtn.addEventListener('click', () => onNavigate('/login'));
