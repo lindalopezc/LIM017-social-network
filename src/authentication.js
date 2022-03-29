@@ -25,18 +25,19 @@ import {
 import { onNavigate } from './lib/ViewController.js';
 // import { registerEmail, registerPassword, loginEmail, loginPassword } from './main.js';
 
+
 const firebaseConfig = {
     apiKey: 'AIzaSyAdfUjeKGbV3sdoMqcYIVg0pEzOBLaihlo',
     authDomain: 'slowly-la.firebaseapp.com',
     projectId: 'slowly-la',
-    storageBucket: 'slowly-la.appspot.com',
+    storageBucket: 'gs://slowly-la.appspot.com/',
     messagingSenderId: '612490900122',
     appId: '1:612490900122:web:ceaa8135a145c763e8e523',
     measurementId: 'G-6LCKZ9QZVS',
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 const providerFacebook = new FacebookAuthProvider();
@@ -138,40 +139,3 @@ export const signGoogle = () => {
             const credential = GoogleAuthProvider.credentialFromError(error);
         });
 }
-
-// acceso con Facebook
-// export const signFacebook = () => {
-
-//     signInWithPopup(auth, providerFacebook)
-//         .then((result) => {
-//             const user = result.user;
-//             const credential = FacebookAuthProvider.credentialFromResult(result);
-//             const accessToken = credential.accessToken;
-//             document.getElementById('welcome-page').style.display = 'block';
-//             document.getElementById('register-section').style.display = 'none';
-//         })
-//         .catch((error) => {
-//             const errorCode = error.code;
-//             const errorMessage = error.message;
-//             const email = error.email;
-//             const credential = FacebookAuthProvider.credentialFromError(error);
-//   });
-
-// }
-
-//   signInWithRedirect(auth, providerFacebook);
-
-/* getRedirectResult(auth)
-  .then((result) => {
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      const credential = FacebookAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-  }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.email;
-      // AuthCredential type that was used.
-      const credential = FacebookAuthProvider.credentialFromError(error);
-      // ...
-  }); */
