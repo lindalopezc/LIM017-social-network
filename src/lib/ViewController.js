@@ -7,6 +7,7 @@ import { welcome } from "../components/Welcome.js"
 import { register } from "../components/Register.js";
 import { login } from "../components/Login.js";
 import { home } from "../components/Home.js"
+import { publications } from "../components/Publications.js"
 
 const rootDiv = document.getElementById('root');
 
@@ -15,6 +16,7 @@ const routes = {
     '/register': register,
     '/login': login,
     '/home': home,
+    '/publications': publications,
 }
 
 export const onNavigate = (pathname) => {
@@ -29,10 +31,10 @@ export const onNavigate = (pathname) => {
 
 const component = routes[window.location.pathname];
 
-window.onpopstate = () => {
+/* window.onpopstate = () => {
     while (rootDiv.firstChild) {
         rootDiv.removeChild(rootDiv.firstChild);
     }
     rootDiv.appendChild(component());
-};
+}; */
 rootDiv.appendChild(component());
