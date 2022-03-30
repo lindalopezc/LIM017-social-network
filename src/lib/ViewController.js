@@ -29,10 +29,10 @@ export const onNavigate = (pathname) => {
 
 const component = routes[window.location.pathname];
 
-window.onpopstate = () => {
+/*window.onpopstate = () => {
     while (rootDiv.firstChild) {
         rootDiv.removeChild(rootDiv.firstChild);
     }
     rootDiv.appendChild(component());
-};
+};*/
 rootDiv.appendChild(component());
