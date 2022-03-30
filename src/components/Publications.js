@@ -141,8 +141,11 @@ export const publications = () => {
   sectionPublications.appendChild(divTitlePublications);
   sectionPublications.appendChild(formPublication);
 
-  const imageUpload = inputImage.files[0].name; // Esto no es seguro, quizá lo cambiemos.
-  inputImage.addEventListener('change', () => storageFunction(imageUpload));
+  // Esto no es seguro, quizá lo cambiemos.
+  inputImage.addEventListener('change', () => {
+    const imageUpload = inputImage.files[0];
+    storageFunction(imageUpload);
+  });
 
   return sectionPublications;
 };

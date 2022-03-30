@@ -5,9 +5,13 @@ import { getStorage, ref, uploadBytes } from 'https://www.gstatic.com/firebasejs
 import { app } from './authentication.js';
 
 const storage = getStorage(app);
-const storageRef = ref(storage);
+let storageRef;
 
 export const storageFunction = (imageUpload) => {
+  storageRef = ref(storage, '/imagenes');
   // Creamos una referencia para el nombre de la imagen que queremos subir a firestorage:
-  const imageRef = ref(storage, `imagenes/${imageUpload}`);
+  const imageRef = ref(storage, `imagenes/${imageUpload.name}`);
+  uploadBytes(imageRef, imageUpload).then((snapshot) => {
+    console.log('Uploaded a blob or file!');
+  });
 };
