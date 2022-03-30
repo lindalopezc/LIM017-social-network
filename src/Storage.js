@@ -18,6 +18,39 @@ export const storageFunction = (imageUpload) => {
   // Creamos una referencia para el nombre de la imagen que queremos subir a firestorage:
   const imageRef = ref(storage, `imagenes/${imageUpload.name}`);
   uploadBytes(imageRef, imageUpload).then((snapshot) => {
-    console.log('La imágen se ha cargado a firestorage.');
+    console.log('Ya se subio la foto a nuestra carpeta storage');
+    getDownloadURL(imageRef)
+      .then((url) => {
+        const imageUrl = document.createElement('img');
+        imageUrl.setAttribute('src', url);
+        console.log(imageUrl, url);
+      })
+      .catch((error) => {
+        switch (error.code) {
+          case 'storage/object-not-found':
+            console.log('El archivo no existe');
+            break;
+          case 'storage/unauthorized':
+            console.log('El usuario no tiene permiso para acceder al objeto');
+            break;
+          case 'storage/canceled':
+            console.log('El usuario canceló la carga');
+            break;
+
+          case 'storage/unknown':
+            console.log('Error desconocido, inspecciona el servidor');
+
+            break;
+          default:
+            console.log('Otro error');
+        }
+      });
   });
+  // debugger
+  // const metadata = {
+  //   contentType: 'imagenes/png',
+  // };
+  // const uploadTask = uploadBytes(imageRef, imageUpload, metadata);
+
+  // Esta función permite tener la url de la imagen de firestorage
 };
