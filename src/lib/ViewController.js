@@ -7,6 +7,7 @@ import { welcome } from "../components/Welcome.js"
 import { register } from "../components/Register.js";
 import { login } from "../components/Login.js";
 import { home } from "../components/Home.js"
+import { publications } from "../components/Publications.js"
 
 const rootDiv = document.getElementById('root');
 
@@ -15,6 +16,7 @@ const routes = {
     '/register': register,
     '/login': login,
     '/home': home,
+    '/publications': publications,
 }
 
 export const onNavigate = (pathname) => {
@@ -26,13 +28,23 @@ export const onNavigate = (pathname) => {
 
     rootDiv.appendChild(routes[pathname]());
 }
-
 const component = routes[window.location.pathname];
+// Es el compomente por defecto que carga la ruta,
+// en este caso es el welcome y se ejecuta solo una vez
 
-/*window.onpopstate = () => {
+// window.onpopstate = () => {
+//     debugger
+//     component = routes[window.location.pathname];
+//     while (rootDiv.firstChild) {
+//         rootDiv.removeChild(rootDiv.firstChild);
+//     }
+//     rootDiv.appendChild(component());
+// };
+
+/* window.onpopstate = () => {
     while (rootDiv.firstChild) {
         rootDiv.removeChild(rootDiv.firstChild);
     }
     rootDiv.appendChild(component());
-};*/
+}; */
 rootDiv.appendChild(component());
