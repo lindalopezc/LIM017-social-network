@@ -142,10 +142,13 @@ export const publications = () => {
   sectionPublications.appendChild(divTitlePublications);
   sectionPublications.appendChild(formPublication);
 
-  // Esto no es seguro, quizá lo cambiemos.
+  // Aquí almanceno el return de la función storageFunction:
+
+  let urlImag;
+
   inputImage.addEventListener('change', () => {
     const imageUpload = inputImage.files[0];
-    storageFunction(imageUpload);
+    storageFunction(imageUpload, image);
   });
 
   return sectionPublications;
