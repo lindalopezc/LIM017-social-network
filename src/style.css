@@ -1,258 +1,285 @@
 * {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #FAF6F1;
-    padding: 0px;
-    margin: 0px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #FAF6F1;
+  padding: 0px;
+  margin: 0px;
 }
 
 .logo {
-    width: 199px;
-    height: 64px;
-    margin-bottom: 25px;
-    background: transparent;
+  width: 199px;
+  height: 64px;
+  margin-bottom: 25px;
+  background: transparent;
 }
 
 .img-networks {
-    width: 3em;
-    height: 3em;
-    margin-top: 11px;
+  width: 3em;
+  height: 3em;
+  margin-top: 11px;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .input {
-    width: 176px;
-    height: 30px;
-    margin-bottom: 5.5px;
-    margin-top: 5.5px;
-    border-radius: 8px;
-    border: solid 1px #C0BEBE;
-    font-size: 11px;
-    padding-left: 14px;
-    color: #575353;
-    outline-color: #575353;
-    background-color: white;
+  width: 176px;
+  height: 30px;
+  margin-bottom: 5.5px;
+  margin-top: 5.5px;
+  border-radius: 8px;
+  border: solid 1px #C0BEBE;
+  font-size: 11px;
+  padding-left: 14px;
+  color: #575353;
+  outline-color: #575353;
+  background-color: white;
 }
 
 .button {
-    width: 190px;
-    height: 36px;
-    background-color: #34332F;
-    color: #fff;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 600;
-    border: none;
-    margin-top: 5.5px;
+  width: 190px;
+  height: 36px;
+  background-color: #34332F;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  margin-top: 5.5px;
 }
 
 #register-section>div,
 #login-section>div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #register-section>div>h4,
 #login-section>div>h4 {
-    margin-top: 0px;
-    margin-bottom: 11px;
-    font-size: 20px;
-    font-weight: 500;
+  margin-top: 0px;
+  margin-bottom: 11px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 #wrong-email {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-size: 7px;
-    color: red;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 7px;
+  color: red;
 }
 
 #wrong-password,
 .error-default,
 #invalid-email,
 #invalid-password {
-    font-size: 7px;
-    color: red;
+  font-size: 7px;
+  color: red;
 }
 
 form>div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 176px;
-    padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 176px;
+  padding-left: 14px;
 }
 
 form>div>p {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-size: 7px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 7px;
 }
 
 .text-bottom {
-    margin-top: 11px;
-    font-size: 11px;
+  margin-top: 11px;
+  font-size: 11px;
 }
 
 .img-networks {
-    width: 26px;
-    height: 26px;
+  width: 26px;
+  height: 26px;
 }
 
 .links {
-    color: #2029FE;
+  color: #2029FE;
 }
 
 #min-password {
-    color: #AF8462;
-    font-size: 7px;
+  color: #AF8462;
+  font-size: 7px;
 }
 
 #register-section,
 #login-section {
-    margin-top: 75px;
+  margin-top: 75px;
 }
+
 
 /* Vista Welcome */
-#welcome-section{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: url('./img/fondo-welcome.jpeg');
-    background-size: cover;
-    height: 100vh;
+
+#welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('./img/fondo-welcome.jpeg');
+  background-size: cover;
+  height: 100vh;
 }
 
-#div-logo{
-    background: transparent;
-    margin-top:65px;
+#div-logo {
+  background: transparent;
+  margin-top: 65px;
 }
-#div-logo>img{
-    margin-bottom: 0px;
+
+#div-logo>img {
+  margin-bottom: 0px;
 }
-#div-text-welcome{
-    
-    top:250px;
-    background: transparent;
-    width: 80%;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    line-height: 23px;
-    margin-bottom: 30px;
+
+#div-text-welcome {
+  top: 250px;
+  background: transparent;
+  width: 80%;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 23px;
+  margin-bottom: 30px;
 }
-.div-btn{
-    display: flex;
-    flex-direction: column;
-    background: transparent;
-    bottom: 115px;
+
+.div-btn {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  bottom: 115px;
 }
-.div-btn > .button{
-    margin-bottom: 11px;
+
+.div-btn>.button {
+  margin-bottom: 11px;
 }
+
 
 /*Estos estilos son para la vista Publications*/
-#div-title-publications{
-    display: flex;
-    font-size: 12px;
-    justify-content: space-between;
-    width: 70%;
-    margin: 22px auto 10px auto;
 
+.div-nav {
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  width: 70%;
+  margin: 22px auto 10px auto;
 }
-#form-publication{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+#form-publication {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-#form-publication > input{
-    height: 30px;
-    border-radius: 8px;
-    border: solid 1px #C0BEBE;
-    font-size: 11px;
-    padding-left: 14px;
-    color: #575353;
-    outline-color: #575353;
-    background-color: white;
-    width: 206px;
-    margin-bottom: 11px;
+
+#form-publication>input {
+  height: 30px;
+  border-radius: 8px;
+  border: solid 1px #C0BEBE;
+  font-size: 11px;
+  padding-left: 14px;
+  color: #575353;
+  outline-color: #575353;
+  background-color: white;
+  width: 206px;
+  margin-bottom: 11px;
 }
-#form-publication > button{
-    background-color: #A64C38;
-    width: 130px;
+
+#form-publication>button {
+  background-color: #A64C38;
+  width: 130px;
 }
-#input-description{
-    height: 50px;
-    border-radius: 8px;
-    border: solid 1px #C0BEBE;
-    font-size: 11px;
-    padding-top: 8px ;
-    padding-left: 14px;
-    color: #575353;
-    outline-color: #575353;
-    background-color: white;
-    width: 206px;
-    margin-bottom: 11px;
+
+#input-description {
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px #C0BEBE;
+  font-size: 11px;
+  padding-top: 8px;
+  padding-left: 14px;
+  color: #575353;
+  outline-color: #575353;
+  background-color: white;
+  width: 206px;
+  margin-bottom: 11px;
 }
-.category-state{
-    display: flex;
-    flex-direction: row;
-    width: 220px;
-    padding: 0px;   
+
+.category-state {
+  display: flex;
+  flex-direction: row;
+  width: 220px;
+  padding: 0px;
 }
-#input-category{
-    width: 100px;
-    height: 30px;
-    border-radius: 8px;
-    margin-bottom: 11px;
-    margin-left: 0px;
-    margin-right: 20px;
-    border: solid 1px #C0BEBE;
-    font-size: 11px;
-    padding-left: 14px;
-    color: #575353;
-    outline-color: #575353;
-    background-color: white;
+
+#input-category {
+  width: 100px;
+  height: 30px;
+  border-radius: 8px;
+  margin-bottom: 11px;
+  margin-left: 0px;
+  margin-right: 20px;
+  border: solid 1px #C0BEBE;
+  font-size: 11px;
+  padding-left: 14px;
+  color: #575353;
+  outline-color: #575353;
+  background-color: white;
 }
-#input-state{
-    width: 100px;
-    height: 30px;
-    border-radius: 8px;
-    margin-bottom: 11px;
-    margin-right: 0px;
-    border: solid 1px #C0BEBE;
-    font-size: 11px;
-    padding-left: 14px;
-    color: #575353;
-    outline-color: #575353;
-    background-color: white;
+
+#input-state {
+  width: 100px;
+  height: 30px;
+  border-radius: 8px;
+  margin-bottom: 11px;
+  margin-right: 0px;
+  border: solid 1px #C0BEBE;
+  font-size: 11px;
+  padding-left: 14px;
+  color: #575353;
+  outline-color: #575353;
+  background-color: white;
 }
-#div-considerations{
-    font-size: 10px;
-    margin-bottom: 11px;
-    width: 208px;
+
+#div-considerations {
+  font-size: 10px;
+  margin-bottom: 11px;
+  width: 208px;
 }
-#div-considerations > p{
-    font-size: 10px;
-    margin-bottom: 6px;
+
+#div-considerations>p {
+  font-size: 10px;
+  margin-bottom: 6px;
 }
-#upload-image{
-    width: 220px;
-    height: 220px;
-    border: 1px solid #C0BEBE ;
-    margin-bottom: 11px;
-    border-radius: 8px;
+
+#upload-image {
+  width: 220px;
+  height: 220px;
+  border: 1px solid #C0BEBE;
+  margin-bottom: 11px;
+  border-radius: 8px;
 }
-.input-image{
-    display: none;
+
+.input-image {
+  display: none;
 }
-.img-menu{
-    width: 25px;
-    height: 25px;
+
+.img-menu {
+  width: 25px;
+  height: 25px;
+}
+
+.btnBars {
+  border: transparent;
+}
+
+.div-post {
+  display: flex;
+  justify-content: center;
 }

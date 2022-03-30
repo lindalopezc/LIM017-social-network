@@ -1,3 +1,4 @@
+/* eslint-disable eol-last */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
@@ -7,7 +8,7 @@ export const publications = () => {
   const sectionPublications = document.createElement('section');
 
   const divTitlePublications = document.createElement('div');
-  divTitlePublications.setAttribute('id', 'div-title-publications');
+  divTitlePublications.setAttribute('class', 'div-nav');
 
   const titlePublications = document.createElement('h1');
   titlePublications.textContent = 'Publicar';
@@ -141,8 +142,11 @@ export const publications = () => {
   sectionPublications.appendChild(divTitlePublications);
   sectionPublications.appendChild(formPublication);
 
-  const imageUpload = inputImage.files[0].name; // Esto no es seguro, quizá lo cambiemos.
-  inputImage.addEventListener('change', () => storageFunction(imageUpload));
+  // Esto no es seguro, quizá lo cambiemos.
+  inputImage.addEventListener('change', () => {
+    const imageUpload = inputImage.files[0];
+    storageFunction(imageUpload);
+  });
 
   return sectionPublications;
 };
