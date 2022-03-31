@@ -17,9 +17,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
-  FacebookAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
+  onAuthStateChanged,
+  signOut,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 // import { authError } from './lib/authError.js';
 import { onNavigate } from './lib/ViewController.js';
@@ -39,7 +38,20 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
-const providerFacebook = new FacebookAuthProvider();
+
+// Estamos añadiendo un observador
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    console.log(uid);
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
 
 export const signIn = (
   loginEmail,
@@ -76,6 +88,16 @@ export const signIn = (
       }
     });
 };
+
+export const signOutFun = () => {
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    onNavigate('/');
+  }).catch((error) => {
+    // An error happened.
+  });
+}
+
 
 export const createUser = (
   registerEmail,
