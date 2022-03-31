@@ -19,6 +19,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
+  sendEmailVerification,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 // import { authError } from './lib/authError.js';
 import { onNavigate } from './lib/ViewController.js';
@@ -45,13 +46,15 @@ onAuthStateChanged(auth, (user) => {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
-    console.log(uid);
     // ...
   } else {
     // User is signed out
     // ...
   }
 });
+
+
+
 
 export const signIn = (
   loginEmail,
@@ -107,13 +110,20 @@ export const createUser = (
   registerErrorDefault,
 ) => {
   createUserWithEmailAndPassword(
-      auth,
-      registerEmail.value,
-      registerPassword.value,
-    )
+    auth,
+    registerEmail.value,
+    registerPassword.value,
+  )
     .then((userCredential) => {
       const user = userCredential.user;
-      onNavigate('/home');
+      sendEmailVerification(user)
+      .then(() => {
+        console.log(user.emailVerified);
+        onNavigate('/home');
+        // Email verification sent!
+      });
+      
+
     })
     .catch((error) => {
       const errorCode = error.code;
