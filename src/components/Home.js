@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable import/no-cycle */
 /* eslint-disable eol-last */
 
 import { onNavigate } from '../lib/ViewController.js';
+import { signOutFun } from '../authentication.js';
 
 /* eslint-disable indent */
 export const home = () => {
@@ -34,10 +36,17 @@ export const home = () => {
   const btn = document.createElement('button');
   btn.setAttribute('class', 'button');
   btn.textContent = 'publicar';
+
+  const btnSignout = document.createElement('button');
+  btnSignout.setAttribute('class', 'button');
+  btnSignout.textContent = 'Cerrar sesión';
+
   divPost.appendChild(btn);
+  divPost.appendChild(btnSignout);
   sectionHome.appendChild(divPost);
 
   btn.addEventListener('click', () => onNavigate('/publications'));
+  btnSignout.addEventListener('click', () => signOutFun());
 
   return sectionHome;
 };

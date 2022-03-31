@@ -18,6 +18,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signOut,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 // import { authError } from './lib/authError.js';
 import { onNavigate } from './lib/ViewController.js';
@@ -49,7 +50,6 @@ onAuthStateChanged(auth, (user) => {
   } else {
     // User is signed out
     // ...
-    onNavigate('/welcome');
   }
 });
 
@@ -88,6 +88,16 @@ export const signIn = (
       }
     });
 };
+
+export const signOutFun = () => {
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    onNavigate('/');
+  }).catch((error) => {
+    // An error happened.
+  });
+}
+
 
 export const createUser = (
   registerEmail,
