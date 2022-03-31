@@ -72,6 +72,12 @@
   color: red;
 }
 
+#verified-email{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-size: 11px;
+  color: red; 
+}
 #wrong-password,
 .error-default,
 #invalid-email,
