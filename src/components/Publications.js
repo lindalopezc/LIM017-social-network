@@ -3,6 +3,7 @@
 /* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
 import { storageFunction } from '../Storage.js';
+import { insertData } from '../database.js';
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
@@ -150,6 +151,9 @@ export const publications = () => {
     const imageUpload = inputImage.files[0];
     storageFunction(imageUpload, image);
   });
+
+  const publication = {};
+  insertData(publication);
 
   return sectionPublications;
 };

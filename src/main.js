@@ -37,3 +37,18 @@
 // Implementamos evento de botón 'Facebook':
 // document.getElementsByClassName('sign-facebook')[0].addEventListener('click', signFacebook);
 // document.getElementsByClassName('sign-facebook')[1].addEventListener('click', signFacebook);
+// eslint-disable-next-line import/no-unresolved
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyAdfUjeKGbV3sdoMqcYIVg0pEzOBLaihlo',
+  authDomain: 'slowly-la.firebaseapp.com',
+  projectId: 'slowly-la',
+  storageBucket: 'gs://slowly-la.appspot.com/',
+  messagingSenderId: '612490900122',
+  appId: '1:612490900122:web:ceaa8135a145c763e8e523',
+  measurementId: 'G-6LCKZ9QZVS',
+};
+
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
