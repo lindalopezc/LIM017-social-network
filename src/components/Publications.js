@@ -1,7 +1,4 @@
-/* eslint-disable eol-last */
 /* eslint-disable import/no-cycle */
-/* eslint-disable import/named */
-/* eslint-disable no-unused-vars */
 import { storageFunction } from '../Storage.js';
 
 export const publications = () => {
@@ -141,10 +138,6 @@ export const publications = () => {
 
   sectionPublications.appendChild(divTitlePublications);
   sectionPublications.appendChild(formPublication);
-
-  // Aquí almanceno el return de la función storageFunction:
-
-  let urlImag;
 
   inputImage.addEventListener('change', () => {
     const imageUpload = inputImage.files[0];

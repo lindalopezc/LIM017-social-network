@@ -1,12 +1,6 @@
 /* eslint-disable import/no-cycle */
-/* eslint-disable quotes */
-/* eslint-disable eol-last */
-/* eslint-disable padded-blocks */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
-
-import { onNavigate } from "../lib/ViewController.js";
-import { createUser, signGoogle } from "../authentication.js";
+import { onNavigate } from '../lib/ViewController.js';
+import { createUser, signGoogle } from '../authentication.js';
 
 /* eslint-disable max-len */
 export const register = () => {
@@ -152,5 +146,4 @@ export const register = () => {
   aLinkGoogle.addEventListener('click', signGoogle);
 
   return registerSection;
-
 };

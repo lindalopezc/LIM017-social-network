@@ -1,15 +1,8 @@
-/* eslint-disable default-case */
+/* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
-/* eslint-disable object-curly-newline */
-/* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
-/* eslint-disable semi */
-/* eslint-disable no-multiple-empty-lines */
-/* eslint-disable eol-last */
-/* eslint-disable padded-blocks */
-/* eslint-disable indent */
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/no-unresolved */
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 import {
   getAuth,
@@ -53,9 +46,6 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-
-
-
 export const signIn = (
   loginEmail,
   loginPassword,
@@ -73,7 +63,6 @@ export const signIn = (
       } else {
         verifiedEmail.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
       }
-
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -105,8 +94,7 @@ export const signOutFun = () => {
   }).catch((error) => {
     // An error happened.
   });
-}
-
+};
 
 export const createUser = (
   registerEmail,
@@ -116,20 +104,20 @@ export const createUser = (
   registerErrorDefault,
 ) => {
   createUserWithEmailAndPassword(
-      auth,
-      registerEmail.value,
-      registerPassword.value,
-    )
+    auth,
+    registerEmail.value,
+    registerPassword.value,
+  )
     .then((userCredential) => {
       const user = userCredential.user;
       sendEmailVerification(user)
         .then(() => {
           console.log(user.emailVerified);
-          onNavigate('/login');
+          const pMessage = document.createElement('p');
+          pMessage.innerText = 'Hemos enviado un enlace a tu correo electrónico. ';
+          (onNavigate('/login')).appendChild(pMessage);
           // Email verification sent!
         });
-
-
     })
     .catch((error) => {
       const errorCode = error.code;
