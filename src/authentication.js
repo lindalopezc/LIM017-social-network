@@ -3,12 +3,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/no-unresolved */
-<<<<<<< HEAD
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
-=======
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
->>>>>>> d05f798d38be2a087b7d36117aa738d653a323b5
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -21,7 +17,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 // import { authError } from './lib/authError.js';
 import { onNavigate } from './lib/ViewController.js';
-import { app } from './main.js'
+import { app } from './main.js';
 // import { registerEmail, registerPassword, loginEmail, loginPassword } from './main.js';
 
 // const firebaseConfig = {
