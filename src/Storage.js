@@ -10,7 +10,7 @@ import {
   uploadBytes,
   getDownloadURL,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-storage.js';
-import { app } from './authentication.js';
+import { app } from './main.js';
 
 const storage = getStorage(app);
 let storageRef;
