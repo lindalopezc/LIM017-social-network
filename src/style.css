@@ -50,15 +50,8 @@
   margin-top: 5.5px;
 }
 
-#register-section>div,
-#login-section>div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#register-section>div>h4,
-#login-section>div>h4 {
+.title-register-login,
+#login-section>div>div>h4 {
   margin-top: 0px;
   margin-bottom: 11px;
   font-size: 20px;
@@ -116,6 +109,13 @@ form>div>p {
 #register-section,
 #login-section {
   margin-top: 75px;
+  display: flex;
+}
+
+.div-contain>div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 
@@ -123,12 +123,20 @@ form>div>p {
 
 #welcome-section {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: url('./img/fondo-welcome.jpeg');
   background-size: cover;
   height: 100vh;
+}
+
+.div-photo {}
+
+.div-contain {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #div-logo {
@@ -282,4 +290,61 @@ form>div>p {
 .div-post {
   display: flex;
   justify-content: center;
+}
+
+.div-contain {
+  background: transparent;
+}
+
+@media (min-width: 700px) {
+  #welcome-section {
+    background: #FAF6F1;
+  }
+  .div-photo {
+    background: url('./img/fondo-welcome.jpeg');
+    width: 40%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .div-contain {
+    width: 60%;
+  }
+  #div-text-welcome {
+    width: 60%;
+    max-width: 252px;
+    color: #34332F;
+    font-size: 17px;
+  }
+  .div-logo {
+    width: 252px;
+    height: 81px;
+    margin-bottom: 30px;
+    background: url("./img/LETRAS1.png");
+    background-size: cover;
+  }
+  .logo {
+    width: 0px;
+    height: 0px;
+  }
+  .button {
+    width: 252px;
+    height: 40px;
+    font-size: 18px;
+  }
+  #register-section {
+    margin-top: 0px;
+  }
+  #div-photo-register {
+    background: url("./img/registerPhoto.jpg");
+    width: 40%;
+    background-size: cover;
+  }
+  #logo-register {
+    margin-top: 111px;
+    margin-bottom: 20px;
+  }
+  .title-register-login {
+    font-size: 30px;
+  }
 }

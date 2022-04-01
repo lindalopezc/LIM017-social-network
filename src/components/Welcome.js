@@ -10,41 +10,50 @@ import { onNavigate } from "../lib/ViewController.js";
 
 export const welcome = () => {
 
-    const welcomeSection = document.createElement('section');
-    welcomeSection.setAttribute('id', 'welcome-section');
+  const welcomeSection = document.createElement('section');
+  welcomeSection.setAttribute('id', 'welcome-section');
 
-    const divLogo = document.createElement('div');
-    divLogo.setAttribute('id', 'div-logo');
-    const imgLogo = document.createElement('img');
-    imgLogo.setAttribute('src', '../img/logoblanco.png');
-    imgLogo.setAttribute('alt', 'Imagen de bienvenida');
-    imgLogo.setAttribute('class', 'logo'); //Cambiar por clase o id, temporal
-    divLogo.appendChild(imgLogo);
+  const divPhoto = document.createElement('div');
+  divPhoto.setAttribute('class', 'div-photo');
 
-    const divTextWelcome = document.createElement('div');
-    divTextWelcome.setAttribute('id', 'div-text-welcome');
-    divTextWelcome.textContent = 'Únete a esta comunidad y dale una segunda oportunidad a las prendas que ya no uses.';
+  const divWelcome = document.createElement('div');
+  divWelcome.setAttribute('class', 'div-contain');
 
-    const divBtn = document.createElement('div');
-    divBtn.setAttribute('class', 'div-btn');
+  const divLogo = document.createElement('div');
+  divLogo.setAttribute('class', 'div-logo');
+  const imgLogo = document.createElement('img');
+  imgLogo.setAttribute('src', '../img/logoblanco.png');
+  imgLogo.setAttribute('alt', 'Imagen de bienvenida');
+  imgLogo.setAttribute('class', 'logo'); //Cambiar por clase o id, temporal
+  divLogo.appendChild(imgLogo);
 
-    const loginBtn = document.createElement('button');
-    loginBtn.textContent = 'Inicia sesión';
-    loginBtn.setAttribute('class', 'button');
+  const divTextWelcome = document.createElement('div');
+  divTextWelcome.setAttribute('id', 'div-text-welcome');
+  divTextWelcome.textContent = 'Únete a esta comunidad y dale una segunda oportunidad a las prendas que ya no uses.';
 
-    const registerBtn = document.createElement('button');
-    registerBtn.textContent = 'Regístrate';
-    registerBtn.setAttribute('class', 'button');
+  const divBtn = document.createElement('div');
+  divBtn.setAttribute('class', 'div-btn');
 
-    divBtn.appendChild(loginBtn);
-    divBtn.appendChild(registerBtn);
+  const loginBtn = document.createElement('button');
+  loginBtn.textContent = 'Inicia sesión';
+  loginBtn.setAttribute('class', 'button');
 
-    welcomeSection.appendChild(divLogo);
-    welcomeSection.appendChild(divTextWelcome);
-    welcomeSection.appendChild(divBtn);
+  const registerBtn = document.createElement('button');
+  registerBtn.textContent = 'Regístrate';
+  registerBtn.setAttribute('class', 'button');
 
-    loginBtn.addEventListener('click', () => onNavigate('/login'));
-    registerBtn.addEventListener('click', () => onNavigate('/register'));
+  divBtn.appendChild(loginBtn);
+  divBtn.appendChild(registerBtn);
 
-    return welcomeSection;
+  divWelcome.appendChild(divLogo);
+  divWelcome.appendChild(divTextWelcome);
+  divWelcome.appendChild(divBtn);
+
+  welcomeSection.appendChild(divPhoto);
+  welcomeSection.appendChild(divWelcome);
+
+  loginBtn.addEventListener('click', () => onNavigate('/login'));
+  registerBtn.addEventListener('click', () => onNavigate('/register'));
+
+  return welcomeSection;
 }

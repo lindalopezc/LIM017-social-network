@@ -67,6 +67,7 @@ export const signIn = (
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
+      console.log(user);
       onNavigate('/home');
     })
     .catch((error) => {
@@ -110,19 +111,18 @@ export const createUser = (
   registerErrorDefault,
 ) => {
   createUserWithEmailAndPassword(
-    auth,
-    registerEmail.value,
-    registerPassword.value,
-  )
+      auth,
+      registerEmail.value,
+      registerPassword.value,
+    )
     .then((userCredential) => {
       const user = userCredential.user;
       sendEmailVerification(user)
-      .then(() => {
-        console.log(user.emailVerified);
-        onNavigate('/home');
-        // Email verification sent!
-      });
-      
+        .then(() => {
+          console.log(user.emailVerified);
+          onNavigate('/login');
+          // Email verification sent!
+        });
 
     })
     .catch((error) => {

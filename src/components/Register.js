@@ -10,131 +10,147 @@ import { createUser, signGoogle } from "../authentication.js";
 
 /* eslint-disable max-len */
 export const register = () => {
-    const registerSection = document.createElement('section');
-    registerSection.setAttribute('id', 'register-section');
-    const firstDiv = document.createElement('div');
-    const logo = document.createElement('img');
-    logo.setAttribute('src', './img/LETRAS1.png');
-    logo.setAttribute('alt', 'logo');
-    logo.setAttribute('class', 'logo');
-    const registerTitle = document.createElement('h4');
-    registerTitle.textContent = 'Regístrate';
+  const registerSection = document.createElement('section');
+  registerSection.setAttribute('id', 'register-section');
 
-    firstDiv.appendChild(logo);
-    firstDiv.appendChild(registerTitle);
+  const divPhoto = document.createElement('div');
+  divPhoto.setAttribute('class', 'div-photo');
+  divPhoto.setAttribute('id', 'div-photo-register');
 
-    const secondDiv = document.createElement('div');
-    const formRegister = document.createElement('form');
-    formRegister.setAttribute('action', ''); // Falta especificar el valor de action
-    formRegister.setAttribute('class', 'form');
-    secondDiv.appendChild(formRegister);
+  const divRegister = document.createElement('div');
+  divRegister.setAttribute('class', 'div-contain');
 
-    const inputName = document.createElement('input');
-    inputName.setAttribute('type', 'text');
-    inputName.setAttribute('placeholder', 'Nombre');
-    inputName.setAttribute('class', 'input');
-    inputName.setAttribute('id', 'register-name');
+  const firstDiv = document.createElement('div');
+  const divLogo = document.createElement('div');
+  divLogo.setAttribute('class', 'div-logo');
+  divLogo.setAttribute('id', 'logo-register');
+  const logo = document.createElement('img');
+  logo.setAttribute('src', './img/LETRAS1.png');
+  logo.setAttribute('alt', 'logo');
+  logo.setAttribute('class', 'logo');
+  const registerTitle = document.createElement('h4');
+  registerTitle.setAttribute('class', 'title-register-login');
+  registerTitle.textContent = 'Regístrate';
 
-    const inputEmail = document.createElement('input');
-    inputEmail.setAttribute('type', 'email');
-    inputEmail.setAttribute('placeholder', 'Email');
-    inputEmail.setAttribute('class', 'input');
-    inputEmail.setAttribute('id', 'register-email');
+  divLogo.appendChild(logo);
+  firstDiv.appendChild(divLogo);
+  firstDiv.appendChild(registerTitle);
 
-    const divWrongEmail = document.createElement('div');
-    const pWrongEmail = document.createElement('p');
-    pWrongEmail.setAttribute('id', 'wrong-email');
-    divWrongEmail.appendChild(pWrongEmail);
+  const secondDiv = document.createElement('div');
+  const formRegister = document.createElement('form');
+  formRegister.setAttribute('action', ''); // Falta especificar el valor de action
+  formRegister.setAttribute('class', 'form');
+  secondDiv.appendChild(formRegister);
 
-    const inputPassword = document.createElement('input');
-    inputPassword.setAttribute('type', 'password');
-    inputPassword.setAttribute('placeholder', 'Contraseña');
-    inputPassword.setAttribute('class', 'input');
-    inputPassword.setAttribute('id', 'register-password');
+  const inputName = document.createElement('input');
+  inputName.setAttribute('type', 'text');
+  inputName.setAttribute('placeholder', 'Nombre');
+  inputName.setAttribute('class', 'input');
+  inputName.setAttribute('id', 'register-name');
 
-    const divMinPassword = document.createElement('div');
-    const pMinPassword = document.createElement('p');
-    pMinPassword.setAttribute('id', 'min-password');
-    pMinPassword.textContent = 'Mínimo 6 caracteres';
-    divMinPassword.appendChild(pMinPassword);
+  const inputEmail = document.createElement('input');
+  inputEmail.setAttribute('type', 'email');
+  inputEmail.setAttribute('placeholder', 'Email');
+  inputEmail.setAttribute('class', 'input');
+  inputEmail.setAttribute('id', 'register-email');
 
-    const inputConfirmPassword = document.createElement('input');
-    inputConfirmPassword.setAttribute('type', 'password');
-    inputConfirmPassword.setAttribute('placeholder', 'Confirmar contraseña');
-    inputConfirmPassword.setAttribute('class', 'input');
-    inputConfirmPassword.setAttribute('id', 'register-confirm');
+  const divWrongEmail = document.createElement('div');
+  const pWrongEmail = document.createElement('p');
+  pWrongEmail.setAttribute('id', 'wrong-email');
+  divWrongEmail.appendChild(pWrongEmail);
 
-    const divWrongPassword = document.createElement('div');
-    const pWrongPassword = document.createElement('p');
-    pWrongPassword.setAttribute('id', 'wrong-password');
-    divWrongPassword.appendChild(pWrongPassword);
+  const inputPassword = document.createElement('input');
+  inputPassword.setAttribute('type', 'password');
+  inputPassword.setAttribute('placeholder', 'Contraseña');
+  inputPassword.setAttribute('class', 'input');
+  inputPassword.setAttribute('id', 'register-password');
 
-    const registerBtn = document.createElement('input');
-    registerBtn.setAttribute('type', 'button');
-    registerBtn.setAttribute('class', 'button');
-    registerBtn.setAttribute('value', 'Regístrate');
-    registerBtn.setAttribute('id', 'register-btn');
+  const divMinPassword = document.createElement('div');
+  const pMinPassword = document.createElement('p');
+  pMinPassword.setAttribute('id', 'min-password');
+  pMinPassword.textContent = 'Mínimo 6 caracteres';
+  divMinPassword.appendChild(pMinPassword);
 
-    const divErrorDefault = document.createElement('div');
-    const pErrorDefault = document.createElement('p');
-    pErrorDefault.setAttribute('class', 'error-default');
-    pErrorDefault.setAttribute('id', 'register-error-default');
-    divErrorDefault.appendChild(pErrorDefault);
+  const inputConfirmPassword = document.createElement('input');
+  inputConfirmPassword.setAttribute('type', 'password');
+  inputConfirmPassword.setAttribute('placeholder', 'Confirmar contraseña');
+  inputConfirmPassword.setAttribute('class', 'input');
+  inputConfirmPassword.setAttribute('id', 'register-confirm');
 
-    formRegister.appendChild(inputName);
-    formRegister.appendChild(inputEmail);
-    formRegister.appendChild(divWrongEmail);
-    formRegister.appendChild(inputPassword);
-    formRegister.appendChild(divMinPassword);
-    formRegister.appendChild(inputConfirmPassword);
-    formRegister.appendChild(divWrongPassword);
-    formRegister.appendChild(registerBtn);
-    formRegister.appendChild(divErrorDefault);
+  const divWrongPassword = document.createElement('div');
+  const pWrongPassword = document.createElement('p');
+  pWrongPassword.setAttribute('id', 'wrong-password');
+  divWrongPassword.appendChild(pWrongPassword);
 
-    const thirdDiv = document.createElement('div');
-    const pTextBottom = document.createElement('p');
-    pTextBottom.setAttribute('class', 'text-bottom');
-    pTextBottom.textContent = 'o con tu cuenta de gmail';
+  const registerBtn = document.createElement('input');
+  registerBtn.setAttribute('type', 'button');
+  registerBtn.setAttribute('class', 'button');
+  registerBtn.setAttribute('value', 'Regístrate');
+  registerBtn.setAttribute('id', 'register-btn');
 
-    const divSocialNetworks = document.createElement('div');
-    divSocialNetworks.setAttribute('id', 'social-networks');
+  const divErrorDefault = document.createElement('div');
+  const pErrorDefault = document.createElement('p');
+  pErrorDefault.setAttribute('class', 'error-default');
+  pErrorDefault.setAttribute('id', 'register-error-default');
+  divErrorDefault.appendChild(pErrorDefault);
 
-    const aLinkGoogle = document.createElement('a');
-    aLinkGoogle.setAttribute('href', '#');
-    const imgGoogle = document.createElement('img');
-    imgGoogle.setAttribute('src', 'img/google.png');
-    imgGoogle.setAttribute('alt', 'google logo');
-    imgGoogle.className = 'img-networks sign-google';
+  formRegister.appendChild(inputName);
+  formRegister.appendChild(inputEmail);
+  formRegister.appendChild(divWrongEmail);
+  formRegister.appendChild(inputPassword);
+  formRegister.appendChild(divMinPassword);
+  formRegister.appendChild(inputConfirmPassword);
+  formRegister.appendChild(divWrongPassword);
+  formRegister.appendChild(registerBtn);
+  formRegister.appendChild(divErrorDefault);
 
-    aLinkGoogle.appendChild(imgGoogle);
-    divSocialNetworks.appendChild(aLinkGoogle);
+  const thirdDiv = document.createElement('div');
+  const pTextBottom = document.createElement('p');
+  pTextBottom.setAttribute('class', 'text-bottom');
+  pTextBottom.textContent = 'o con tu cuenta de gmail';
 
-    const pLittleTextBottom = document.createElement('p');
-    pLittleTextBottom.setAttribute('class', 'text-bottom');
-    pLittleTextBottom.textContent = 'Ya tengo una cuenta.';
+  const divSocialNetworks = document.createElement('div');
+  divSocialNetworks.setAttribute('id', 'social-networks');
 
-    const span = document.createElement('span');
-    const aLinkLogin = document.createElement('a');
-    aLinkLogin.setAttribute('href', '/login');
-    aLinkLogin.setAttribute('id', 'link-login');
-    aLinkLogin.setAttribute('class', 'links');
-    aLinkLogin.text = 'Iniciar sesión';
+  const aLinkGoogle = document.createElement('a');
+  aLinkGoogle.setAttribute('href', '#');
+  const imgGoogle = document.createElement('img');
+  imgGoogle.setAttribute('src', 'img/google.png');
+  imgGoogle.setAttribute('alt', 'google logo');
+  imgGoogle.className = 'img-networks sign-google';
 
-    span.appendChild(aLinkLogin);
-    pLittleTextBottom.appendChild(span);
+  aLinkGoogle.appendChild(imgGoogle);
+  divSocialNetworks.appendChild(aLinkGoogle);
 
-    thirdDiv.appendChild(pTextBottom);
-    thirdDiv.appendChild(divSocialNetworks);
-    thirdDiv.appendChild(pLittleTextBottom);
+  const pLittleTextBottom = document.createElement('p');
+  pLittleTextBottom.setAttribute('class', 'text-bottom');
+  pLittleTextBottom.textContent = 'Ya tengo una cuenta.';
 
-    registerSection.appendChild(firstDiv);
-    registerSection.appendChild(secondDiv);
-    registerSection.appendChild(thirdDiv);
+  const span = document.createElement('span');
+  const aLinkLogin = document.createElement('a');
+  aLinkLogin.setAttribute('href', '/login');
+  aLinkLogin.setAttribute('id', 'link-login');
+  aLinkLogin.setAttribute('class', 'links');
+  aLinkLogin.text = 'Iniciar sesión';
 
-    aLinkLogin.addEventListener('click', () => onNavigate('/login'));
-    registerBtn.addEventListener('click', () => createUser(inputEmail, inputPassword, pWrongEmail, pMinPassword, pErrorDefault));
-    aLinkGoogle.addEventListener('click', signGoogle);
+  span.appendChild(aLinkLogin);
+  pLittleTextBottom.appendChild(span);
 
-    return registerSection;
+  thirdDiv.appendChild(pTextBottom);
+  thirdDiv.appendChild(divSocialNetworks);
+  thirdDiv.appendChild(pLittleTextBottom);
+
+  divRegister.appendChild(firstDiv);
+  divRegister.appendChild(secondDiv);
+  divRegister.appendChild(thirdDiv);
+
+  registerSection.appendChild(divPhoto);
+  registerSection.appendChild(divRegister);
+
+  aLinkLogin.addEventListener('click', () => onNavigate('/login'));
+  registerBtn.addEventListener('click', () => createUser(inputEmail, inputPassword, pWrongEmail, pMinPassword, pErrorDefault));
+  aLinkGoogle.addEventListener('click', signGoogle);
+
+  return registerSection;
 
 };
