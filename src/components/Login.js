@@ -17,8 +17,6 @@ export const login = () => {
   const loginSection = document.createElement('section');
   loginSection.setAttribute('id', 'login-section');
   const firstDiv = document.createElement('div');
-  const divLogo = document.createElement('div');
-  divLogo.setAttribute('class', 'div-logo');
   const logo = document.createElement('img');
   logo.setAttribute('src', './img/LETRAS1.png');
   logo.setAttribute('alt', 'logo');
@@ -26,8 +24,7 @@ export const login = () => {
   const loginTitle = document.createElement('h4');
   loginTitle.textContent = 'Iniciar Sesión';
 
-  divLogo.appendChild(logo);
-  firstDiv.appendChild(divLogo);
+  firstDiv.appendChild(logo);
   firstDiv.appendChild(loginTitle);
 
   const secondDiv = document.createElement('div');
@@ -107,12 +104,17 @@ export const login = () => {
   aLinkRegister.setAttribute('class', 'links');
   aLinkRegister.textContent = 'Regístrate';
 
+  const divEmailVerified = document.createElement('div');
+  const pEmailVerified = document.createElement('p');
+  pEmailVerified.setAttribute('id', 'verified-email');
+  divEmailVerified.appendChild(pEmailVerified);
   span.appendChild(aLinkRegister);
   pLittleTextBottom.appendChild(span);
 
   thirdDiv.appendChild(pTextBottom);
   thirdDiv.appendChild(divSocialNetworks);
   thirdDiv.appendChild(pLittleTextBottom);
+  thirdDiv.appendChild(divEmailVerified)
 
   loginSection.appendChild(firstDiv);
   loginSection.appendChild(secondDiv);
@@ -120,7 +122,7 @@ export const login = () => {
 
   aLinkRegister.addEventListener('click', () => onNavigate('/register'));
   aLinkGoogle.addEventListener('click', signGoogle);
-  loginBtn.addEventListener('click', () => signIn(inputEmail, inputPassword, pInvalidEmail, pInvalidPassword, pErrorDefault));
+  loginBtn.addEventListener('click', () => signIn(inputEmail, inputPassword, pInvalidEmail, pInvalidPassword, pErrorDefault, pEmailVerified));
 
   return loginSection;
 }
