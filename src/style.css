@@ -12,19 +12,13 @@
   background: transparent;
 }
 
-.img-networks {
-  width: 3em;
-  height: 3em;
-  margin-top: 11px;
-}
-
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.input {
+.form>.input {
   width: 176px;
   height: 30px;
   margin-bottom: 5.5px;
@@ -50,12 +44,11 @@
   margin-top: 5.5px;
 }
 
-.title-register-login,
-#login-section>div>div>h4 {
+.title-register-login{
   margin-top: 0px;
   margin-bottom: 11px;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 #wrong-email {
@@ -101,6 +94,7 @@ form>div>p {
 .img-networks {
   width: 26px;
   height: 26px;
+  margin-top: 11px;
 }
 
 .links {
@@ -116,6 +110,7 @@ form>div>p {
 #login-section {
   margin-top: 75px;
   display: flex;
+  justify-content: center;
 }
 
 .div-contain>div {
@@ -136,21 +131,19 @@ form>div>p {
   height: 100vh;
 }
 
-.div-photo {}
-
 .div-contain {
   background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-#div-logo {
+.div-logo {
   background: transparent;
-  margin-top: 65px;
 }
 
-#div-logo>img {
+.div-logo>img {
   margin-bottom: 0px;
 }
 
@@ -159,7 +152,7 @@ form>div>p {
   background: transparent;
   width: 80%;
   color: white;
-  font-weight: bold;
+  font-weight: 500;
   text-align: center;
   line-height: 23px;
   margin-bottom: 30px;
@@ -307,7 +300,7 @@ form>div>p {
     background: #FAF6F1;
   }
   .div-photo {
-    background: url('./img/fondo-welcome.jpeg');
+    background: url('./img/welcomePhoto.jpg');
     width: 40%;
     height: 100vh;
     background-repeat: no-repeat;
@@ -323,18 +316,19 @@ form>div>p {
     font-size: 17px;
   }
   .div-logo {
-    width: 252px;
-    height: 81px;
+    width: 240px;
+    height: 80px;
     margin-bottom: 30px;
     background: url("./img/LETRAS1.png");
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   .logo {
     width: 0px;
     height: 0px;
   }
   .button {
-    width: 252px;
+    width: 240px;
     height: 40px;
     font-size: 18px;
   }
@@ -342,15 +336,60 @@ form>div>p {
     margin-top: 0px;
   }
   #div-photo-register {
-    background: url("./img/registerPhoto.jpg");
+    background: url("./img/register-photo.jpg");
     width: 40%;
     background-size: cover;
+    background-repeat: no-repeat;
   }
   #logo-register {
     margin-top: 111px;
     margin-bottom: 20px;
   }
   .title-register-login {
-    font-size: 30px;
+    font-size: 22px;
+  }
+  .form>.input{
+    width: 226px;
+    height: 32px;
+    font-size: 13px;
+  }
+  .text-bottom{
+    font-size: 13px;
+  }
+  .img-networks{
+    width: 30px;
+    height: 30px;
+  }
+  #div-photo-login{
+    background: url("./img/login-photo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #login-section{
+    margin-top: 0px;
+  }
+  #login-section>.div-contain{
+    margin-top: 35px;
+  }
+  #min-password {
+    color: #AF8462;
+    font-size: 9px;
+  }
+  form>div {
+    width: 240px;
+    padding-left: 25px;
+  }
+  
+  form>div>p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 9px;
+  }  
+  #wrong-email,
+  #wrong-password,
+  .error-default,
+  #invalid-email,
+  #invalid-password {
+    font-size: 9px;
   }
 }
