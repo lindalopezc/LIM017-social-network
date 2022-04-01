@@ -107,7 +107,7 @@ export const register = () => {
   const thirdDiv = document.createElement('div');
   const pTextBottom = document.createElement('p');
   pTextBottom.setAttribute('class', 'text-bottom');
-  pTextBottom.textContent = 'o con tu cuenta de gmail';
+  pTextBottom.textContent = 'o con tu cuenta de google';
 
   const divSocialNetworks = document.createElement('div');
   divSocialNetworks.setAttribute('id', 'social-networks');
@@ -124,7 +124,7 @@ export const register = () => {
 
   const pLittleTextBottom = document.createElement('p');
   pLittleTextBottom.setAttribute('class', 'text-bottom');
-  pLittleTextBottom.textContent = 'Ya tengo una cuenta.';
+  pLittleTextBottom.textContent = 'Ya tengo una cuenta. ';
 
   const span = document.createElement('span');
   const aLinkLogin = document.createElement('a');

@@ -16,15 +16,28 @@ import { signIn, signGoogle } from '../authentication.js';
 export const login = () => {
   const loginSection = document.createElement('section');
   loginSection.setAttribute('id', 'login-section');
+
+  const divPhoto = document.createElement('div');
+  divPhoto.setAttribute('class', 'div-photo');
+  divPhoto.setAttribute('id', 'div-photo-login');
+
+  const divLogin = document.createElement('div');
+  divLogin.setAttribute('class', 'div-contain');
+
   const firstDiv = document.createElement('div');
+  const divLogo = document.createElement('div');
+  divLogo.setAttribute('class', 'div-logo');
+  divLogo.setAttribute('id', 'logo-login');
   const logo = document.createElement('img');
   logo.setAttribute('src', './img/LETRAS1.png');
   logo.setAttribute('alt', 'logo');
   logo.setAttribute('class', 'logo');
   const loginTitle = document.createElement('h4');
+  loginTitle.setAttribute('class', 'title-register-login')
   loginTitle.textContent = 'Iniciar Sesión';
 
-  firstDiv.appendChild(logo);
+  divLogo.appendChild(logo);
+  firstDiv.appendChild(divLogo);
   firstDiv.appendChild(loginTitle);
 
   const secondDiv = document.createElement('div');
@@ -95,7 +108,7 @@ export const login = () => {
 
   const pLittleTextBottom = document.createElement('p');
   pLittleTextBottom.setAttribute('class', 'text-bottom');
-  pLittleTextBottom.textContent = '¿No tienes cuenta?';
+  pLittleTextBottom.textContent = '¿No tienes cuenta? ';
 
   const span = document.createElement('span');
   const aLinkRegister = document.createElement('a');
@@ -114,11 +127,14 @@ export const login = () => {
   thirdDiv.appendChild(pTextBottom);
   thirdDiv.appendChild(divSocialNetworks);
   thirdDiv.appendChild(pLittleTextBottom);
-  thirdDiv.appendChild(divEmailVerified)
+  thirdDiv.appendChild(divEmailVerified);
 
-  loginSection.appendChild(firstDiv);
-  loginSection.appendChild(secondDiv);
-  loginSection.appendChild(thirdDiv);
+  divLogin.appendChild(firstDiv);
+  divLogin.appendChild(secondDiv);
+  divLogin.appendChild(thirdDiv);
+
+  loginSection.appendChild(divPhoto);
+  loginSection.appendChild(divLogin);
 
   aLinkRegister.addEventListener('click', () => onNavigate('/register'));
   aLinkGoogle.addEventListener('click', signGoogle);
