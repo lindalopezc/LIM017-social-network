@@ -62,12 +62,19 @@ export const signIn = (
   invalidEmail,
   invalidPassword,
   loginErrorDefault,
+  verifiedEmail,
 ) => {
   signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      onNavigate('/home');
+      if (user.emailVerified){
+        onNavigate('/home');
+      }
+      else{
+        verifiedEmail.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
+      }
+      
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -119,7 +126,7 @@ export const createUser = (
       sendEmailVerification(user)
       .then(() => {
         console.log(user.emailVerified);
-        onNavigate('/home');
+        onNavigate('/login');
         // Email verification sent!
       });
       

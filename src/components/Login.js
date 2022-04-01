@@ -104,12 +104,18 @@ export const login = () => {
     aLinkRegister.setAttribute('class', 'links');
     aLinkRegister.textContent = 'Regístrate';
 
+    const divEmailVerified = document.createElement('div');
+    const pEmailVerified = document.createElement('p');
+    pEmailVerified.setAttribute('id', 'verified-email');
+    divEmailVerified.appendChild(pEmailVerified);
+    
     span.appendChild(aLinkRegister);
     pLittleTextBottom.appendChild(span);
 
     thirdDiv.appendChild(pTextBottom);
     thirdDiv.appendChild(divSocialNetworks);
     thirdDiv.appendChild(pLittleTextBottom);
+    thirdDiv.appendChild(divEmailVerified)
 
     loginSection.appendChild(firstDiv);
     loginSection.appendChild(secondDiv);
@@ -117,7 +123,7 @@ export const login = () => {
 
     aLinkRegister.addEventListener('click', () => onNavigate('/register'));
     aLinkGoogle.addEventListener('click', signGoogle);
-    loginBtn.addEventListener('click', () => signIn(inputEmail, inputPassword, pInvalidEmail, pInvalidPassword, pErrorDefault));
+    loginBtn.addEventListener('click', () => signIn(inputEmail, inputPassword, pInvalidEmail, pInvalidPassword, pErrorDefault, pEmailVerified));
 
     return loginSection;
 }
