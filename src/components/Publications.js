@@ -151,9 +151,15 @@ export const publications = () => {
     const imageUpload = inputImage.files[0];
     storageFunction(imageUpload, image);
   });
-
-  const publication = {};
-  insertData(publication);
+  btnSubmit.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    const publication = {
+      titulo: inputTitle.value,
+      photo: inputImage.value,
+    };
+    // insertData(publication);
+    console.log(publication);
+  });
 
   return sectionPublications;
 };
