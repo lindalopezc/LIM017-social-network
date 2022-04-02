@@ -1,10 +1,7 @@
-/* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/no-unresolved */
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -18,20 +15,7 @@ import {
 // import { authError } from './lib/authError.js';
 import { onNavigate } from './lib/ViewController.js';
 import { app } from './main.js';
-// import { registerEmail, registerPassword, loginEmail, loginPassword } from './main.js';
 
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyAdfUjeKGbV3sdoMqcYIVg0pEzOBLaihlo',
-//   authDomain: 'slowly-la.firebaseapp.com',
-//   projectId: 'slowly-la',
-//   storageBucket: 'gs://slowly-la.appspot.com/',
-//   messagingSenderId: '612490900122',
-//   appId: '1:612490900122:web:ceaa8135a145c763e8e523',
-//   measurementId: 'G-6LCKZ9QZVS',
-// };
-
-// // Initialize Firebase
-// export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 

@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /* eslint-disable object-curly-newline */
 /* eslint-disable import/named */
 /* eslint-disable import/no-cycle */
@@ -54,4 +52,3 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
->>>>>>> d05f798d38be2a087b7d36117aa738d653a323b5

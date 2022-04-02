@@ -13,16 +13,15 @@ import {
 import { app } from './main.js';
 
 const storage = getStorage(app);
-let storageRef;
-// Aquí vamos a almacenar la url para usarla en otro módulo.
 
+// Aquí vamos a almacenar la url para usarla en otro módulo.
+let link;
 export const storageFunction = (imageUpload, image) => {
-  storageRef = ref(storage, '/imagenes');
+  const storageRef = ref(storage, '/imagenes');
   // Creamos una referencia para el nombre de la imagen que queremos subir a firestorage:
   const imageRef = ref(storage, `imagenes/${imageUpload.name}`);
   uploadBytes(imageRef, imageUpload)
     .then((snapshot) => {
-      console.log('Ya se subio la foto a nuestra carpeta storage');
       getDownloadURL(imageRef)
         .then((url) => {
           image.setAttribute('src', url);

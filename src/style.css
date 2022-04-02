@@ -199,9 +199,12 @@ form>div>p {
   margin-bottom: 11px;
 }
 
-#form-publication>button {
+#form-publication>.button {
   background-color: #A64C38;
-  width: 130px;
+  width: 147px;
+  color: white;
+  font-size: 16px;
+  padding-left: 0px;
 }
 
 #input-description {
