@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
-import { storageFunction } from '../Storage.js';
+import { uploadAndDownloadImage } from '../Storage.js';
 import { insertData } from '../database.js';
+import { onNavigate } from '../lib/ViewController.js';
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
@@ -142,22 +143,26 @@ export const publications = () => {
   sectionPublications.appendChild(divTitlePublications);
   sectionPublications.appendChild(formPublication);
 
-  let imageUpload;
+  let getImageUrl; // Aquí almacenaremos la URL de la foto que nos devuelve storage.
   inputImage.addEventListener('change', () => {
-    imageUpload = inputImage.files[0];
-    storageFunction(imageUpload, image);
+    const imageUpload = inputImage.files[0];
+    uploadAndDownloadImage(imageUpload, image).then((url) => {
+      console.log(url);
+      getImageUrl = url;
+    });
   });
 
   btnSubmit.addEventListener('click', () => {
     const publication = {
       Título: inputTitle.value,
-      Foto: imageUpload.name,
+      Foto: getImageUrl,
       Estado: selectState.value,
       Categoría: selectCategory.value,
       Description: inputDescription.value,
+      Fecha: Date(),
     };
     insertData(publication);
-    return console.log(publication);
+    return onNavigate('/home');
   });
 
   return sectionPublications;

@@ -32,6 +32,50 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
+// Función para registrar usuario:
+export const createUser = async (
+  registerEmail,
+  registerPassword,
+  wrongEmail,
+  minPassword,
+  registerErrorDefault,
+) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      registerEmail.value,
+      registerPassword.value,
+    );
+    const user = userCredential.user;
+    const pMessage = document.createElement('p');
+    pMessage.innerText = 'Hemos enviado un enlace a tu correo electrónico. ';
+    (onNavigate('/login')).appendChild(pMessage);
+    await sendEmailVerification(user);
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    switch (errorCode) {
+      case 'auth/email-already-in-use':
+        wrongEmail.innerText = 'El correo ingresado ya está en uso';
+        registerEmail.style.borderColor = '#F62D2D';
+        break;
+      case 'auth/weak-password':
+        minPassword.style.color = 'red';
+        minPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
+        registerPassword.style.borderColor = '#F62D2D';
+        break;
+      case 'auth/invalid-email':
+        wrongEmail.textContent = 'El correo ingresado es inválido';
+        registerEmail.style.borderColor = '#F62D2D';
+        break;
+      default:
+        registerErrorDefault.innerText = errorCode;
+    }
+  }
+};
+
+// Función para inicio de sesión:
 export const signIn = (
   loginEmail,
   loginPassword,
@@ -73,62 +117,6 @@ export const signIn = (
     });
 };
 
-export const signOutFun = () => {
-  signOut(auth).then(() => {
-    // Sign-out successful.
-    onNavigate('/');
-  }).catch((error) => {
-    // An error happened.
-  });
-};
-
-export const createUser = (
-  registerEmail,
-  registerPassword,
-  wrongEmail,
-  minPassword,
-  registerErrorDefault,
-) => {
-  createUserWithEmailAndPassword(
-    auth,
-    registerEmail.value,
-    registerPassword.value,
-  )
-    .then((userCredential) => {
-      const user = userCredential.user;
-      sendEmailVerification(user)
-        .then(() => {
-          console.log(user.emailVerified);
-          const pMessage = document.createElement('p');
-          pMessage.innerText = 'Hemos enviado un enlace a tu correo electrónico. ';
-          (onNavigate('/login')).appendChild(pMessage);
-          // Email verification sent!
-        });
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-
-      switch (errorCode) {
-        case 'auth/email-already-in-use':
-          wrongEmail.innerText = 'El correo ingresado ya está en uso';
-          registerEmail.style.borderColor = '#F62D2D';
-          break;
-        case 'auth/weak-password':
-          minPassword.style.color = 'red';
-          minPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
-          registerPassword.style.borderColor = '#F62D2D';
-          break;
-        case 'auth/invalid-email':
-          wrongEmail.textContent = 'El correo ingresado es inválido';
-          registerEmail.style.borderColor = '#F62D2D';
-          break;
-        default:
-          registerErrorDefault.innerText = errorCode;
-      }
-    });
-};
-
 // Autenticación con Google:
 export const signGoogle = () => {
   signInWithPopup(auth, provider)
@@ -144,4 +132,14 @@ export const signGoogle = () => {
       const email = error.email;
       const credential = GoogleAuthProvider.credentialFromError(error);
     });
+};
+
+// Función para cerrar sesión
+export const signOutFun = () => {
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    onNavigate('/');
+  }).catch((error) => {
+    // An error happened.
+  });
 };

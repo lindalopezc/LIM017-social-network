@@ -289,13 +289,43 @@ form>div>p {
   border: transparent;
 }
 
-.div-post {
+#section-home{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .div-contain {
   background: transparent;
+}
+
+/* Estilos para los posts */
+.div-posts{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin-top: 11px;
+  margin-bottom: 11px;
+
+}
+.img-post{
+  width: 220px;
+  height: 220px;
+  border: 1px solid #C0BEBE;
+  margin-bottom: 11px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: white;
+  border: none;
+}
+.elements-post{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.elements-post > p{
+  font-size: 13px;
 }
 
 @media (min-width: 700px) {

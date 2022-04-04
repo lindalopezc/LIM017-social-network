@@ -4,10 +4,12 @@
 
 import { onNavigate } from '../lib/ViewController.js';
 import { signOutFun } from '../authentication.js';
+import { getData } from '../database.js';
 
 /* eslint-disable indent */
 export const home = () => {
   const sectionHome = document.createElement('section');
+  sectionHome.setAttribute('id', 'section-home');
 
   const divTitleHome = document.createElement('div');
   divTitleHome.setAttribute('class', 'div-nav');
@@ -30,20 +32,39 @@ export const home = () => {
   divTitleHome.appendChild(titleHome);
   divTitleHome.appendChild(navMenu);
 
-  sectionHome.appendChild(divTitleHome);
-  const divPost = document.createElement('div');
-  divPost.setAttribute('class', 'div-post');
+  const divButtons = document.createElement('div');
+  divButtons.setAttribute('class', 'div-buttons');
   const btn = document.createElement('button');
   btn.setAttribute('class', 'button');
-  btn.textContent = 'publicar';
+  btn.textContent = 'Publicar';
 
   const btnSignout = document.createElement('button');
   btnSignout.setAttribute('class', 'button');
   btnSignout.textContent = 'Cerrar sesión';
 
-  divPost.appendChild(btn);
-  divPost.appendChild(btnSignout);
+  divButtons.appendChild(btn);
+  divButtons.appendChild(btnSignout);
+
+  const divPost = document.createElement('div');
+  divPost.setAttribute('class', 'div-posts');
+
+  sectionHome.appendChild(divTitleHome);
+  sectionHome.appendChild(divButtons);
   sectionHome.appendChild(divPost);
+
+  getData().then((querySnapshot) => { // Me salió en consola que se estaba ejecutando un ciclo.
+    querySnapshot.forEach((doc) => {
+      divPost.innerHTML += `<div>
+      <img class = "img-post" src = ${doc.data().Foto}>
+      </div>
+      <div class = "elements-post">
+      <p>${doc.data().Título}</p>
+      <p>${doc.data().Categoría}</p>
+      <p>${doc.data().Estado}</p>
+      <p>${doc.data().Description}</p>
+      </div>`;
+    });
+  });
 
   btn.addEventListener('click', () => onNavigate('/publications'));
   btnSignout.addEventListener('click', () => signOutFun());
