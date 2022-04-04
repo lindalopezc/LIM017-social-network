@@ -155,7 +155,10 @@ export const publications = () => {
     evt.preventDefault();
     const publication = {
       titulo: inputTitle.value,
-      photo: inputImage.value,
+      photo: image.getAttribute('src'),
+      categoria: selectCategory.value,
+      estado: selectState.value,
+
     };
     // insertData(publication);
     console.log(publication);
