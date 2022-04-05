@@ -44,32 +44,17 @@ export const home = () => {
   divTitleHome.appendChild(divPhotoPerfil);
   divTitleHome.appendChild(navMenu);
 
-  // Voy a comentar los botones 'Publicar y cerrar sesión':
-  // const divButtons = document.createElement('div');
-  // divButtons.setAttribute('class', 'div-buttons');
-  // const btn = document.createElement('button');
-  // btn.setAttribute('class', 'button');
-  // btn.textContent = 'Publicar';
-
-  // const btnSignout = document.createElement('button');
-  // btnSignout.setAttribute('class', 'button');
-  // btnSignout.textContent = 'Cerrar sesión';
-
-  // divButtons.appendChild(btn);
-  // divButtons.appendChild(btnSignout);
-
   const postsContainer = document.createElement('div');
   postsContainer.setAttribute('class', 'div-posts');
 
   sectionHome.appendChild(divTitleHome);
-  // sectionHome.appendChild(divButtons);
   sectionHome.appendChild(postsContainer);
 
-  getData().then((querySnapshot) => { // Me salió en consola que se estaba ejecutando un ciclo.
+  getData().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += `<section class = "section-post">
+      postsContainer.innerHTML += `<section class = "section-post" id = "${doc.id}">
       <div class = "div-category-post">
-        <p class = "category-post">${doc.data().Categoría}</p>
+        <p class = "category-post ${doc.data().Categoría}">${doc.data().Categoría}</p>
       </div>
         <div class ="container-post">
           <div class = "title-and-icons">
@@ -96,21 +81,7 @@ export const home = () => {
           </div>
         </div>
       </section>`;
-      // for (let i = 0; i <= 6; i += 1) {
-      //   const pCategory = document.getElementsByClassName('category-post')[i];
-      //   let categoryName = doc.data().Categoría;
-      //   if (categoryName === 'Donar') {
-      //     pCategory.style.backgroundColor = '#1E9B98';
-      //   } else if (categoryName === 'Vender') {
-      //     pCategory.style.backgroundColor = '#C8D559';
-      //   } else {
-      //     pCategory.style.backgroundColor = '#A83438';
-      //   }
-      // }
     });
   });
-
-  // btn.addEventListener('click', () => onNavigate('/publications'));
-  // btnSignout.addEventListener('click', () => signOutFun());
   return sectionHome;
 };
