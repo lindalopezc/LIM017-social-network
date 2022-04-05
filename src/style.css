@@ -382,7 +382,16 @@ form>div>p {
   padding-top: 2px;
 }
 
-.container-post {
+.Donar{
+  background: #1E9B98;
+}
+.Vender{
+  background: #c6b92c;
+}
+.Intercambiar{
+  background:#A83438 ;
+}
+.container-post{
   display: flex;
   flex-direction: column;
   align-items: center;
