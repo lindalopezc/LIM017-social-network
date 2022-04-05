@@ -1,17 +1,6 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-multi-spaces */
 /* eslint-disable import/no-cycle */
-/* eslint-disable eol-last */
-/* eslint-disable semi */
-/* eslint-disable indent */
-/* eslint-disable no-multiple-empty-lines */
-/* eslint-disable spaced-comment */
-/* eslint-disable max-len */
-
 import { onNavigate } from '../lib/ViewController.js';
 import { signIn, signGoogle } from '../authentication.js';
-
-
 
 export const login = () => {
   const loginSection = document.createElement('section');
@@ -33,7 +22,7 @@ export const login = () => {
   logo.setAttribute('alt', 'logo');
   logo.setAttribute('class', 'logo');
   const loginTitle = document.createElement('h4');
-  loginTitle.setAttribute('class', 'title-register-login')
+  loginTitle.setAttribute('class', 'title-register-login');
   loginTitle.textContent = 'Iniciar Sesión';
 
   divLogo.appendChild(logo);
@@ -141,4 +130,4 @@ export const login = () => {
   loginBtn.addEventListener('click', () => signIn(inputEmail, inputPassword, pInvalidEmail, pInvalidPassword, pErrorDefault, pEmailVerified));
 
   return loginSection;
-}
+};
