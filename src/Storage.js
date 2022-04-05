@@ -16,7 +16,7 @@ const storage = getStorage(app);
 
 // Aquí vamos a almacenar la url para usarla en otro módulo.
 // Cambié el nombre de la función, preguntar
-export const uploadAndDownloadImage = async (imageUpload, image) => {
+export const uploadAndDownloadImage = async(imageUpload, image) => {
   let getImageUrl; // En esta variable vamos almacenar la Url de la imagen que nos regresa storage.
   try {
     const storageRef = await ref(storage, '/imagenes');

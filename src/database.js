@@ -1,7 +1,10 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
 import {
-  getFirestore, collection, addDoc, getDocs,
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 import { app } from './main.js';
 

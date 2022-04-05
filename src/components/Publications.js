@@ -3,6 +3,7 @@
 import { uploadAndDownloadImage } from '../Storage.js';
 import { insertData } from '../database.js';
 import { onNavigate } from '../lib/ViewController.js';
+import { Menu } from './Menu.js'
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
@@ -14,13 +15,14 @@ export const publications = () => {
   const titlePublications = document.createElement('h1');
   titlePublications.textContent = 'Publicar';
 
-  const divMenu = document.createElement('div');
-  const imgMenu = document.createElement('img');
-  imgMenu.setAttribute('src', '../img/menu.png');
-  imgMenu.setAttribute('class', 'img-menu');
+  // const divMenu = document.createElement('div');
+  // const imgMenu = document.createElement('img');
+  // imgMenu.setAttribute('src', '../img/menu.png');
+  // imgMenu.setAttribute('class', 'img-menu');
 
-  divMenu.appendChild(imgMenu);
+  // divMenu.appendChild(imgMenu);
 
+  const divMenu = Menu();
   divTitlePublications.appendChild(titlePublications);
   divTitlePublications.appendChild(divMenu);
 

@@ -7,7 +7,7 @@
 // import { onNavigate } from '../lib/ViewController.js';
 // import { signOutFun } from '../authentication.js';
 import { getData } from '../database.js';
-
+import { Menu } from './Menu.js';
 /* eslint-disable indent */
 export const home = () => {
   const sectionHome = document.createElement('section');
@@ -29,17 +29,16 @@ export const home = () => {
   divPhotoPerfil.appendChild(imageProfile);
   divPhotoPerfil.appendChild(titleHome);
 
-  const navMenu = document.createElement('nav');
-  navMenu.setAttribute('class', 'navResponsive');
-  const navBtn = document.createElement('button');
-  navBtn.setAttribute('class', 'btnBars');
-  const imgMenu = document.createElement('img');
-  imgMenu.setAttribute('src', '../img/menu.png');
-  imgMenu.setAttribute('class', 'img-menu');
+  const navMenu = Menu();
+  // const navBtn = document.createElement('button');
+  // navBtn.setAttribute('class', 'btnBars');
+  // const imgMenu = document.createElement('img');
+  // imgMenu.setAttribute('src', '../img/menu.png');
+  // imgMenu.setAttribute('class', 'img-menu');
 
-  navBtn.appendChild(imgMenu);
+  // navBtn.appendChild(imgMenu);
 
-  navMenu.appendChild(navBtn);
+  // navMenu.appendChild(navBtn);
 
   divTitleHome.appendChild(divPhotoPerfil);
   divTitleHome.appendChild(navMenu);
@@ -52,9 +51,11 @@ export const home = () => {
 
   getData().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
+
       postsContainer.innerHTML += `<section class = "section-post" id = "${doc.id}">
       <div class = "div-category-post">
         <p class = "category-post ${doc.data().Categoría}">${doc.data().Categoría}</p>
+
       </div>
         <div class ="container-post">
           <div class = "title-and-icons">
@@ -81,7 +82,9 @@ export const home = () => {
           </div>
         </div>
       </section>`;
+
     });
   });
+
   return sectionHome;
 };
