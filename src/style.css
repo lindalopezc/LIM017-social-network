@@ -5,6 +5,32 @@
   margin: 0px;
 }
 
+.navDekstop {
+  display: none;
+}
+
+.navMenu {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: antiquewhite;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navMenuHide {
+  display: none;
+}
+
+.navMenuItem {
+  height: 30px;
+}
+
 .logo {
   width: 199px;
   height: 64px;
@@ -44,7 +70,7 @@
   margin-top: 5.5px;
 }
 
-.title-register-login{
+.title-register-login {
   margin-top: 0px;
   margin-bottom: 11px;
   font-size: 20px;
@@ -58,12 +84,13 @@
   color: red;
 }
 
-#verified-email{
+#verified-email {
   margin-top: 10px;
   margin-bottom: 0px;
   font-size: 11px;
-  color: red; 
+  color: red;
 }
+
 #wrong-password,
 .error-default,
 #invalid-email,
@@ -178,7 +205,8 @@ form>div>p {
   flex-direction: column;
   align-items: center;
 }
-#input-title{
+
+#input-title {
   height: 30px;
   border-radius: 8px;
   border: solid 1px #C0BEBE;
@@ -188,16 +216,16 @@ form>div>p {
   outline-color: #575353;
   background-color: white;
   width: 206px;
-  margin-bottom: 11px;  
+  margin-bottom: 11px;
 }
-#div-inputs-desktop{
+
+#div-inputs-desktop {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-
-#btn-submit{
+#btn-submit {
   background-color: #A64C38;
   width: 147px;
   color: white;
@@ -288,57 +316,66 @@ form>div>p {
   border: transparent;
 }
 
-#section-home{
+#section-home {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.div-photo-perfil{
+
+.div-photo-perfil {
   display: flex;
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color:#34332F;
+  color: #34332F;
 }
-.img-profile{
+
+.img-profile {
   width: 45px;
   height: 45px;
   border-radius: 23px;
   margin-right: 10px;
 }
+
 .div-contain {
   background: transparent;
 }
 
+
 /* Estilos para los posts */
-.div-posts{
+
+.div-posts {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
-.section-post{
+
+.section-post {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 400px;
   margin-bottom: 50px;
 }
-.div-category-post{
+
+.div-category-post {
   display: flex;
   justify-content: flex-end;
 }
-.category-post{
+
+.category-post {
   width: 90px;
   text-align: center;
   border-radius: 8px 8px 0px 0px;
   background: #34332F;
-  color:white;
+  color: white;
   font-size: 12px;
   font-weight: 600;
   padding-top: 2px;
 }
-.container-post{
+
+.container-post {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -346,14 +383,16 @@ form>div>p {
   border-radius: 20px 0px 20px;
   box-shadow: 0px 20px 25px -10px rgb(0 0 0 / 50%);
 }
-.img-profile-post{
+
+.img-profile-post {
   width: 32px;
   height: 32px;
   background: white;
   border-radius: 20px;
   margin-right: 11px;
 }
-.title-and-icons{
+
+.title-and-icons {
   width: 85%;
   display: flex;
   background-color: white;
@@ -362,28 +401,33 @@ form>div>p {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.title-and-icons>p{
+
+.title-and-icons>p {
   background-color: white;
 }
-.div-icons{
+
+.div-icons {
   background: white;
   display: flex;
 }
-.icon-contact-post{
+
+.icon-contact-post {
   width: 30px;
   height: 28px;
   background: white;
   margin-right: 0px;
 }
-.div-img-post{
+
+.div-img-post {
   background: white;
-    width: 100%;
-    max-width: 400px;
-    height: 341px;
-    overflow: hidden;
-    position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 341px;
+  overflow: hidden;
+  position: relative;
 }
-.img-post{
+
+.img-post {
   /* width: 250px;
   height: 250px;
   object-fit: contain;
@@ -398,7 +442,7 @@ form>div>p {
   min-height: 100%;
 }
 
-.description-like-post{
+.description-like-post {
   display: flex;
   background: white;
   width: 95%;
@@ -408,48 +452,57 @@ form>div>p {
   position: absolute;
   padding: 11px;
 }
-.description-post{
-  background:white;
+
+.description-post {
+  background: white;
   padding-right: 11px;
   padding-left: 11px;
 }
-.div-title{
+
+.div-title {
   display: flex;
   background: white;
   align-items: center;
 }
-.div-title> p{
+
+.div-title>p {
   background: white;
   font-size: 12px;
   font-weight: 600;
 }
-.description-post > p{
+
+.description-post>p {
   font-size: 11px;
   background: white;
   text-align: justify;
 }
-.state-like-post{
+
+.state-like-post {
   display: flex;
   flex-direction: column;
   align-items: center;
   background: white;
 }
-.state-like-post > p{
+
+.state-like-post>p {
   font-weight: 600;
   font-size: 11px;
   background: white;
 }
-.icon-like-post{
+
+.icon-like-post {
   margin-top: 11px;
   width: 25px;
   height: 25px;
   background: white;
 }
 
-
 @media (min-width: 700px) {
   #welcome-section {
     background: #FAF6F1;
+  }
+  .navResponsive {
+    display: none;
   }
   .div-photo {
     background: url('./img/welcomePhoto.jpg');
@@ -500,12 +553,12 @@ form>div>p {
   .title-register-login {
     font-size: 22px;
   }
-  .form>.input{
+  .form>.input {
     width: 226px;
     height: 32px;
     font-size: 13px;
   }
-  .section-publications{
+  .section-publications {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -520,7 +573,7 @@ form>div>p {
     align-items: center;
     justify-content: space-evenly;
   }
-  .label-image{
+  .label-image {
     width: 50%;
     height: 50%;
   }
@@ -530,54 +583,53 @@ form>div>p {
     border: 1px solid #C0BEBE;
     margin-bottom: 11px;
     border-radius: 8px;
-}
-.div-img-post{
+  }
+  .div-img-post {
     height: 390px;
-}
-.div-title> p{
-  font-size: 14px;
-}
-.description-post > p{
-  font-size: 13px;
-}
-.description-like-post{
-  margin-top: 373px;
-}
-.state-like-post > p{
-  font-size: 13px;
-}
-.category-post {
-  width: 105px;
-  font-size: 14px;
-}
-  .text-bottom{
+  }
+  .div-title>p {
+    font-size: 14px;
+  }
+  .description-post>p {
     font-size: 13px;
   }
-  .img-networks{
+  .description-like-post {
+    margin-top: 373px;
+  }
+  .state-like-post>p {
+    font-size: 13px;
+  }
+  .category-post {
+    width: 105px;
+    font-size: 14px;
+  }
+  .text-bottom {
+    font-size: 13px;
+  }
+  .img-networks {
     width: 30px;
     height: 30px;
   }
-  #div-photo-login{
+  #div-photo-login {
     background: url("./img/login-photo.jpg");
     background-repeat: no-repeat;
     background-size: cover;
   }
-  #login-section{
+  #login-section {
     margin-top: 0px;
   }
-  #login-section>.div-contain{
+  #login-section>.div-contain {
     margin-top: 35px;
   }
   #min-password {
     color: #AF8462;
     font-size: 9px;
   }
-  
   form>div>p {
     margin-top: 0px;
     margin-bottom: 0px;
     font-size: 9px;
-  }  
+  }
   #wrong-email,
   #wrong-password,
   .error-default,
