@@ -6,6 +6,7 @@ import { onNavigate } from '../lib/ViewController.js';
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
+  sectionPublications.setAttribute('class', 'section-publications');
 
   const divTitlePublications = document.createElement('div');
   divTitlePublications.setAttribute('class', 'div-nav');
@@ -42,6 +43,7 @@ export const publications = () => {
   const inputTitle = document.createElement('input');
   inputTitle.setAttribute('type', 'text');
   inputTitle.setAttribute('placeholder', 'Título');
+  inputTitle.setAttribute('id', 'input-title');
 
   const divCategoryState = document.createElement('div');
   divCategoryState.setAttribute('class', 'category-state');
@@ -132,13 +134,19 @@ export const publications = () => {
   btnSubmit.setAttribute('type', 'button');
   btnSubmit.setAttribute('class', 'button');
   btnSubmit.setAttribute('value', 'Guardar');
+  btnSubmit.setAttribute('id', 'btn-submit');
+
+  const divInputsDesktop = document.createElement('div');
+  divInputsDesktop.setAttribute('id', 'div-inputs-desktop');
+
+  divInputsDesktop.appendChild(inputTitle);
+  divInputsDesktop.appendChild(divCategoryState);
+  divInputsDesktop.appendChild(inputDescription);
+  divInputsDesktop.appendChild(divConsiderations);
+  divInputsDesktop.appendChild(btnSubmit);
 
   formPublication.appendChild(labelImage);
-  formPublication.appendChild(inputTitle);
-  formPublication.appendChild(divCategoryState);
-  formPublication.appendChild(inputDescription);
-  formPublication.appendChild(divConsiderations);
-  formPublication.appendChild(btnSubmit);
+  formPublication.appendChild(divInputsDesktop);
 
   sectionPublications.appendChild(divTitlePublications);
   sectionPublications.appendChild(formPublication);
