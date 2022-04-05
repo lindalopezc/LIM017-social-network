@@ -1,22 +1,21 @@
 * {
   font-family: 'Montserrat', sans-serif;
-  background-color: #FAF6F1;
   padding: 0px;
   margin: 0px;
 }
 
-.navDekstop {
-  display: none;
+body {
+  background-color: #FAF6F1;
 }
 
 .navMenu {
   position: absolute;
   z-index: 1;
-  width: 100%;
+  width: 50%;
+  height: 50%;
   top: 0;
-  left: 0;
-  background: antiquewhite;
-  height: 100%;
+  right: 0;
+  background: #Fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,6 +28,14 @@
 
 .navMenuItem {
   height: 30px;
+  list-style: none;
+}
+
+.navMenuLink {
+  text-decoration: none;
+  color: #34332F;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .logo {
@@ -501,8 +508,18 @@ form>div>p {
   #welcome-section {
     background: #FAF6F1;
   }
-  .navResponsive {
-    display: none;
+  /* Menu de navegación desktop*/
+  .navMenu {
+    max-width: 300px;
+  }
+  .div-nav {
+    font-size: 16px;
+    justify-content: flex-end;
+    margin: 22px auto 22px auto;
+    max-width: 1000px;
+  }
+  .div-photo-perfil {
+    margin-right: 16px;
   }
   .div-photo {
     background: url('./img/welcomePhoto.jpg');

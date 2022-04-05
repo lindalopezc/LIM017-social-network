@@ -66,9 +66,11 @@ export const home = () => {
 
   getData().then((querySnapshot) => { // Me salió en consola que se estaba ejecutando un ciclo.
     querySnapshot.forEach((doc) => {
+      console.log(doc.data());
       postsContainer.innerHTML += `<section class = "section-post">
       <div class = "div-category-post">
         <p class = "category-post">${doc.data().Categoría}</p>
+  
       </div>
         <div class ="container-post">
           <div class = "title-and-icons">
@@ -96,7 +98,7 @@ export const home = () => {
         </div>
       </section>`;
       // for (let i = 0; i <= 6; i += 1) {
-      //   const pCategory = document.getElementsByClassName('category-post')[i];
+      //   let pCategory = document.getElementsByClassName('category-post')[i];
       //   let categoryName = doc.data().Categoría;
       //   if (categoryName === 'Donar') {
       //     pCategory.style.backgroundColor = '#1E9B98';
@@ -109,7 +111,5 @@ export const home = () => {
     });
   });
 
-  // btn.addEventListener('click', () => onNavigate('/publications'));
-  // btnSignout.addEventListener('click', () => signOutFun());
   return sectionHome;
 };
