@@ -145,24 +145,25 @@ export const publications = () => {
 
   // Aquí almanceno el return de la función storageFunction:
 
-  let urlImag;
+  // let urlImag;
 
-  inputImage.addEventListener('change', () => {
-    const imageUpload = inputImage.files[0];
-    storageFunction(imageUpload, image);
-  });
-  btnSubmit.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    const publication = {
-      titulo: inputTitle.value,
-      photo: image.getAttribute('src'),
-      categoria: selectCategory.value,
-      estado: selectState.value,
+  // inputImage.addEventListener('change', () => {
+  //   const imageUpload = inputImage.files[0];
+  //   storageFunction(imageUpload, image);
+  // });
+  // btnSubmit.addEventListener('click', (evt) => {
+  //   evt.preventDefault();
+  //   const publication = {
+  //     titulo: inputTitle.value,
+  //     photo: image.getAttribute('src'),
+  //     categoria: selectCategory.value,
+  //     estado: selectState.value,
+  //     descripcion: inputDescription.value,
 
-    };
-    // insertData(publication);
-    console.log(publication);
-  });
+  //   };
+  //   // insertData(publication);
+  //   console.log(publication);
+  // });
 
   return sectionPublications;
 };
