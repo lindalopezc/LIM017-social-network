@@ -1,16 +1,7 @@
-/* eslint-disable default-case */
 /* eslint-disable no-param-reassign */
-/* eslint-disable object-curly-newline */
-/* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
-/* eslint-disable semi */
-/* eslint-disable no-multiple-empty-lines */
-/* eslint-disable eol-last */
-/* eslint-disable padded-blocks */
-/* eslint-disable indent */
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/no-unresolved */
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -23,21 +14,8 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 // import { authError } from './lib/authError.js';
 import { onNavigate } from './lib/ViewController.js';
-import { app } from './main.js'
-// import { registerEmail, registerPassword, loginEmail, loginPassword } from './main.js';
+import { app } from './main.js';
 
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyAdfUjeKGbV3sdoMqcYIVg0pEzOBLaihlo',
-//   authDomain: 'slowly-la.firebaseapp.com',
-//   projectId: 'slowly-la',
-//   storageBucket: 'gs://slowly-la.appspot.com/',
-//   messagingSenderId: '612490900122',
-//   appId: '1:612490900122:web:ceaa8135a145c763e8e523',
-//   measurementId: 'G-6LCKZ9QZVS',
-// };
-
-// // Initialize Firebase
-// export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 
@@ -54,9 +32,50 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
+// Función para registrar usuario:
+export const createUser = async (
+  registerEmail,
+  registerPassword,
+  wrongEmail,
+  minPassword,
+  registerErrorDefault,
+) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      registerEmail.value,
+      registerPassword.value,
+    );
+    const user = userCredential.user;
+    const pMessage = document.createElement('p');
+    pMessage.innerText = 'Hemos enviado un enlace a tu correo electrónico. ';
+    (onNavigate('/login')).appendChild(pMessage);
+    await sendEmailVerification(user);
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
 
+    switch (errorCode) {
+      case 'auth/email-already-in-use':
+        wrongEmail.innerText = 'El correo ingresado ya está en uso';
+        registerEmail.style.borderColor = '#F62D2D';
+        break;
+      case 'auth/weak-password':
+        minPassword.style.color = 'red';
+        minPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
+        registerPassword.style.borderColor = '#F62D2D';
+        break;
+      case 'auth/invalid-email':
+        wrongEmail.textContent = 'El correo ingresado es inválido';
+        registerEmail.style.borderColor = '#F62D2D';
+        break;
+      default:
+        registerErrorDefault.innerText = errorCode;
+    }
+  }
+};
 
-
+// Función para inicio de sesión:
 export const signIn = (
   loginEmail,
   loginPassword,
@@ -74,7 +93,6 @@ export const signIn = (
       } else {
         verifiedEmail.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
       }
-
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -99,63 +117,6 @@ export const signIn = (
     });
 };
 
-export const signOutFun = () => {
-  signOut(auth).then(() => {
-    // Sign-out successful.
-    onNavigate('/');
-  }).catch((error) => {
-    // An error happened.
-  });
-}
-
-
-export const createUser = (
-  registerEmail,
-  registerPassword,
-  wrongEmail,
-  minPassword,
-  registerErrorDefault,
-) => {
-  createUserWithEmailAndPassword(
-      auth,
-      registerEmail.value,
-      registerPassword.value,
-    )
-    .then((userCredential) => {
-      const user = userCredential.user;
-      sendEmailVerification(user)
-        .then(() => {
-          console.log(user.emailVerified);
-          onNavigate('/login');
-          // Email verification sent!
-        });
-
-
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-
-      switch (errorCode) {
-        case 'auth/email-already-in-use':
-          wrongEmail.innerText = 'El correo ingresado ya está en uso';
-          registerEmail.style.borderColor = '#F62D2D';
-          break;
-        case 'auth/weak-password':
-          minPassword.style.color = 'red';
-          minPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
-          registerPassword.style.borderColor = '#F62D2D';
-          break;
-        case 'auth/invalid-email':
-          wrongEmail.textContent = 'El correo ingresado es inválido';
-          registerEmail.style.borderColor = '#F62D2D';
-          break;
-        default:
-          registerErrorDefault.innerText = errorCode;
-      }
-    });
-};
-
 // Autenticación con Google:
 export const signGoogle = () => {
   signInWithPopup(auth, provider)
@@ -171,4 +132,14 @@ export const signGoogle = () => {
       const email = error.email;
       const credential = GoogleAuthProvider.credentialFromError(error);
     });
+};
+
+// Función para cerrar sesión
+export const signOutFun = () => {
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    onNavigate('/');
+  }).catch((error) => {
+    // An error happened.
+  });
 };

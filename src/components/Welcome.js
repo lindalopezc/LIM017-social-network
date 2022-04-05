@@ -1,15 +1,7 @@
 /* eslint-disable import/no-cycle */
-/* eslint-disable quotes */
-/* eslint-disable eol-last */
-/* eslint-disable spaced-comment */
-/* eslint-disable semi */
-/* eslint-disable padded-blocks */
-/* eslint-disable indent */
-/* eslint-disable no-unused-vars */
-import { onNavigate } from "../lib/ViewController.js";
+import { onNavigate } from '../lib/ViewController.js';
 
 export const welcome = () => {
-
   const welcomeSection = document.createElement('section');
   welcomeSection.setAttribute('id', 'welcome-section');
 
@@ -24,7 +16,7 @@ export const welcome = () => {
   const imgLogo = document.createElement('img');
   imgLogo.setAttribute('src', '../img/logoblanco.png');
   imgLogo.setAttribute('alt', 'Imagen de bienvenida');
-  imgLogo.setAttribute('class', 'logo'); //Cambiar por clase o id, temporal
+  imgLogo.setAttribute('class', 'logo'); // Cambiar por clase o id, temporal
   divLogo.appendChild(imgLogo);
 
   const divTextWelcome = document.createElement('div');
@@ -56,4 +48,4 @@ export const welcome = () => {
   registerBtn.addEventListener('click', () => onNavigate('/register'));
 
   return welcomeSection;
-}
+};
