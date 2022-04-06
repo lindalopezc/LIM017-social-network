@@ -1,18 +1,21 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 /* eslint-disable prefer-const */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable import/no-cycle */
 /* eslint-disable eol-last */
+/* eslint-disable indent */
 
 // import { onNavigate } from '../lib/ViewController.js';
 // import { signOutFun } from '../authentication.js';
 import { getData } from '../database.js';
+import { onNavigate } from '../lib/ViewController.js';
 import { Menu } from './Menu.js';
-/* eslint-disable indent */
+
 export const home = () => {
   const sectionHome = document.createElement('section');
   sectionHome.setAttribute('id', 'section-home');
-
 
   const logoHome = document.createElement('img');
   logoHome.setAttribute('src', '../img/LETRAS1.png');
@@ -26,12 +29,9 @@ export const home = () => {
   const divCentralHome = document.createElement('div');
   divCentralHome.setAttribute('class', 'div-central-home');
 
-
   const divPhotoPerfil = document.createElement('div');
   divPhotoPerfil.setAttribute('class', 'div-photo-perfil');
   const navMenu = Menu();
-
-
 
   const imageProfile = document.createElement('img');
   imageProfile.setAttribute('class', 'img-profile'); // Le añadí temporalmente la misma clase
@@ -44,9 +44,7 @@ export const home = () => {
   divPhotoPerfil.appendChild(titleHome);
   divPhotoPerfil.appendChild(navMenu);
 
-
   divTitleHome.appendChild(divPhotoPerfil);
-
 
   const divCreatePublication = document.createElement('div');
   divCreatePublication.setAttribute('class', 'div-create-publication');
@@ -63,8 +61,6 @@ export const home = () => {
   divCreatePublication.appendChild(createPublicationText);
   divCreatePublication.appendChild(createPublicationBtn);
 
-
-
   const postsContainer = document.createElement('div');
   postsContainer.setAttribute('class', 'div-posts');
 
@@ -74,9 +70,12 @@ export const home = () => {
   sectionHome.appendChild(divTitleHome);
   sectionHome.appendChild(divCentralHome);
 
-  getData().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
+  createPublicationBtn.addEventListener('click', () => {
+    onNavigate('/publications');
+  });
 
+  getData().then((querySnapshot) => {
+   querySnapshot.forEach((doc) => {
       postsContainer.innerHTML += `<section class = "section-post" id = "${doc.id}">
       <div class = "div-category-post">
         <p class = "category-post ${doc.data().Categoría}">${doc.data().Categoría}</p>
@@ -107,7 +106,6 @@ export const home = () => {
           </div>
         </div>
       </section>`;
-
     });
   });
 

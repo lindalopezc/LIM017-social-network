@@ -3,7 +3,7 @@
 import { uploadAndDownloadImage } from '../Storage.js';
 import { insertData } from '../database.js';
 import { onNavigate } from '../lib/ViewController.js';
-import { Menu } from './Menu.js'
+import { Menu } from './Menu.js';
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
