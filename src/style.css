@@ -201,8 +201,9 @@ form>div>p {
 .div-nav {
   display: flex;
   font-size: 12px;
-  justify-content: space-between;
+  justify-content: center;
   width: 85%;
+  max-width: 400px;
   margin: 22px auto 10px auto;
   align-items: center;
 }
@@ -329,12 +330,30 @@ form>div>p {
   align-items: center;
 }
 
+.logo-home {
+  display: none;
+  width: 120px;
+}
+
+.div-central-home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .div-photo-perfil {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 15px;
   font-weight: 600;
   color: #34332F;
+  width: 100%;
+}
+
+.div-photo-perfil>p {
+  margin-right: 36%;
 }
 
 .img-profile {
@@ -342,6 +361,45 @@ form>div>p {
   height: 45px;
   border-radius: 23px;
   margin-right: 10px;
+}
+
+.div-create-publication {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 70px;
+  width: 90%;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px -10px rgb(0 0 0 / 20%);
+  margin-bottom: 26px;
+}
+
+.create-publication-img {
+  width: 30px;
+  height: 30px;
+}
+
+.create-publication-text {
+  font-size: 12px;
+  background-color: #F0F2F5;
+  padding: 7px;
+  border-radius: 10px;
+  color: #80746F;
+}
+
+.create-publication-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: none;
+}
+
+.img-btn {
+  width: 20px;
+  height: 20px;
 }
 
 .div-contain {
@@ -382,16 +440,19 @@ form>div>p {
   padding-top: 2px;
 }
 
-.Donar{
+.Donar {
   background: #1E9B98;
 }
-.Vender{
+
+.Vender {
   background: #c6b92c;
 }
-.Intercambiar{
-  background:#A83438 ;
+
+.Intercambiar {
+  background: #A83438;
 }
-.container-post{
+
+.container-post {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -428,8 +489,8 @@ form>div>p {
 }
 
 .icon-contact-post {
-  width: 30px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   background: white;
   margin-right: 0px;
 }
@@ -523,12 +584,19 @@ form>div>p {
   }
   .div-nav {
     font-size: 16px;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin: 22px auto 22px auto;
     max-width: 1000px;
   }
+  .logo-home {
+    display: block;
+  }
   .div-photo-perfil {
-    margin-right: 16px;
+    justify-content: space-evenly;
+    width: 300px;
+  }
+  .div-photo-perfil>p {
+    margin-right: 0%;
   }
   .div-photo {
     background: url('./img/welcomePhoto.jpg');
@@ -539,6 +607,16 @@ form>div>p {
   }
   .div-contain {
     width: 60%;
+  }
+  /* .div-central-home {
+    flex-direction: row;
+    align-items: flex-start;
+  } */
+  .div-create-publication {
+    margin-top: 20px;
+  }
+  .create-publication-text {
+    font-size: 14px;
   }
   #div-text-welcome {
     width: 60%;

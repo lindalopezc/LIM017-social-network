@@ -13,11 +13,25 @@ export const home = () => {
   const sectionHome = document.createElement('section');
   sectionHome.setAttribute('id', 'section-home');
 
+
+  const logoHome = document.createElement('img');
+  logoHome.setAttribute('src', '../img/LETRAS1.png');
+  logoHome.setAttribute('class', 'logo-home');
+
   const divTitleHome = document.createElement('div');
   divTitleHome.setAttribute('class', 'div-nav');
 
+  divTitleHome.appendChild(logoHome);
+
+  const divCentralHome = document.createElement('div');
+  divCentralHome.setAttribute('class', 'div-central-home');
+
+
   const divPhotoPerfil = document.createElement('div');
   divPhotoPerfil.setAttribute('class', 'div-photo-perfil');
+  const navMenu = Menu();
+
+
 
   const imageProfile = document.createElement('img');
   imageProfile.setAttribute('class', 'img-profile'); // Le añadí temporalmente la misma clase
@@ -28,26 +42,37 @@ export const home = () => {
 
   divPhotoPerfil.appendChild(imageProfile);
   divPhotoPerfil.appendChild(titleHome);
+  divPhotoPerfil.appendChild(navMenu);
 
-  const navMenu = Menu();
-  // const navBtn = document.createElement('button');
-  // navBtn.setAttribute('class', 'btnBars');
-  // const imgMenu = document.createElement('img');
-  // imgMenu.setAttribute('src', '../img/menu.png');
-  // imgMenu.setAttribute('class', 'img-menu');
-
-  // navBtn.appendChild(imgMenu);
-
-  // navMenu.appendChild(navBtn);
 
   divTitleHome.appendChild(divPhotoPerfil);
-  divTitleHome.appendChild(navMenu);
+
+
+  const divCreatePublication = document.createElement('div');
+  divCreatePublication.setAttribute('class', 'div-create-publication');
+  const createPublicationText = document.createElement('p');
+  createPublicationText.setAttribute('class', 'create-publication-text');
+  createPublicationText.textContent = '¡Dale una segunda vida a tus prendas!';
+  const createPublicationBtn = document.createElement('button');
+  createPublicationBtn.setAttribute('class', 'create-publication-btn');
+  const imgBtn = document.createElement('img');
+  imgBtn.setAttribute('src', '../img/write.png');
+  imgBtn.setAttribute('class', 'img-btn');
+  createPublicationBtn.appendChild(imgBtn);
+
+  divCreatePublication.appendChild(createPublicationText);
+  divCreatePublication.appendChild(createPublicationBtn);
+
+
 
   const postsContainer = document.createElement('div');
   postsContainer.setAttribute('class', 'div-posts');
 
+  divCentralHome.appendChild(divCreatePublication);
+  divCentralHome.appendChild(postsContainer);
+
   sectionHome.appendChild(divTitleHome);
-  sectionHome.appendChild(postsContainer);
+  sectionHome.appendChild(divCentralHome);
 
   getData().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -64,7 +89,7 @@ export const home = () => {
             </div>
             <div class = "div-icons">
               <img class = "img-profile-post" src = "../img/ejemplo-foto-perfil.jpg">
-              <img class = "icon-contact-post" src = "../img/dato-de-contacto.png">
+              <img class = "icon-contact-post" src = "../img/perfil.png">
             </div>
           </div>
           <div class = "div-img-post">
