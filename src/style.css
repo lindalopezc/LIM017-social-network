@@ -322,6 +322,7 @@ form>div>p {
 
 .btnBars {
   border: transparent;
+  background: transparent;
 }
 
 #section-home {
@@ -382,18 +383,19 @@ form>div>p {
 }
 
 .create-publication-text {
-  font-size: 12px;
+  font-size: 11px;
   background-color: #F0F2F5;
   padding: 7px;
   border-radius: 10px;
   color: #80746F;
+  margin-left: 2px;
 }
 
 .create-publication-btn {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #F0F2F5;
   border: none;
 }
 
@@ -617,6 +619,7 @@ form>div>p {
   }
   .create-publication-text {
     font-size: 14px;
+    margin-left: 0px;
   }
   #div-text-welcome {
     width: 60%;
