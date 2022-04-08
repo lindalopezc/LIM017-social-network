@@ -108,6 +108,7 @@ export const publications = () => {
   inputDescription.setAttribute('name', 'Description');
   inputDescription.setAttribute('placeholder', 'Descripción:');
   inputDescription.setAttribute('id', 'input-description');
+  inputDescription.setAttribute('maxlength', '100');
 
   const divConsiderations = document.createElement('div');
   divConsiderations.setAttribute('id', 'div-considerations');
@@ -169,7 +170,7 @@ export const publications = () => {
       Estado: selectState.value,
       Categoría: selectCategory.value,
       Description: inputDescription.value,
-      Fecha: Date(),
+      Fecha: new Date(),
     };
     insertData(publication);
     return onNavigate('/home');

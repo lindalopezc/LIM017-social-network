@@ -7,6 +7,7 @@ import {
   getDocs,
   query,
   orderBy,
+  where,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 import { app } from './main.js';
 
@@ -24,7 +25,14 @@ export async function insertData(publication) {
 // Esta función se encarga de traer los datos de la colección 'publications' de firestore:
 export async function getData() {
   // Utilizaremos las funciones query and orderBy para ordenar la data por fecha de publicación.
-  const dataSort = query(collection(db, 'publications'), orderBy('Fecha', 'desc'));
+  const dataSort = await query(collection(db, 'publications'), orderBy('Fecha', 'desc'));
+  const querySnapshot = await getDocs(dataSort);
+  return querySnapshot;
+}
+
+// Función para filtrar la data por categoría 'Vender':
+export async function getDataWithFilters(categoria) {
+  const dataSort = await query(collection(db, 'publications'), where('Categoría', '==', categoria));
   const querySnapshot = await getDocs(dataSort);
   return querySnapshot;
 }

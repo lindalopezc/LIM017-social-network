@@ -9,7 +9,8 @@
 
 // import { onNavigate } from '../lib/ViewController.js';
 // import { signOutFun } from '../authentication.js';
-import { getData } from '../database.js';
+import { getData, getDataWithFilters } from '../database.js';
+import { dataWithFilters } from '../lib/categoryFilters.js';
 import { onNavigate } from '../lib/ViewController.js';
 import { Menu } from './Menu.js';
 
@@ -61,14 +62,101 @@ export const home = () => {
   divCreatePublication.appendChild(createPublicationText);
   divCreatePublication.appendChild(createPublicationBtn);
 
+  // Creamos in div que contenga los párrafos de categoría:
+  const divFilters = document.createElement('div');
+  divFilters.setAttribute('class', 'div-filters');
+
+  // Creamos dos 'p' que van a ser hijos de 'btn' para el primer filtro:
+  const pFirstFilter = document.createElement('p');
+  pFirstFilter.textContent = 'Vender';
+  const pFirstFilterLine = document.createElement('p');
+  pFirstFilterLine.setAttribute('id', 'first-filter-line');
+
+  const btnFirstFilter = document.createElement('button');
+  btnFirstFilter.setAttribute('class', 'btn-filters');
+  btnFirstFilter.appendChild(pFirstFilter);
+  btnFirstFilter.appendChild(pFirstFilterLine);
+
+  // Creamos dos 'p' que van a ser hijos de 'btn' para el segundo filtro:
+
+  const pSecondFilter = document.createElement('p');
+  pSecondFilter.textContent = 'Intercambiar';
+  const pSecondFilterLine = document.createElement('p');
+  pSecondFilterLine.setAttribute('id', 'second-filter-line');
+
+  const btnSecondFilter = document.createElement('button');
+  btnSecondFilter.setAttribute('class', 'btn-filters');
+  btnSecondFilter.appendChild(pSecondFilter);
+  btnSecondFilter.appendChild(pSecondFilterLine);
+
+  // Creamos dos 'p' que van a ser hijos de 'btn' para el tercer filtro:
+  const pThirdFilter = document.createElement('p');
+  pThirdFilter.textContent = 'Donar';
+  const pThirdFilterLine = document.createElement('p');
+  pThirdFilterLine.setAttribute('id', 'third-filter-line');
+
+  const btnThirdFilter = document.createElement('button');
+  btnThirdFilter.setAttribute('class', 'btn-filters');
+  btnThirdFilter.appendChild(pThirdFilter);
+  btnThirdFilter.appendChild(pThirdFilterLine);
+
+  divFilters.appendChild(btnFirstFilter);
+  divFilters.appendChild(btnSecondFilter);
+  divFilters.appendChild(btnThirdFilter);
+
+  // Creamos un div padre para divFilters y divCreatePublication:
+  const divPublicationsFilters = document.createElement('div');
+  divPublicationsFilters.setAttribute('class', 'div-publications-filters');
+
+  divPublicationsFilters.appendChild(divCreatePublication);
+  divPublicationsFilters.appendChild(divFilters);
+
+   // Div que contiene todos los posts:
   const postsContainer = document.createElement('div');
   postsContainer.setAttribute('class', 'div-posts');
 
-  divCentralHome.appendChild(divCreatePublication);
+  divCentralHome.appendChild(divPublicationsFilters);
   divCentralHome.appendChild(postsContainer);
 
   sectionHome.appendChild(divTitleHome);
   sectionHome.appendChild(divCentralHome);
+
+  // Eventos para los filtros:
+  btnFirstFilter.addEventListener('click', () => {
+    pFirstFilterLine.style.display = 'block';
+    pSecondFilterLine.style.display = 'none';
+    pThirdFilterLine.style.display = 'none';
+    getDataWithFilters('Vender').then((querySnapshot) => {
+      postsContainer.innerHTML = '';
+      querySnapshot.forEach((doc) => {
+      postsContainer.innerHTML += dataWithFilters(doc);
+      });
+    });
+  });
+
+  btnSecondFilter.addEventListener('click', () => {
+    pSecondFilterLine.style.display = 'block';
+    pFirstFilterLine.style.display = 'none';
+    pThirdFilterLine.style.display = 'none';
+    getDataWithFilters('Intercambiar').then((querySnapshot) => {
+      postsContainer.innerHTML = '';
+      querySnapshot.forEach((doc) => {
+      postsContainer.innerHTML += dataWithFilters(doc);
+      });
+    });
+  });
+
+  btnThirdFilter.addEventListener('click', () => {
+    pThirdFilterLine.style.display = 'block';
+    pFirstFilterLine.style.display = 'none';
+    pSecondFilterLine.style.display = 'none';
+    getDataWithFilters('Donar').then((querySnapshot) => {
+      postsContainer.innerHTML = '';
+      querySnapshot.forEach((doc) => {
+      postsContainer.innerHTML += dataWithFilters(doc);
+      });
+    });
+  });
 
   createPublicationBtn.addEventListener('click', () => {
     onNavigate('/publications');
@@ -76,36 +164,7 @@ export const home = () => {
 
   getData().then((querySnapshot) => {
    querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += `<section class = "section-post" id = "${doc.id}">
-      <div class = "div-category-post">
-        <p class = "category-post ${doc.data().Categoría}">${doc.data().Categoría}</p>
-
-      </div>
-        <div class ="container-post">
-          <div class = "title-and-icons">
-            <div class ="div-title">
-              <p>${doc.data().Título}</p>
-            </div>
-            <div class = "div-icons">
-              <img class = "img-profile-post" src = "../img/ejemplo-foto-perfil.jpg">
-              <img class = "icon-contact-post" src = "../img/perfil.png">
-            </div>
-          </div>
-          <div class = "div-img-post">
-            <img class = "img-post" src = ${doc.data().Foto}>
-          </div>
-          <div class = "description-like-post">
-            <div class = "description-post">
-              <p>${doc.data().Description}</p>
-            </div>
-            <div class ="state-like-post">
-              <p>Estado</p>
-              <p>${doc.data().Estado}</p>
-              <img class = "icon-like-post" src="../img/heart.png">
-            </div>
-          </div>
-        </div>
-      </section>`;
+      postsContainer.innerHTML += dataWithFilters(doc);
     });
   });
 
