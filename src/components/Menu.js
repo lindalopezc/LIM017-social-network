@@ -1,5 +1,7 @@
+/* eslint-disable import/no-cycle */
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../lib/ViewController.js';
+import { signOutFun } from '../authentication.js';
 
 export const Menu = () => {
   const navResponsive = document.createElement('nav');
@@ -11,12 +13,16 @@ export const Menu = () => {
     <li class="navMenuItem"><a class="navMenuLink navMenuLinkActive" href="/home">Inicio</a></li>
     <li class="navMenuItem"><a class="navMenuLink" href="/publications">Publicar</a></li>
     <li class="navMenuItem"><a class="navMenuLink" href="/">Perfil</a></li>
-    <li class="navMenuItem"><a class="navMenuLink" href="/">Cerrar sesión</a></li>
+    <li class="navMenuItem"><a class="navMenuLink" id= "sign-out-menu" href="/">Cerrar sesión</a></li>
   </ul>`;
   navResponsive.innerHTML = template;
   const btnBars = navResponsive.querySelector('.btnBars');
   const navMenu = navResponsive.querySelector('.navMenu');
   const navMenuLink = navResponsive.querySelector('.navMenuLink');
+  const signOutMenu = navResponsive.querySelector('#sign-out-menu');
+  signOutMenu.addEventListener('click', () => {
+    signOutFun();
+  });
 
   btnBars.addEventListener('click', () => {
     navMenu.classList.toggle('navMenuHide');
