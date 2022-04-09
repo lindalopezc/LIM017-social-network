@@ -33,7 +33,7 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // Función para registrar usuario:
-export const createUser = async (
+export const createUser = async(
   registerEmail,
   registerPassword,
   wrongEmail,
