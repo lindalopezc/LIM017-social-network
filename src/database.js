@@ -30,7 +30,7 @@ export async function getData() {
   return querySnapshot;
 }
 
-// Función para filtrar la data por categoría 'Vender':
+// Función para filtrar la data por categorías:
 export async function getDataWithFilters(categoria) {
   const dataSort = await query(collection(db, 'publications'), where('Categoría', '==', categoria));
   const querySnapshot = await getDocs(dataSort);
