@@ -8,28 +8,25 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
-  onAuthStateChanged,
   signOut,
   sendEmailVerification,
+  updateProfile,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
-// import { authError } from './lib/authError.js';
 import { onNavigate } from './lib/ViewController.js';
 import { app } from './main.js';
 
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 
-// Estamos añadiendo un observador
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
+// Aquí estamos creando una función que se encargue de actualizar los datos de usuario:
+export const updatedDataUser = async (inputname) => updateProfile(auth.currentUser, {
+  displayName: inputname,
+  photoURL: '../src/img/ejemplo-foto-perfil.jpg',
+  phoneNumber: +51964251225,
+}).then(() => {
+  console.log('Se guardaron los datos');
+}).catch((error) => {
+  console.log('No se pudo agregar sus datos');
 });
 
 // Función para registrar usuario:
@@ -39,6 +36,7 @@ export const createUser = async (
   wrongEmail,
   minPassword,
   registerErrorDefault,
+  inputName,
 ) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -51,6 +49,7 @@ export const createUser = async (
     pMessage.innerText = 'Hemos enviado un enlace a tu correo electrónico. ';
     (onNavigate('/login')).appendChild(pMessage);
     await sendEmailVerification(user);
+    await updatedDataUser(inputName);
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -86,12 +85,28 @@ export const signIn = (
 ) => {
   signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
       if (user.emailVerified) {
         onNavigate('/home');
       } else {
         verifiedEmail.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
+      }
+      if (user !== null) {
+        const displayName = user.displayName;
+        const email = user.email;
+        const photoURL = user.photoURL;
+        const emailVerified = user.emailVerified;
+        const uid = user.uid;
+        const phone = user.phoneNumber;
+        console.log('Objeto user:');
+        console.log(user);
+        console.log('Datos de usuario:');
+        console.log(displayName);
+        console.log(email);
+        console.log(photoURL);
+        console.log(emailVerified);
+        console.log(uid);
+        console.log(phone);
       }
     })
     .catch((error) => {
