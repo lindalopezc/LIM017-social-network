@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* eslint-disable consistent-return */
@@ -23,56 +24,24 @@ import { app } from './main.js';
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 
-// Función para traer los datos de un usuario activo:
-if (auth.currentUser !== null) {
-  auth.currentUser.providerData.forEach((profile) => {
-    console.log(`Sign-in provider: ${profile.providerId}`);
-    console.log(`Provider-specific UID: ${profile.uid}`);
-    console.log(`Name: ${profile.displayName}`);
-    console.log(`Email: ${profile.email}`);
-    console.log(`Photo URL: ${profile.photoURL}`);
-  });
-}
-
-
-// Veamos si es que funciona el observador.👀
-onAuthStateChanged(auth, (user) => user);
-
+// función para obtener datos del usuario
 export const getDataUser = () => {
-  const userData = {};
   if (auth.currentUser !== null) {
     const user = auth.currentUser;
-    console.log(user);
-    userData.name = user.displayName;
-    userData.email = user.email;
-    userData.photoURL = user.photoURL;
-    userData.emailVerified = user.emailVerified;
-    userData.uid = user.uid;
-  } else if (onAuthStateChanged(auth, (usuario) => usuario) != null) { // Sirvió el observador
-    onAuthStateChanged(auth, (user) => {
-      userData.name = user.displayName;
-      userData.email = user.email;
-      userData.photoURL = user.photoURL;
-      userData.emailVerified = user.emailVerified;
-      userData.uid = user.uid;
-    });
-  } else {
-    console.log('no hay usuario');
+    return user;
   }
-  console.log(userData);
-  return userData;
 };
 
-
-// Aquí creamos una función que actualice los datos de usuario:
+// Función que actualice los datos de usuario:
 export const updatedDataUser = async (name, photo) => updateProfile(auth.currentUser, {
   displayName: name,
   photoURL: photo,
 }).then(() => {
-  alert('Se guardaron los datos');
+  console.log('Se guardaron los datos');
 }).catch((error) => {
-  alert('No se pudo agregar sus datos');
+  console.log('No se pudo agregar sus datos');
 });
+
 
 // Función para registrar usuario:
 export const createUser = async (
@@ -81,7 +50,6 @@ export const createUser = async (
   wrongEmail,
   minPassword,
   registerErrorDefault,
-  inputName,
 ) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -90,10 +58,13 @@ export const createUser = async (
       registerPassword.value,
     );
     const user = userCredential.user;
+    console.log('usuario registrado', user);
+    await sendEmailVerification(user);
+
+    // Creamos un párrafo con mensaje para que el usuario vaya a su correo y verifique el link.
     const pMessage = document.createElement('p');
     pMessage.innerText = 'Hemos enviado un enlace a tu correo electrónico. ';
     (onNavigate('/login')).appendChild(pMessage);
-    await sendEmailVerification(user);
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;

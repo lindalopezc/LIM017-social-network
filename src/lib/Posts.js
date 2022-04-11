@@ -1,4 +1,4 @@
-export const dataWithFilters = (doc) => {
+export const templatePosts = (doc) => {
   const sectionPost = `<section class = "section-post" id = "${doc.id}">
         <div class = "div-category-post">
           <p class = "category-post ${doc.data().Categoría}">${doc.data().Categoría}</p>
@@ -9,7 +9,7 @@ export const dataWithFilters = (doc) => {
                 <p>${doc.data().Título}</p>
               </div>
               <div class = "div-icons">
-                <img class = "img-profile-post" src = ${doc.data().photoURL}>
+                <img class = "img-profile-post" src = ${doc.photoUser}>
                 <img class = "icon-contact-post" src = "../img/correo-de-contacto.png">
               </div>
             </div>

@@ -1,16 +1,6 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
-/* eslint-disable prefer-const */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-unused-expressions */
 /* eslint-disable import/no-cycle */
-/* eslint-disable eol-last */
-/* eslint-disable indent */
-
-// import { onNavigate } from '../lib/ViewController.js';
-// import { signOutFun } from '../authentication.js';
 import { getData, getDataWithFilters } from '../database.js';
-import { dataWithFilters } from '../lib/categoryFilters.js';
+import { templatePosts } from '../lib/Posts.js';
 import { onNavigate } from '../lib/ViewController.js';
 import { Menu } from './Menu.js';
 import { getDataUser } from '../authentication.js';
@@ -40,7 +30,7 @@ export const home = () => {
   imageProfile.setAttribute('src', `${getDataUser().photoURL}`);
 
   const titleHome = document.createElement('p');
-  titleHome.textContent = getDataUser().name; // Aquí traigo el nombre del usuario.
+  titleHome.textContent = getDataUser().displayName; // Aquí traigo el nombre del usuario.
 
   divPhotoPerfil.appendChild(imageProfile);
   divPhotoPerfil.appendChild(titleHome);
@@ -112,7 +102,7 @@ export const home = () => {
   divPublicationsFilters.appendChild(divCreatePublication);
   divPublicationsFilters.appendChild(divFilters);
 
-   // Div que contiene todos los posts:
+  // Div que contiene todos los posts:
   const postsContainer = document.createElement('div');
   postsContainer.setAttribute('class', 'div-posts');
 
@@ -130,7 +120,7 @@ export const home = () => {
     getDataWithFilters('Vender').then((querySnapshot) => {
       postsContainer.innerHTML = '';
       querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += dataWithFilters(doc);
+        postsContainer.innerHTML += templatePosts(doc);
       });
     });
   });
@@ -142,7 +132,7 @@ export const home = () => {
     getDataWithFilters('Intercambiar').then((querySnapshot) => {
       postsContainer.innerHTML = '';
       querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += dataWithFilters(doc);
+        postsContainer.innerHTML += templatePosts(doc);
       });
     });
   });
@@ -154,7 +144,7 @@ export const home = () => {
     getDataWithFilters('Donar').then((querySnapshot) => {
       postsContainer.innerHTML = '';
       querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += dataWithFilters(doc);
+        postsContainer.innerHTML += templatePosts(doc);
       });
     });
   });
@@ -164,8 +154,8 @@ export const home = () => {
   });
 
   getData().then((querySnapshot) => {
-   querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += dataWithFilters(doc);
+    querySnapshot.forEach((doc) => {
+      postsContainer.innerHTML += templatePosts(doc);
     });
   });
 

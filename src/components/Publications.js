@@ -4,6 +4,7 @@ import { uploadAndDownloadImage } from '../Storage.js';
 import { insertData } from '../database.js';
 import { onNavigate } from '../lib/ViewController.js';
 import { Menu } from './Menu.js';
+import { getDataUser } from '../authentication.js';
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
@@ -167,6 +168,8 @@ export const publications = () => {
       Categoría: selectCategory.value,
       Description: inputDescription.value,
       Fecha: new Date(),
+      uidUser: getDataUser().uid,
+      photoUser: getDataUser().photoURL,
     };
     insertData(publication);
     return onNavigate('/home');
