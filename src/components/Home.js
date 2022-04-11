@@ -37,7 +37,7 @@ export const home = () => {
 
   const imageProfile = document.createElement('img');
   imageProfile.setAttribute('class', 'img-profile'); // Le añadí temporalmente la misma clase
-  imageProfile.setAttribute('src', '../img/ejemplo-foto-perfil.jpg');
+  imageProfile.setAttribute('src', `${getDataUser().photoURL}`);
 
   const titleHome = document.createElement('p');
   titleHome.textContent = getDataUser().name; // Aquí traigo el nombre del usuario.
