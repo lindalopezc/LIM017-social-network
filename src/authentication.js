@@ -1,3 +1,8 @@
+/* eslint-disable prefer-const */
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
+/* eslint-disable consistent-return */
+/* eslint-disable no-multiple-empty-lines */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-cycle */
@@ -11,6 +16,7 @@ import {
   signOut,
   sendEmailVerification,
   updateProfile,
+  onAuthStateChanged,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import { onNavigate } from './lib/ViewController.js';
 import { app } from './main.js';
@@ -18,15 +24,32 @@ import { app } from './main.js';
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 
-// Aquí estamos creando una función que se encargue de actualizar los datos de usuario:
-export const updatedDataUser = async(inputname) => updateProfile(auth.currentUser, {
-  displayName: inputname,
-  phoneNumber: '+51964251225',
+// función para obtener datos del usuario
+export const getDataUser = () => {
+  if (auth.currentUser !== null) {
+    const user = auth.currentUser;
+    return user;
+  }
+};
+const setUserLocalStorage = (user) => {
+  localStorage.setItem('user', JSON.stringify({
+    displayName: user.displayName,
+    email: user.email,
+    photoURL: user.photoURL,
+  }));
+};
+export const getUserLocalStorage = () => JSON.parse(localStorage.getItem('user'));
+// Función que actualice los datos de usuario:
+
+export const updatedDataUser = async(name, photo) => updateProfile(auth.currentUser, {
+  displayName: name,
+  photoURL: photo,
 }).then(() => {
   console.log('Se guardaron los datos');
 }).catch((error) => {
   console.log('No se pudo agregar sus datos');
 });
+
 
 // Función para registrar usuario:
 export const createUser = async(
@@ -35,7 +58,6 @@ export const createUser = async(
   wrongEmail,
   minPassword,
   registerErrorDefault,
-  inputName,
 ) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -44,11 +66,13 @@ export const createUser = async(
       registerPassword.value,
     );
     const user = userCredential.user;
+    console.log('usuario registrado', user);
+    await sendEmailVerification(user);
+
+    // Creamos un párrafo con mensaje para que el usuario vaya a su correo y verifique el link.
     const pMessage = document.createElement('p');
     pMessage.innerText = 'Hemos enviado un enlace a tu correo electrónico. ';
     (onNavigate('/login')).appendChild(pMessage);
-    await sendEmailVerification(user);
-    await updatedDataUser(inputName);
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -85,36 +109,11 @@ export const signIn = (
   signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
     .then((userCredential) => {
       const user = userCredential.user;
+      setUserLocalStorage(user);
       if (user.emailVerified) {
         onNavigate('/home');
       } else {
         verifiedEmail.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
-      }
-      if (user !== null) {
-        const displayName = user.displayName;
-        const email = user.email;
-        const photoURL = user.photoURL;
-        const emailVerified = user.emailVerified;
-        const uid = user.uid;
-        const phone = user.phoneNumber;
-        // para que esto se guarde en el localStorage debe ser
-        // un string y para eso utilizamos JSON.stringify
-        localStorage.setItem('user', JSON.stringify({
-          displayName,
-          email,
-          photoURL,
-          uid,
-          phone,
-        }));
-        console.log('Objeto user:');
-        console.log(user);
-        console.log('Datos de usuario:');
-        console.log(displayName);
-        console.log(email);
-        console.log(photoURL);
-        console.log(emailVerified);
-        console.log(uid);
-        console.log(phone);
       }
     })
     .catch((error) => {
@@ -147,20 +146,9 @@ export const signGoogle = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      const displayName = user.displayName;
-      const email = user.email;
-      const photoURL = user.photoURL;
-      const uid = user.uid;
-      const phone = user.phoneNumber;
       // para que esto se guarde en el localStorage debe ser
       // un string y para eso utilizamos JSON.stringify
-      localStorage.setItem('user', JSON.stringify({
-        displayName,
-        email,
-        photoURL,
-        uid,
-        phone,
-      }));
+      setUserLocalStorage(user);
       onNavigate('/home');
     })
     .catch((error) => {
@@ -174,9 +162,9 @@ export const signGoogle = () => {
 // Función para cerrar sesión
 export const signOutFun = () => {
   signOut(auth).then(() => {
-    // Sign-out successful.
+    console.log('Usted cerró sesión');
     onNavigate('/');
   }).catch((error) => {
-    // An error happened.
+    console.log('No se pudo cerrar seción');
   });
 };

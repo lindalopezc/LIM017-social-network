@@ -12,7 +12,7 @@ export const Menu = () => {
   <ul class="navMenu navMenuHide">
     <li class="navMenuItem"><a class="navMenuLink navMenuLinkActive" href="/home">Inicio</a></li>
     <li class="navMenuItem"><a class="navMenuLink" href="/publications">Publicar</a></li>
-    <li class="navMenuItem"><a class="navMenuLink" href="/">Perfil</a></li>
+    <li class="navMenuItem"><a class="navMenuLink" href="/profile">Perfil</a></li>
     <li class="navMenuItem"><a class="navMenuLink" id= "sign-out-menu" href="/">Cerrar sesión</a></li>
   </ul>`;
   navResponsive.innerHTML = template;

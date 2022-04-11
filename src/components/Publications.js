@@ -4,6 +4,7 @@ import { uploadAndDownloadImage } from '../Storage.js';
 import { insertData } from '../database.js';
 import { onNavigate } from '../lib/ViewController.js';
 import { Menu } from './Menu.js';
+import { getUserLocalStorage } from '../authentication.js';
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
@@ -14,13 +15,6 @@ export const publications = () => {
 
   const titlePublications = document.createElement('h1');
   titlePublications.textContent = 'Publicar';
-
-  // const divMenu = document.createElement('div');
-  // const imgMenu = document.createElement('img');
-  // imgMenu.setAttribute('src', '../img/menu.png');
-  // imgMenu.setAttribute('class', 'img-menu');
-
-  // divMenu.appendChild(imgMenu);
 
   const divMenu = Menu();
   divTitlePublications.appendChild(titlePublications);
@@ -157,14 +151,18 @@ export const publications = () => {
   let getImageUrl; // Aquí almacenaremos la URL de la foto que nos devuelve storage.
   inputImage.addEventListener('change', () => {
     const imageUpload = inputImage.files[0];
-    uploadAndDownloadImage(imageUpload, image).then((url) => {
-      console.log(url);
+    uploadAndDownloadImage(imageUpload).then((url) => {
       getImageUrl = url;
+      image.style.objectFit = 'contain';
+      image.style.border = 'none';
+      image.style.background = 'white';
+      image.setAttribute('src', getImageUrl);
     });
   });
 
+  const userPublication = getUserLocalStorage();
   btnSubmit.addEventListener('click', () => {
-    const userData = JSON.parse(localStorage.getItem('user'));
+    // const userData = JSON.parse(localStorage.getItem('user'));
     const publication = {
       Título: inputTitle.value,
       Foto: getImageUrl,
@@ -172,11 +170,8 @@ export const publications = () => {
       Categoría: selectCategory.value,
       Description: inputDescription.value,
       Fecha: new Date(),
-      user: {
-        name: userData.displayName,
-        photo: userData.photoURL,
-        phone: userData.phone,
-      },
+      uidUser: userPublication.uid,
+      photoUser: userPublication.photoURL,
     };
     insertData(publication);
     return onNavigate('/home');

@@ -1,6 +1,6 @@
 import { Modal } from '../components/modal.js';
 
-export const dataWithFilters = (doc) => {
+export const templatePosts = (doc) => {
   const sectionPost = document.createElement('section');
   sectionPost.setAttribute('class', 'section-post');
   sectionPost.setAttribute('id', doc.id);
@@ -16,7 +16,7 @@ export const dataWithFilters = (doc) => {
                 <p>${doc.data().Título}</p>
               </div>
               <div class = "div-icons">
-                <img class = "img-profile-post" src = "${doc.data().photoURL}">
+                <img class = "img-profile-post" src = ${doc.data().photoUser}>
                 <img class = "icon-contact-post" src = "../img/correo-de-contacto.png">
               </div>
             </div>
@@ -36,7 +36,7 @@ export const dataWithFilters = (doc) => {
           </div>`;
   sectionPost.innerHTML = template;
   const iconContact = sectionPost.querySelector('.icon-contact-post');
-  iconContact.addEventListener('click', (e) => {
+  iconContact.addEventListener('click', () => {
     const root = document.getElementById('root');
     const modal = document.querySelector('.content-modal');
     if (modal) {
