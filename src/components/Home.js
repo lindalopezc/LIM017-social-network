@@ -34,12 +34,14 @@ export const home = () => {
   divPhotoPerfil.setAttribute('class', 'div-photo-perfil');
   const navMenu = Menu();
 
+  const userData = JSON.parse(localStorage.getItem('user'));
+
   const imageProfile = document.createElement('img');
   imageProfile.setAttribute('class', 'img-profile'); // Le añadí temporalmente la misma clase
-  imageProfile.setAttribute('src', '../img/ejemplo-foto-perfil.jpg');
+  imageProfile.setAttribute('src', userData.photoURL);
 
   const titleHome = document.createElement('p');
-  titleHome.textContent = 'Margarita Contreras';
+  titleHome.textContent = userData.displayName;
 
   divPhotoPerfil.appendChild(imageProfile);
   divPhotoPerfil.appendChild(titleHome);
@@ -111,7 +113,7 @@ export const home = () => {
   divPublicationsFilters.appendChild(divCreatePublication);
   divPublicationsFilters.appendChild(divFilters);
 
-   // Div que contiene todos los posts:
+  // Div que contiene todos los posts:
   const postsContainer = document.createElement('div');
   postsContainer.setAttribute('class', 'div-posts');
 
@@ -129,7 +131,7 @@ export const home = () => {
     getDataWithFilters('Vender').then((querySnapshot) => {
       postsContainer.innerHTML = '';
       querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += dataWithFilters(doc);
+        postsContainer.appendChild(dataWithFilters(doc));
       });
     });
   });
@@ -141,7 +143,7 @@ export const home = () => {
     getDataWithFilters('Intercambiar').then((querySnapshot) => {
       postsContainer.innerHTML = '';
       querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += dataWithFilters(doc);
+        postsContainer.appendChild(dataWithFilters(doc));
       });
     });
   });
@@ -153,7 +155,7 @@ export const home = () => {
     getDataWithFilters('Donar').then((querySnapshot) => {
       postsContainer.innerHTML = '';
       querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += dataWithFilters(doc);
+        postsContainer.appendChild(dataWithFilters(doc));
       });
     });
   });
@@ -163,8 +165,8 @@ export const home = () => {
   });
 
   getData().then((querySnapshot) => {
-   querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += dataWithFilters(doc);
+    querySnapshot.forEach((doc) => {
+      postsContainer.appendChild(dataWithFilters(doc));
     });
   });
 

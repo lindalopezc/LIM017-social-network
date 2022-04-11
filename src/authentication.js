@@ -19,10 +19,9 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 
 // Aquí estamos creando una función que se encargue de actualizar los datos de usuario:
-export const updatedDataUser = async (inputname) => updateProfile(auth.currentUser, {
+export const updatedDataUser = async(inputname) => updateProfile(auth.currentUser, {
   displayName: inputname,
-  photoURL: '../src/img/ejemplo-foto-perfil.jpg',
-  phoneNumber: +51964251225,
+  phoneNumber: '+51964251225',
 }).then(() => {
   console.log('Se guardaron los datos');
 }).catch((error) => {
@@ -98,6 +97,15 @@ export const signIn = (
         const emailVerified = user.emailVerified;
         const uid = user.uid;
         const phone = user.phoneNumber;
+        // para que esto se guarde en el localStorage debe ser
+        // un string y para eso utilizamos JSON.stringify
+        localStorage.setItem('user', JSON.stringify({
+          displayName,
+          email,
+          photoURL,
+          uid,
+          phone,
+        }));
         console.log('Objeto user:');
         console.log(user);
         console.log('Datos de usuario:');
@@ -139,6 +147,20 @@ export const signGoogle = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
+      const displayName = user.displayName;
+      const email = user.email;
+      const photoURL = user.photoURL;
+      const uid = user.uid;
+      const phone = user.phoneNumber;
+      // para que esto se guarde en el localStorage debe ser
+      // un string y para eso utilizamos JSON.stringify
+      localStorage.setItem('user', JSON.stringify({
+        displayName,
+        email,
+        photoURL,
+        uid,
+        phone,
+      }));
       onNavigate('/home');
     })
     .catch((error) => {

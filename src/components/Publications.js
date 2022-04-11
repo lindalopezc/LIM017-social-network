@@ -164,6 +164,7 @@ export const publications = () => {
   });
 
   btnSubmit.addEventListener('click', () => {
+    const userData = JSON.parse(localStorage.getItem('user'));
     const publication = {
       Título: inputTitle.value,
       Foto: getImageUrl,
@@ -171,6 +172,11 @@ export const publications = () => {
       Categoría: selectCategory.value,
       Description: inputDescription.value,
       Fecha: new Date(),
+      user: {
+        name: userData.displayName,
+        photo: userData.photoURL,
+        phone: userData.phone,
+      },
     };
     insertData(publication);
     return onNavigate('/home');
