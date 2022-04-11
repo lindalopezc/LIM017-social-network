@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-cycle */
 import { welcome } from '../components/Welcome.js';
@@ -6,6 +7,7 @@ import { login } from '../components/Login.js';
 import { home } from '../components/Home.js';
 import { publications } from '../components/Publications.js';
 import { profile } from '../components/Profile.js';
+// import { auth } from '../authentication.js';
 
 const rootDiv = document.getElementById('root');
 
@@ -28,6 +30,7 @@ export const onNavigate = (pathname) => {
   return rootDiv.appendChild(routes[pathname]());
 };
 const component = routes[window.location.pathname];
+console.log(window.location.pathname);
 // Es el compomente por defecto que carga la ruta,
 // en este caso es el welcome y se ejecuta solo una vez
 
@@ -46,4 +49,11 @@ const component = routes[window.location.pathname];
     }
     rootDiv.appendChild(component());
 }; */
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     console.log(JSON.parse(JSON.stringify(user)));
+//     return JSON.parse(JSON.stringify(user));
+//   }
+//   console.log('no hay usuario');
+// });
 rootDiv.appendChild(component());

@@ -25,6 +25,7 @@ export const home = () => {
   divPhotoPerfil.setAttribute('class', 'div-photo-perfil');
   const navMenu = Menu();
 
+  console.log(getDataUser(), 'home');
   const imageProfile = document.createElement('img');
   imageProfile.setAttribute('class', 'img-profile'); // Le añadí temporalmente la misma clase
   imageProfile.setAttribute('src', `${getDataUser().photoURL}`);

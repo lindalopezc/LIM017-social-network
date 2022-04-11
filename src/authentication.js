@@ -1,10 +1,6 @@
-/* eslint-disable prefer-const */
 /* eslint-disable no-console */
-/* eslint-disable no-alert */
-/* eslint-disable consistent-return */
-/* eslint-disable no-multiple-empty-lines */
-/* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-param-reassign */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/no-unresolved */
 import {
@@ -21,15 +17,31 @@ import {
 import { onNavigate } from './lib/ViewController.js';
 import { app } from './main.js';
 
-const auth = getAuth(app);
+export const auth = getAuth();
+console.log(auth);
+const user1 = auth.currentUser;
+console.log(user1);
 const provider = new GoogleAuthProvider(app);
+
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     console.log(user);
+//   } else {
+//     console.log('no hay usuario');
+//   }
+// });
 
 // función para obtener datos del usuario
 export const getDataUser = () => {
-  if (auth.currentUser !== null) {
-    const user = auth.currentUser;
-    return user;
-  }
+  const user = auth.currentUser;
+  // auth.onAuthStateChanged((user) => {
+  //   if (user) {
+  //     console.log(JSON.parse(JSON.stringify(user)));
+  //     return JSON.parse(JSON.stringify(user));
+  //   }
+  //   console.log('no hay usuario');
+  // });
+  return user;
 };
 
 // Función que actualice los datos de usuario:
@@ -41,7 +53,6 @@ export const updatedDataUser = async (name, photo) => updateProfile(auth.current
 }).catch((error) => {
   console.log('No se pudo agregar sus datos');
 });
-
 
 // Función para registrar usuario:
 export const createUser = async (
@@ -67,8 +78,6 @@ export const createUser = async (
     (onNavigate('/login')).appendChild(pMessage);
   } catch (error) {
     const errorCode = error.code;
-    const errorMessage = error.message;
-
     switch (errorCode) {
       case 'auth/email-already-in-use':
         wrongEmail.innerText = 'El correo ingresado ya está en uso';
@@ -109,8 +118,6 @@ export const signIn = (
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
-
       switch (errorCode) {
         case 'auth/user-not-found':
           invalidEmail.innerText = 'No hay usuario registrado con ese correo., verifica e intente de nuevo.';
