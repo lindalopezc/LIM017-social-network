@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
 import {
@@ -10,13 +11,16 @@ import {
   where,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 import { app } from './main.js';
+import { getDataUser } from './authentication.js'; // Importando la función que tiene datos del usuario.
 
 const db = getFirestore(app);
 
 // Esta función se encarga de crear una colección de datos o documentos:
 export async function insertData(publication) {
   try {
-    await addDoc(collection(db, 'publications'), publication);
+    // Vamos a fusionar los dos objetos, el que tiene datos del usurio con su publicación
+    const userPublication = Object.assign(getDataUser(), publication);
+    await addDoc(collection(db, 'publications'), userPublication);
   } catch (e) {
     console.error('Error adding document: ', e);
   }

@@ -14,20 +14,14 @@ import { app } from './main.js';
 
 const storage = getStorage(app);
 
-// Aquí vamos a almacenar la url para usarla en otro módulo.
-// Cambié el nombre de la función, preguntar
-export const uploadAndDownloadImage = async(imageUpload, image) => {
+// Esta función sube a storage la foto y luego retorna la url.
+export const uploadAndDownloadImage = async (imageUpload) => {
   let getImageUrl; // En esta variable vamos almacenar la Url de la imagen que nos regresa storage.
   try {
     const storageRef = await ref(storage, '/imagenes');
     const imageRef = await ref(storage, `imagenes/${imageUpload.name}`); // Estamos creando una referencia para el nombre de la imagen que queremos subir a firestorage:
     const snapshot = await uploadBytes(imageRef, imageUpload);
     getImageUrl = await getDownloadURL(imageRef);
-    image.style.objectFit = 'contain';
-    image.style.border = 'none';
-    image.style.background = 'white';
-    image.setAttribute('src', getImageUrl);
-    return getImageUrl;
   } catch (error) {
     switch (error.code) {
       case 'storage/object-not-found':
@@ -46,6 +40,5 @@ export const uploadAndDownloadImage = async(imageUpload, image) => {
         console.log('Otro error');
     }
   }
-  console.log(getImageUrl);
   return getImageUrl;
 };

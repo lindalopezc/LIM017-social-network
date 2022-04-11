@@ -13,6 +13,7 @@ import { getData, getDataWithFilters } from '../database.js';
 import { dataWithFilters } from '../lib/categoryFilters.js';
 import { onNavigate } from '../lib/ViewController.js';
 import { Menu } from './Menu.js';
+import { getDataUser } from '../authentication.js';
 
 export const home = () => {
   const sectionHome = document.createElement('section');
@@ -39,7 +40,7 @@ export const home = () => {
   imageProfile.setAttribute('src', '../img/ejemplo-foto-perfil.jpg');
 
   const titleHome = document.createElement('p');
-  titleHome.textContent = 'Margarita Contreras';
+  titleHome.textContent = getDataUser().name; // Aquí traigo el nombre del usuario.
 
   divPhotoPerfil.appendChild(imageProfile);
   divPhotoPerfil.appendChild(titleHome);

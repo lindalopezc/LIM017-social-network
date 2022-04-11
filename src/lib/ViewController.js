@@ -1,9 +1,11 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-cycle */
 import { welcome } from '../components/Welcome.js';
 import { register } from '../components/Register.js';
 import { login } from '../components/Login.js';
 import { home } from '../components/Home.js';
 import { publications } from '../components/Publications.js';
+import { profile } from '../components/Profile.js';
 
 const rootDiv = document.getElementById('root');
 
@@ -13,6 +15,7 @@ const routes = {
   '/login': login,
   '/home': home,
   '/publications': publications,
+  '/profile': profile,
 };
 
 export const onNavigate = (pathname) => {

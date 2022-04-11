@@ -9,7 +9,7 @@ export const dataWithFilters = (doc) => {
                 <p>${doc.data().Título}</p>
               </div>
               <div class = "div-icons">
-                <img class = "img-profile-post" src = "../img/ejemplo-foto-perfil.jpg">
+                <img class = "img-profile-post" src = ${doc.data().photoURL}>
                 <img class = "icon-contact-post" src = "../img/correo-de-contacto.png">
               </div>
             </div>
