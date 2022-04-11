@@ -142,7 +142,7 @@ export const register = () => {
   registerSection.appendChild(divRegister);
 
   aLinkLogin.addEventListener('click', () => onNavigate('/login'));
-  registerBtn.addEventListener('click', () => createUser(inputEmail, inputPassword, pWrongEmail, pMinPassword, pErrorDefault, inputName.value));
+  registerBtn.addEventListener('click', () => createUser(inputEmail, inputPassword, pWrongEmail, pMinPassword, pErrorDefault));
   aLinkGoogle.addEventListener('click', signGoogle);
 
   return registerSection;
