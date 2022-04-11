@@ -9,7 +9,7 @@ export const templatePosts = (doc) => {
                 <p>${doc.data().Título}</p>
               </div>
               <div class = "div-icons">
-                <img class = "img-profile-post" src = ${doc.photoUser}>
+                <img class = "img-profile-post" src = ${doc.data().photoUser}>
                 <img class = "icon-contact-post" src = "../img/correo-de-contacto.png">
               </div>
             </div>
