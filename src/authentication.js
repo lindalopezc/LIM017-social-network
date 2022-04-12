@@ -33,6 +33,7 @@ export const getDataUser = () => {
 };
 const setUserLocalStorage = (user) => {
   localStorage.setItem('user', JSON.stringify({
+    uid: user.uid,
     displayName: user.displayName,
     email: user.email,
     photoURL: user.photoURL,
@@ -109,6 +110,7 @@ export const signIn = (
   signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
     .then((userCredential) => {
       const user = userCredential.user;
+      debugger
       setUserLocalStorage(user);
       if (user.emailVerified) {
         onNavigate('/home');
