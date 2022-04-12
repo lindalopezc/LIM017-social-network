@@ -25,11 +25,12 @@ export const home = () => {
   divPhotoPerfil.setAttribute('class', 'div-photo-perfil');
   const navMenu = Menu();
 
-  const userData = getUserLocalStorage();
+  const userData = getUserLocalStorage(); // Aquí llamamos la función que trae datos user.
 
   const imageProfile = document.createElement('img');
   imageProfile.setAttribute('class', 'img-profile'); // Le añadí temporalmente la misma clase
-  imageProfile.setAttribute('src', `${userData.photoURL}`);
+  const iconDefault = '../img/user.png';
+  imageProfile.setAttribute('src', `${userData.photoURL ? userData.photoURL : iconDefault}`);
 
   const titleHome = document.createElement('p');
   titleHome.textContent = userData.displayName; // Aquí traigo el nombre del usuario.

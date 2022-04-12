@@ -14,7 +14,7 @@ import { app } from './main.js';
 
 const db = getFirestore(app);
 
-// Esta función se encarga de crear una colección de datos o documentos:
+// Esta función se encarga de crear una colección de posts:
 export async function insertData(publication) {
   try {
     await addDoc(collection(db, 'publications'), publication);
@@ -23,7 +23,7 @@ export async function insertData(publication) {
   }
 }
 
-// Esta función se encarga de traer los datos de la colección 'publications' de firestore:
+// Esta función se encarga de traer los datos de la colección 'publications' de database:
 export async function getData() {
   // Utilizaremos las funciones query and orderBy para ordenar la data por fecha de publicación.
   const dataSort = await query(collection(db, 'publications'), orderBy('Fecha', 'desc'));
@@ -38,8 +38,24 @@ export async function getDataWithFilters(categoria) {
   return querySnapshot;
 }
 
-export async function getPublicationUser(user) {
-  const dataSort = await query(collection(db, 'publications'), where('Categoría', '==', categoria));
+// Esta función se encarga de crear una colección de datos del usuario:
+export async function insertDataUser(user) {
+  try {
+    await addDoc(collection(db, 'users'), user);
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
+}
+// Esta función se encarga de traer los datos de la colección 'users' de database.
+export async function getDataUsers(uid) {
+  const dataSort = await query(collection(db, 'users'), where('uid', '==', uid));
+  const querySnapshot = await getDocs(dataSort);
+  return querySnapshot;
+}
+
+// Función para filtrar los posts por usuario:
+export async function getPublicationsUser(uid) {
+  const dataSort = await query(collection(db, 'publications'), where('uidUser', '==', uid));
   const querySnapshot = await getDocs(dataSort);
   return querySnapshot;
 }

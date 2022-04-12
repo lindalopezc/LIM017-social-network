@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-cycle */
 import { welcome } from '../components/Welcome.js';
@@ -6,6 +7,7 @@ import { login } from '../components/Login.js';
 import { home } from '../components/Home.js';
 import { publications } from '../components/Publications.js';
 import { profile } from '../components/Profile.js';
+// import { auth } from '../authentication.js';
 
 const rootDiv = document.getElementById('root');
 
@@ -46,4 +48,11 @@ const component = routes[window.location.pathname];
     }
     rootDiv.appendChild(component());
 }; */
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     console.log(JSON.parse(JSON.stringify(user)));
+//     return JSON.parse(JSON.stringify(user));
+//   }
+//   console.log('no hay usuario');
+// });
 rootDiv.appendChild(component());
