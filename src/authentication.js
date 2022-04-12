@@ -14,7 +14,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import { onNavigate } from './lib/ViewController.js';
 import { app } from './main.js';
-import { insertDataUser, getDataUsers } from './database.js';
+import { insertDataUser } from './database.js';
 
 export const auth = getAuth();
 const provider = new GoogleAuthProvider(app);
@@ -92,8 +92,6 @@ export const createUser = async (
   }
 };
 
-let datosUsuario;
-
 // Función para inicio de sesión:
 export const signIn = (
   loginEmail,
@@ -106,12 +104,16 @@ export const signIn = (
   signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
     .then((userCredential) => {
       const user = userCredential.user;
+
+      // Llamamos a la función que se encarga de subir los campos del user al localStorage.
+      setUserLocalStorage(user);
+
       if (user.emailVerified) {
         onNavigate('/home');
-        getDataUsers(user.uid); // Falta ver bien esto!!!!!
       } else {
         verifiedEmail.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
       }
+      return user;
     })
     .catch((error) => {
       const errorCode = error.code;
