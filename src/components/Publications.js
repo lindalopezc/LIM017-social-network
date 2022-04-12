@@ -4,7 +4,7 @@ import { uploadAndDownloadImage } from '../Storage.js';
 import { insertData } from '../database.js';
 import { onNavigate } from '../lib/ViewController.js';
 import { Menu } from './Menu.js';
-import { getDataUser } from '../authentication.js';
+import { getUserLocalStorage } from '../authentication.js';
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
@@ -160,7 +160,9 @@ export const publications = () => {
     });
   });
 
+  const userPublication = getUserLocalStorage();
   btnSubmit.addEventListener('click', () => {
+    // const userData = JSON.parse(localStorage.getItem('user'));
     const publication = {
       Título: inputTitle.value,
       Foto: getImageUrl,
@@ -168,8 +170,8 @@ export const publications = () => {
       Categoría: selectCategory.value,
       Description: inputDescription.value,
       Fecha: new Date(),
-      uidUser: getDataUser().uid,
-      photoUser: getDataUser().photoURL,
+      uidUser: userPublication.uid,
+      photoUser: userPublication.photoURL,
     };
     insertData(publication);
     return onNavigate('/home');

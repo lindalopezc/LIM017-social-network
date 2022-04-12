@@ -3,7 +3,7 @@ import { getData, getDataWithFilters } from '../database.js';
 import { templatePosts } from '../lib/Posts.js';
 import { onNavigate } from '../lib/ViewController.js';
 import { Menu } from './Menu.js';
-import { getDataUser } from '../authentication.js';
+import { getUserLocalStorage } from '../authentication.js';
 
 export const home = () => {
   const sectionHome = document.createElement('section');
@@ -25,13 +25,14 @@ export const home = () => {
   divPhotoPerfil.setAttribute('class', 'div-photo-perfil');
   const navMenu = Menu();
 
-  console.log(getDataUser(), 'home');
+  const userData = getUserLocalStorage();
+
   const imageProfile = document.createElement('img');
   imageProfile.setAttribute('class', 'img-profile'); // Le añadí temporalmente la misma clase
-  imageProfile.setAttribute('src', `${getDataUser().photoURL}`);
+  imageProfile.setAttribute('src', `${userData.photoURL}`);
 
   const titleHome = document.createElement('p');
-  titleHome.textContent = getDataUser().displayName; // Aquí traigo el nombre del usuario.
+  titleHome.textContent = userData.displayName; // Aquí traigo el nombre del usuario.
 
   divPhotoPerfil.appendChild(imageProfile);
   divPhotoPerfil.appendChild(titleHome);
@@ -121,7 +122,7 @@ export const home = () => {
     getDataWithFilters('Vender').then((querySnapshot) => {
       postsContainer.innerHTML = '';
       querySnapshot.forEach((doc) => {
-        postsContainer.innerHTML += templatePosts(doc);
+        postsContainer.appendChild(templatePosts(doc));
       });
     });
   });
@@ -133,7 +134,7 @@ export const home = () => {
     getDataWithFilters('Intercambiar').then((querySnapshot) => {
       postsContainer.innerHTML = '';
       querySnapshot.forEach((doc) => {
-        postsContainer.innerHTML += templatePosts(doc);
+        postsContainer.appendChild(templatePosts(doc));
       });
     });
   });
@@ -145,7 +146,7 @@ export const home = () => {
     getDataWithFilters('Donar').then((querySnapshot) => {
       postsContainer.innerHTML = '';
       querySnapshot.forEach((doc) => {
-        postsContainer.innerHTML += templatePosts(doc);
+        postsContainer.appendChild(templatePosts(doc));
       });
     });
   });
@@ -156,7 +157,7 @@ export const home = () => {
 
   getData().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      postsContainer.innerHTML += templatePosts(doc);
+      postsContainer.appendChild(templatePosts(doc));
     });
   });
 

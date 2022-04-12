@@ -43,8 +43,16 @@ export const getDataUser = () => {
   // });
   return user;
 };
-
+const setUserLocalStorage = (user) => {
+  localStorage.setItem('user', JSON.stringify({
+    displayName: user.displayName,
+    email: user.email,
+    photoURL: user.photoURL,
+  }));
+};
+export const getUserLocalStorage = () => JSON.parse(localStorage.getItem('user'));
 // Función que actualice los datos de usuario:
+
 export const updatedDataUser = async (name, photo) => updateProfile(auth.currentUser, {
   displayName: name,
   photoURL: photo,
@@ -110,6 +118,7 @@ export const signIn = (
   signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
     .then((userCredential) => {
       const user = userCredential.user;
+      setUserLocalStorage(user);
       if (user.emailVerified) {
         onNavigate('/home');
       } else {
@@ -144,6 +153,9 @@ export const signGoogle = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
+      // para que esto se guarde en el localStorage debe ser
+      // un string y para eso utilizamos JSON.stringify
+      setUserLocalStorage(user);
       onNavigate('/home');
     })
     .catch((error) => {

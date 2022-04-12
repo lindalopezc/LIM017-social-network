@@ -4,12 +4,12 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
 import { Menu } from './Menu.js';
-import { getDataUser, updatedDataUser } from '../authentication.js';
+import { getDataUser, updatedDataUser, getUserLocalStorage } from '../authentication.js';
 import { uploadAndDownloadImage } from '../Storage.js';
 
 export const profile = () => {
-  console.log('línea 11 de profile', getDataUser());
-  let usuario = getDataUser();
+  console.log('línea 11 de profile', getUserLocalStorage());
+  let usuario = getUserLocalStorage();
 
   const profileSection = document.createElement('section');
   profileSection.setAttribute('id', 'profile-section');
@@ -24,16 +24,18 @@ export const profile = () => {
   divNav.appendChild(menu);
 
   profileSection.appendChild(divNav);
+  const divProfile = document.createElement('div');
+  divProfile.setAttribute('id', 'profile-container');
 
-  const divProfile = `<div id ="profile-container">
+  const divProfileTemplate = `
                         <div id = "div-left-profile">
                             <h1>Datos personales</h1>                                
                             <label id = "label-photo-profile">
                                 <input type = "file" name = "file-image" id = "file-photo-profile" >
-                                <img id = "photo-profile" src = '../img/user.png'>
+                                <img id = "photo-profile" src = '${usuario.photoURL}'>
                             </label>
-                            <p id = "name-profile"></p>
-                            <p id = "email-profile"></p>
+                            <p id = "name-profile">${usuario.displayName}</p>
+                            <p id = "email-profile">${usuario.email}</p>
                             <button id = "btn-profile">
                                 <img class = "icon-edit" src = "../img/editar.png">
                             </button>
@@ -43,9 +45,9 @@ export const profile = () => {
                             <div id = "posts-profile">  
                             </div>
                         </div>
-                    </div>`;
-
-  profileSection.innerHTML += divProfile;
+                    `;
+  divProfile.innerHTML = divProfileTemplate;
+  profileSection.appendChild(divProfile);
 
   const inputPhoto = profileSection.querySelector('#file-photo-profile');
   const photoProfile = profileSection.querySelector('#photo-profile');

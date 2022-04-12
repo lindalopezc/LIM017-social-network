@@ -1,5 +1,12 @@
+import { Modal } from '../components/modal.js';
+
 export const templatePosts = (doc) => {
-  const sectionPost = `<section class = "section-post" id = "${doc.id}">
+  const sectionPost = document.createElement('section');
+  sectionPost.setAttribute('class', 'section-post');
+  sectionPost.setAttribute('id', doc.id);
+  // <a href="https://api.whatsapp.com/send?phone=${doc.data().user.phone}&text=Hola estoy interesad@"><img class = "icon-contact-post" src = "../img/correo-de-contacto.png"></a>
+
+  const template = `
         <div class = "div-category-post">
           <p class = "category-post ${doc.data().Categoría}">${doc.data().Categoría}</p>
         </div>
@@ -26,7 +33,21 @@ export const templatePosts = (doc) => {
                 <img class = "icon-like-post" src="../img/heart.png">
               </div>
             </div>
-          </div>
-        </section>`;
+          </div>`;
+  sectionPost.innerHTML = template;
+  const iconContact = sectionPost.querySelector('.icon-contact-post');
+  iconContact.addEventListener('click', () => {
+    const root = document.getElementById('root');
+    const modal = document.querySelector('.content-modal');
+    if (modal) {
+      modal.remove();
+    }
+    const data = {
+      name: doc.data().Título,
+      email: 'prueba@email.com',
+    };
+    root.appendChild(Modal(data));
+  });
+
   return sectionPost;
 };
