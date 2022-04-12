@@ -11,56 +11,28 @@ import {
   GoogleAuthProvider,
   signOut,
   sendEmailVerification,
-  updateProfile,
-  onAuthStateChanged,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import { onNavigate } from './lib/ViewController.js';
 import { app } from './main.js';
+import { insertDataUser, getDataUsers } from './database.js';
 
 export const auth = getAuth();
-console.log(auth);
-const user1 = auth.currentUser;
-console.log(user1);
 const provider = new GoogleAuthProvider(app);
 
-// auth.onAuthStateChanged((user) => {
-//   if (user) {
-//     console.log(user);
-//   } else {
-//     console.log('no hay usuario');
-//   }
-// });
-
-// función para obtener datos del usuario
-export const getDataUser = () => {
-  const user = auth.currentUser;
-  // auth.onAuthStateChanged((user) => {
-  //   if (user) {
-  //     console.log(JSON.parse(JSON.stringify(user)));
-  //     return JSON.parse(JSON.stringify(user));
-  //   }
-  //   console.log('no hay usuario');
-  // });
-  return user;
-};
-const setUserLocalStorage = (user) => {
+// Función que almacena los campos del user al localStorage.
+export const setUserLocalStorage = (user) => {
+  // para que esto se guarde en el localStorage debe ser
+  // un string y para eso utilizamos JSON.stringify
   localStorage.setItem('user', JSON.stringify({
     displayName: user.displayName,
     email: user.email,
     photoURL: user.photoURL,
+    uid: user.uid,
   }));
 };
-export const getUserLocalStorage = () => JSON.parse(localStorage.getItem('user'));
-// Función que actualice los datos de usuario:
 
-export const updatedDataUser = async (name, photo) => updateProfile(auth.currentUser, {
-  displayName: name,
-  photoURL: photo,
-}).then(() => {
-  console.log('Se guardaron los datos');
-}).catch((error) => {
-  console.log('No se pudo agregar sus datos');
-});
+// Función que nos devuelve los datos del user:
+export const getUserLocalStorage = () => JSON.parse(localStorage.getItem('user'));
 
 // Función para registrar usuario:
 export const createUser = async (
@@ -69,6 +41,7 @@ export const createUser = async (
   wrongEmail,
   minPassword,
   registerErrorDefault,
+  name,
 ) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -77,7 +50,20 @@ export const createUser = async (
       registerPassword.value,
     );
     const user = userCredential.user;
-    console.log('usuario registrado', user);
+
+    // Se añadirán estos campos porque el usuario no usó google.
+    user.displayName = name;
+    user.photoURL = './img/user.png';
+
+    // Llamamos a la función que se encarga de subir los campos del user al localStorage.
+    setUserLocalStorage(user);
+
+    // Llamamos a la función que nos devuelve los datos del user del localStorage.
+    const dataUsers = getUserLocalStorage();
+
+    // Los datos traídos del localStorage son subidos a Database.
+    insertDataUser(dataUsers);
+
     await sendEmailVerification(user);
 
     // Creamos un párrafo con mensaje para que el usuario vaya a su correo y verifique el link.
@@ -106,6 +92,8 @@ export const createUser = async (
   }
 };
 
+let datosUsuario;
+
 // Función para inicio de sesión:
 export const signIn = (
   loginEmail,
@@ -118,9 +106,9 @@ export const signIn = (
   signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
     .then((userCredential) => {
       const user = userCredential.user;
-      setUserLocalStorage(user);
       if (user.emailVerified) {
         onNavigate('/home');
+        getDataUsers(user.uid); // Falta ver bien esto!!!!!
       } else {
         verifiedEmail.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
       }
@@ -137,7 +125,7 @@ export const signIn = (
           loginPassword.style.borderColor = '#F62D2D';
           break;
         case 'auth/email-already-exists':
-          invalidEmail.innerText = 'El correo electrónico proporcionado esta siendo utilizado por otro miembro., verifica e intente de nuevo.';
+          invalidEmail.innerText = 'El correo electrónico proporcionado esta siendo utilizado por otro miembro, verifica e intente de nuevo.';
           loginEmail.style.borderColor = '#F62D2D';
           break;
         default:
@@ -153,9 +141,12 @@ export const signGoogle = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      // para que esto se guarde en el localStorage debe ser
-      // un string y para eso utilizamos JSON.stringify
+
+      // Los mismos pasos como en CreateUser
       setUserLocalStorage(user);
+      const dataUsers = getUserLocalStorage();
+      insertDataUser(dataUsers);
+
       onNavigate('/home');
     })
     .catch((error) => {

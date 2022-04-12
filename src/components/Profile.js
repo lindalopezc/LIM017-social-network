@@ -4,12 +4,10 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
 import { Menu } from './Menu.js';
-import { getDataUser, updatedDataUser, getUserLocalStorage } from '../authentication.js';
-import { uploadAndDownloadImage } from '../Storage.js';
+import { getUserLocalStorage } from '../authentication.js';
 
 export const profile = () => {
-  console.log('línea 11 de profile', getUserLocalStorage());
-  let usuario = getUserLocalStorage();
+  let user = getUserLocalStorage();
 
   const profileSection = document.createElement('section');
   profileSection.setAttribute('id', 'profile-section');
@@ -27,18 +25,13 @@ export const profile = () => {
   const divProfile = document.createElement('div');
   divProfile.setAttribute('id', 'profile-container');
 
+  const iconDefault = '../img/user.png';
   const divProfileTemplate = `
                         <div id = "div-left-profile">
                             <h1>Datos personales</h1>                                
-                            <label id = "label-photo-profile">
-                                <input type = "file" name = "file-image" id = "file-photo-profile" >
-                                <img id = "photo-profile" src = '${usuario.photoURL}'>
-                            </label>
-                            <p id = "name-profile">${usuario.displayName}</p>
-                            <p id = "email-profile">${usuario.email}</p>
-                            <button id = "btn-profile">
-                                <img class = "icon-edit" src = "../img/editar.png">
-                            </button>
+                                <img id = "photo-profile" src = ${user.photoURL ? user.photoURL : iconDefault}>
+                            <p id = "name-profile">${user.displayName}</p>
+                            <p id = "email-profile">${user.email}</p>
                         </div>
                         <div id = "div-right-profile">
                             <h1>Mis publicaciones</h1>
@@ -52,23 +45,5 @@ export const profile = () => {
   const inputPhoto = profileSection.querySelector('#file-photo-profile');
   const photoProfile = profileSection.querySelector('#photo-profile');
 
-  let getPhotoUrl; // Aquí almacenaremos la URL de la foto que nos devuelve storage.
-
-  // Evento para subir actualizar nuestra foto de perfil.
-  inputPhoto.addEventListener('change', () => {
-    const photoUpload = inputPhoto.files[0];
-    uploadAndDownloadImage(photoUpload).then((url) => {
-      getPhotoUrl = url;
-      photoProfile.src = getPhotoUrl;
-    });
-  });
-
-  // Evento para guardar nuestros datos de usuario.
-  const btnUpdate = profileSection.querySelector('#btn-profile');
-  btnUpdate.addEventListener('click', () => {
-    const nameProfile = profileSection.querySelector('#name-profile').value;
-    updatedDataUser(nameProfile, photoProfile);
-    console.log('Se actualizaron sus cambios');
-  });
   return profileSection;
 };
