@@ -37,3 +37,9 @@ export async function getDataWithFilters(categoria) {
   const querySnapshot = await getDocs(dataSort);
   return querySnapshot;
 }
+
+export async function getPublicationUser(user) {
+  const dataSort = await query(collection(db, 'publications'), where('Categoría', '==', categoria));
+  const querySnapshot = await getDocs(dataSort);
+  return querySnapshot;
+}
