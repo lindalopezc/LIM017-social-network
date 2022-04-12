@@ -8,7 +8,7 @@ import { getUserLocalStorage } from '../authentication.js';
 import { getPublicationsUser } from '../database.js';
 
 export const profile = () => {
-// Aquí llamamos y almacenamos la función de localStorage que nos devuelva datos del user.
+  // Aquí llamamos y almacenamos la función de localStorage que nos devuelva datos del user.
   const user = getUserLocalStorage();
 
   // Aquí llamamos y almacenamos la función de database que nos dará los post por user.
