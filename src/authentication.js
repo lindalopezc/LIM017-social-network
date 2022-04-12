@@ -14,7 +14,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import { onNavigate } from './lib/ViewController.js';
 import { app } from './main.js';
-import { insertDataUser, getDataUsers } from './database.js';
+import { getDataUsers, insertDataUser } from './database.js';
 
 export const auth = getAuth();
 const provider = new GoogleAuthProvider(app);
@@ -28,7 +28,6 @@ export const setUserLocalStorage = (user) => {
     displayName: user.displayName,
     email: user.email,
     photoURL: user.photoURL,
-    uid: user.uid,
   }));
 };
 
@@ -93,8 +92,6 @@ export const createUser = async (
   }
 };
 
-let datosUsuario;
-
 // Función para inicio de sesión:
 export const signIn = (
   loginEmail,
@@ -121,6 +118,7 @@ export const signIn = (
       } else {
         verifiedEmail.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
       }
+      return user;
     })
     .catch((error) => {
       const errorCode = error.code;

@@ -115,7 +115,14 @@ export const home = () => {
   sectionHome.appendChild(divTitleHome);
   sectionHome.appendChild(divCentralHome);
 
-  // Eventos para los filtros:
+  // Llamamos a la función que nos traerá todos los posts:
+  getData().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      postsContainer.appendChild(templatePosts(doc));
+    });
+  });
+
+  // Evento para filtrar por categoría 'Vender':
   btnFirstFilter.addEventListener('click', () => {
     pFirstFilterLine.style.display = 'block';
     pSecondFilterLine.style.display = 'none';
@@ -128,6 +135,7 @@ export const home = () => {
     });
   });
 
+  // Evento para filtrar por categoría 'Intercambiar':
   btnSecondFilter.addEventListener('click', () => {
     pSecondFilterLine.style.display = 'block';
     pFirstFilterLine.style.display = 'none';
@@ -140,6 +148,7 @@ export const home = () => {
     });
   });
 
+  // Evento para filtrar por categoría 'Donar':
   btnThirdFilter.addEventListener('click', () => {
     pThirdFilterLine.style.display = 'block';
     pFirstFilterLine.style.display = 'none';
@@ -152,14 +161,9 @@ export const home = () => {
     });
   });
 
+  // Evento para el botón de crear publicaciones:
   createPublicationBtn.addEventListener('click', () => {
     onNavigate('/publications');
-  });
-
-  getData().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      postsContainer.appendChild(templatePosts(doc));
-    });
   });
 
   return sectionHome;

@@ -5,9 +5,14 @@
 /* eslint-disable no-unused-vars */
 import { Menu } from './Menu.js';
 import { getUserLocalStorage } from '../authentication.js';
+import { getPublicationsUser } from '../database.js';
 
 export const profile = () => {
-  let user = getUserLocalStorage();
+  // Aquí llamamos y almacenamos la función de localStorage que nos devuelva datos del user.
+  const user = getUserLocalStorage();
+
+  // Aquí llamamos y almacenamos la función de database que nos dará los post por user.
+  const postByUser = getPublicationsUser(user.uid);
 
   const profileSection = document.createElement('section');
   profileSection.setAttribute('id', 'profile-section');
@@ -35,15 +40,23 @@ export const profile = () => {
                         </div>
                         <div id = "div-right-profile">
                             <h1>Mis publicaciones</h1>
-                            <div id = "posts-profile">  
+                            <div id = "posts-profile">
                             </div>
                         </div>
                     `;
+  const publicationsUser = profileSection.querySelector('#posts-profile');
+
+  // Llamamos la variable que nos devuelve los posts por usuario.
+  postByUser.then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      // Aquí debe ir un template String:
+    //   publicationsUser.innerHTML += `<p>${doc.data().Título}</p>`;
+      console.log('posts del usuario', doc.data().Título);
+    });
+  });
+
   divProfile.innerHTML = divProfileTemplate;
   profileSection.appendChild(divProfile);
-
-  const inputPhoto = profileSection.querySelector('#file-photo-profile');
-  const photoProfile = profileSection.querySelector('#photo-profile');
 
   return profileSection;
 };

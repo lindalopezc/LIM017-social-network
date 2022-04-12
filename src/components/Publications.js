@@ -161,7 +161,6 @@ export const publications = () => {
   });
 
   const userPublication = getUserLocalStorage();
-  console.log('linea 164 home', userPublication);
   btnSubmit.addEventListener('click', () => {
     const publication = {
       Título: inputTitle.value,

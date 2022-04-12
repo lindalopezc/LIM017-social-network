@@ -38,13 +38,15 @@ export const templatePosts = (doc) => {
   const iconContact = sectionPost.querySelector('.icon-contact-post');
   iconContact.addEventListener('click', () => {
     const root = document.getElementById('root');
+
+    // Aquí traemos el modal
     const modal = document.querySelector('.content-modal');
     if (modal) {
       modal.remove();
     }
     const data = {
       name: doc.data().Título,
-      email: 'prueba@email.com',
+      email: doc.data(),
     };
     root.appendChild(Modal(data));
   });
