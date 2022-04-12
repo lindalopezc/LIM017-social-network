@@ -14,7 +14,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import { onNavigate } from './lib/ViewController.js';
 import { app } from './main.js';
-import { insertDataUser } from './database.js';
+import { getDataUsers, insertDataUser } from './database.js';
 
 export const auth = getAuth();
 const provider = new GoogleAuthProvider(app);
@@ -24,10 +24,10 @@ export const setUserLocalStorage = (user) => {
   // para que esto se guarde en el localStorage debe ser
   // un string y para eso utilizamos JSON.stringify
   localStorage.setItem('user', JSON.stringify({
+    uid: user.uid,
     displayName: user.displayName,
     email: user.email,
     photoURL: user.photoURL,
-    uid: user.uid,
   }));
 };
 
@@ -104,12 +104,17 @@ export const signIn = (
   signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
     .then((userCredential) => {
       const user = userCredential.user;
-
-      // Llamamos a la función que se encarga de subir los campos del user al localStorage.
-      setUserLocalStorage(user);
-
+      getDataUsers(user.uid).then((result) => {
+        if (!result.empty) {
+          const userData = result.docs[0].data();
+          setUserLocalStorage(userData);
+        } else {
+          console.log('usuario no regsitrado');
+        }
+      });
       if (user.emailVerified) {
         onNavigate('/home');
+        // getDataUsers(user.uid); // Falta ver bien esto!!!!!
       } else {
         verifiedEmail.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
       }
