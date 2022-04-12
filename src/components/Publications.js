@@ -161,8 +161,8 @@ export const publications = () => {
   });
 
   const userPublication = getUserLocalStorage();
+  console.log('linea 164 home', userPublication);
   btnSubmit.addEventListener('click', () => {
-    // const userData = JSON.parse(localStorage.getItem('user'));
     const publication = {
       Título: inputTitle.value,
       Foto: getImageUrl,

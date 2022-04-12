@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
-import { signIn, signGoogle, getDataUser } from '../authentication.js';
+import { signIn, signGoogle } from '../authentication.js';
 
 export const login = () => {
   const loginSection = document.createElement('section');
@@ -129,7 +129,6 @@ export const login = () => {
   aLinkRegister.addEventListener('click', () => onNavigate('/register'));
   aLinkGoogle.addEventListener('click', signGoogle);
   loginBtn.addEventListener('click', () => {
-    getDataUser();
     signIn(inputEmail, inputPassword, pInvalidEmail, pInvalidPassword, pErrorDefault, pEmailVerified);
   });
   return loginSection;
