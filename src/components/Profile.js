@@ -32,17 +32,18 @@ export const profile = () => {
 
   const iconDefault = '../img/user.png';
   const divProfileTemplate = `
-                        <div id = "div-left-profile">
-                            <h1>Datos personales</h1>                                
-                                <img id = "photo-profile" src = ${user.photoURL ? user.photoURL : iconDefault}>
-                            <p id = "name-profile">${user.displayName}</p>
-                            <p id = "email-profile">${user.email}</p>
-                        </div>`;
+                              <div id = "div-left-profile">
+                                <h1 id = "profile-title" >Datos personales</h1>                                
+                                <div id = "container-data-profile">
+                                  <img id = "photo-profile" src = ${user.photoURL ? user.photoURL : iconDefault}>
+                                  <p id = "name-profile">${user.displayName}</p>
+                                  <p id = "email-profile">${user.email}</p>
+                                </div>
+                              </div>`;
   const divRightProfile = document.createElement('div');
   divRightProfile.setAttribute('id', 'div-right-profile');
   divRightProfile.innerHTML = `
-       <h1 class="publication-title" >Mis publicaciones</h1>
-  `;
+                              <h1 class="publication-title">Mis publicaciones</h1>`;
   const divPostProfile = document.createElement('div');
   divPostProfile.setAttribute('id', 'post-profile');
 
@@ -50,20 +51,20 @@ export const profile = () => {
   postByUser.then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       const templatePostUser = `<div class="perfilPost"> 
-      <div class = "div-category-post">
-      <p class = "category-post ${doc.data().Categoría}">${doc.data().Categoría}</p>
-    </div>
-      <div class ="container-post">
-        <div class = "title-and-icons">
-          <div class ="div-title">
-            <p>${doc.data().Título}</p>
-          </div>
-        </div>
-        <div class = "div-img-post">
-          <img class = "img-post" src = ${doc.data().Foto}>
-        </div>
-      </div>
-      </div>`;
+                                  <div class = "div-category-post">
+                                    <p class = "category-post ${doc.data().Categoría}">${doc.data().Categoría}</p>
+                                  </div>
+                                  <div class ="container-post">
+                                    <div class = "title-and-icons">
+                                      <div class ="div-title">
+                                        <p>${doc.data().Título}</p>
+                                      </div>
+                                    </div>
+                                    <div class = "div-img-profile">
+                                      <img class = "img-post" src = ${doc.data().Foto}>
+                                    </div>
+                                  </div>
+                                </div>`;
       divPostProfile.innerHTML += templatePostUser;
     });
   });
