@@ -37,25 +37,40 @@ export const profile = () => {
                                 <img id = "photo-profile" src = ${user.photoURL ? user.photoURL : iconDefault}>
                             <p id = "name-profile">${user.displayName}</p>
                             <p id = "email-profile">${user.email}</p>
-                        </div>
-                        <div id = "div-right-profile">
-                            <h1>Mis publicaciones</h1>
-                            <div id = "posts-profile">
-                            </div>
-                        </div>
-                    `;
-  const publicationsUser = profileSection.querySelector('#posts-profile');
+                        </div>`;
+  const divRightProfile = document.createElement('div');
+  divRightProfile.setAttribute('id', 'div-right-profile');
+  divRightProfile.innerHTML = `
+       <h1 class="publication-title" >Mis publicaciones</h1>
+  `;
+  const divPostProfile = document.createElement('div');
+  divPostProfile.setAttribute('id', 'post-profile');
 
   // Llamamos la variable que nos devuelve los posts por usuario.
   postByUser.then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      // Aquí debe ir un template String:
-    //   publicationsUser.innerHTML += `<p>${doc.data().Título}</p>`;
-      console.log('posts del usuario', doc.data().Título);
+      const templatePostUser = `<div class="perfilPost"> 
+      <div class = "div-category-post">
+      <p class = "category-post ${doc.data().Categoría}">${doc.data().Categoría}</p>
+    </div>
+      <div class ="container-post">
+        <div class = "title-and-icons">
+          <div class ="div-title">
+            <p>${doc.data().Título}</p>
+          </div>
+        </div>
+        <div class = "div-img-post">
+          <img class = "img-post" src = ${doc.data().Foto}>
+        </div>
+      </div>
+      </div>`;
+      divPostProfile.innerHTML += templatePostUser;
     });
   });
 
   divProfile.innerHTML = divProfileTemplate;
+  divRightProfile.appendChild(divPostProfile);
+  divProfile.appendChild(divRightProfile);
   profileSection.appendChild(divProfile);
 
   return profileSection;

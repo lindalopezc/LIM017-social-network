@@ -561,8 +561,8 @@ form>div>p {
   flex-direction: column;
   align-items: center;
   background-color: white;
-  border-radius: 20px 0px 20px;
-  box-shadow: 0px 20px 25px -10px rgb(0 0 0 / 50%);
+  border-radius: 20px 0px 20px 20px;
+  box-shadow: 0px 20px 25px -10px rgb(0 0 0 / 40%);
 }
 
 .img-profile-post {
@@ -606,6 +606,7 @@ form>div>p {
   height: 341px;
   overflow: hidden;
   position: relative;
+  border-radius: 0px 0px 20px 20px;
 }
 
 .img-post {
@@ -689,7 +690,7 @@ form>div>p {
   display: flex;
   flex-direction: column;
   width: 90%;
-  max-width: 280px;
+  max-width: 250px;
   background-color: white;
   border-radius: 20px;
   box-shadow: 0px 10px 20px -10px rgb(0 0 0 / 20%);
@@ -702,6 +703,7 @@ form>div>p {
   height: 40px;
   border-radius: 50%;
   margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 #name-profile, #email-profile{
@@ -721,10 +723,17 @@ form>div>p {
 #div-right-profile{
   font-size: 10px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 #file-photo-profile{
   display: none;
+}
+.perfilPost{
+  margin-bottom: 30px;
+}
+.publication-title{
+  margin-bottom: 20px;
 }
 
 @media (min-width: 700px) {
@@ -976,14 +985,24 @@ form>div>p {
     width: 100px;
     height: 100px;
   }
+  #name-profile, #email-profile{
+    font-size: 14px;
+  }
   .icon-edit{
     width: 18px;
     height: 18px;
   }
   #div-left-profile{
-    width: 50%;
+    width: 40%;
   }
   #div-right-profile{
-    width: 50%;
+    width: 60%;
+  }
+  #post-profile{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    justify-content: center;
+    gap: 25px; 
   }
 }
