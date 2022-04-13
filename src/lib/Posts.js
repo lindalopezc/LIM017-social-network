@@ -44,11 +44,7 @@ export const templatePosts = (doc) => {
     if (modal) {
       modal.remove();
     }
-    const data = {
-      name: doc.data().Título,
-      email: doc.data(),
-    };
-    root.appendChild(Modal(data));
+    root.appendChild(Modal(doc.data().uidUser));
   });
 
   return sectionPost;
