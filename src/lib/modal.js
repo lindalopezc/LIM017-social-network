@@ -1,4 +1,4 @@
-import { getDataUsers } from "../database.js";
+import { getDataUsers } from '../firebase/database.js';
 
 export const Modal = (uid) => {
   const contentModal = document.createElement('div');
