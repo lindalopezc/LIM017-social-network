@@ -2,8 +2,8 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
-import { signIn, signGoogle, setUserLocalStorage } from '../authentication.js';
-import { getDataUsers } from '../database.js';
+import { signIn, signGoogle, setUserLocalStorage } from '../firebase/authentication.js';
+import { getDataUsers } from '../firebase/database.js';
 
 export const login = () => {
   const loginSection = document.createElement('section');
@@ -45,6 +45,7 @@ export const login = () => {
   inputEmail.setAttribute('id', 'login-email');
 
   const divInvalidEmail = document.createElement('div');
+  divInvalidEmail.setAttribute('class', 'div-little-messages');
   const pInvalidEmail = document.createElement('p');
   pInvalidEmail.setAttribute('id', 'invalid-email');
   divInvalidEmail.appendChild(pInvalidEmail);
@@ -56,6 +57,7 @@ export const login = () => {
   inputPassword.setAttribute('id', 'login-password');
 
   const divInvalidPassword = document.createElement('div');
+  divInvalidPassword.setAttribute('class', 'div-little-messages');
   const pInvalidPassword = document.createElement('p');
   pInvalidPassword.setAttribute('id', 'invalid-password');
   divInvalidPassword.appendChild(pInvalidPassword);
@@ -67,6 +69,7 @@ export const login = () => {
   loginBtn.setAttribute('id', 'login-btn');
 
   const divErrorDefault = document.createElement('div');
+  divErrorDefault.setAttribute('class', 'div-little-messages');
   const pErrorDefault = document.createElement('p');
   pErrorDefault.setAttribute('class', 'error-default');
   pErrorDefault.setAttribute('id', 'login-error-default');
@@ -152,6 +155,10 @@ export const login = () => {
         switch (errorCode) {
           case 'auth/user-not-found':
             pInvalidEmail.innerText = 'No hay usuario registrado con ese correo., verifica e intente de nuevo.';
+            inputEmail.style.borderColor = '#F62D2D';
+            break;
+          case 'auth/invalid-email':
+            pInvalidEmail.textContent = 'El correo ingresado es inválido.';
             inputEmail.style.borderColor = '#F62D2D';
             break;
           case 'auth/wrong-password':

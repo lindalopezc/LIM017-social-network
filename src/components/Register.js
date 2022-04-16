@@ -2,8 +2,9 @@
 import { onNavigate } from '../lib/ViewController.js';
 import {
   createUser, signGoogle, setUserLocalStorage, getUserLocalStorage, sendEmail,
-} from '../authentication.js';
-import { insertDataUser } from '../database.js';
+} from '../firebase/authentication.js';
+import { insertDataUser } from '../firebase/database.js';
+import { registerModal } from '../lib/modal.js';
 
 /* eslint-disable max-len */
 export const register = () => {
@@ -52,6 +53,7 @@ export const register = () => {
   inputEmail.setAttribute('id', 'register-email');
 
   const divWrongEmail = document.createElement('div');
+  divWrongEmail.setAttribute('class', 'div-little-messages');
   const pWrongEmail = document.createElement('p');
   pWrongEmail.setAttribute('id', 'wrong-email');
   divWrongEmail.appendChild(pWrongEmail);
@@ -63,6 +65,7 @@ export const register = () => {
   inputPassword.setAttribute('id', 'register-password');
 
   const divMinPassword = document.createElement('div');
+  divMinPassword.setAttribute('class', 'div-little-messages');
   const pMinPassword = document.createElement('p');
   pMinPassword.setAttribute('id', 'min-password');
   pMinPassword.textContent = 'Mínimo 6 caracteres';
@@ -75,6 +78,7 @@ export const register = () => {
   inputConfirmPassword.setAttribute('id', 'register-confirm');
 
   const divWrongPassword = document.createElement('div');
+  divWrongPassword.setAttribute('class', 'div-little-messages');
   const pWrongPassword = document.createElement('p');
   pWrongPassword.setAttribute('id', 'wrong-password');
   divWrongPassword.appendChild(pWrongPassword);
@@ -86,6 +90,7 @@ export const register = () => {
   registerBtn.setAttribute('id', 'register-btn');
 
   const divErrorDefault = document.createElement('div');
+  divErrorDefault.setAttribute('class', 'div-little-messages');
   const pErrorDefault = document.createElement('p');
   pErrorDefault.setAttribute('class', 'error-default');
   pErrorDefault.setAttribute('id', 'register-error-default');
@@ -152,9 +157,7 @@ export const register = () => {
         const dataUsers = getUserLocalStorage();
         insertDataUser(dataUsers);
         sendEmail(user);
-        const pMessage = document.createElement('p');
-        pMessage.innerText = 'Hemos enviado un enlace a tu correo electrónico. ';
-        (onNavigate('/login')).appendChild(pMessage);
+        (onNavigate('/login')).appendChild(registerModal()); // Aquí le estamos pasando el modal que muestra mensaje de link.
       })
       .catch((error) => {
         const errorCode = error.code;

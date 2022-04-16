@@ -1,17 +1,13 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
-/* eslint-disable no-unused-vars */
-import { Menu } from './Menu.js';
-import { getUserLocalStorage } from '../authentication.js';
-import { getPublicationsUser } from '../database.js';
+import { Menu } from '../lib/Menu.js';
+import { getUserLocalStorage } from '../firebase/authentication.js';
+import { getPublicationsUser } from '../firebase/database.js';
 
 export const profile = () => {
   // Aquí llamamos y almacenamos la función de localStorage que nos devuelva datos del user.
   const user = getUserLocalStorage();
 
-  // Aquí llamamos y almacenamos la función de database que nos dará los post por user.
+  // Aquí llamamos y almacenamos la función de database que nos dará los posts por user.
   const postByUser = getPublicationsUser(user.uid);
 
   const profileSection = document.createElement('section');
@@ -58,6 +54,14 @@ export const profile = () => {
                                     <div class = "title-and-icons">
                                       <div class ="div-title">
                                         <p>${doc.data().Título}</p>
+                                      </div>
+                                      <div class = "div-icons">
+                                        <button class = "icons-posts-profile">
+                                          <img class = "delete-icon" src = "../img/delete.png" >
+                                        </button>
+                                        <button class = "icons-posts-profile">
+                                          <img class = "edit-icon" src = "../img/editar.png">
+                                        </button>
                                       </div>
                                     </div>
                                     <div class = "div-img-profile">

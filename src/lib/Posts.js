@@ -1,4 +1,4 @@
-import { Modal } from '../components/modal.js';
+import { Modal } from './modal.js';
 
 export const templatePosts = (doc) => {
   const sectionPost = document.createElement('section');
@@ -17,7 +17,7 @@ export const templatePosts = (doc) => {
               </div>
               <div class = "div-icons">
                 <img class = "img-profile-post" src = ${doc.data().photoUser}>
-                <img class = "icon-contact-post" src = "../img/correo-de-contacto.png">
+                <img class = "icon-contact-post" src = "../img/email.png">
               </div>
             </div>
             <div class = "div-img-post">

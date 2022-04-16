@@ -11,7 +11,7 @@ import {
   sendEmailVerification,
   GoogleAuthProvider,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
-import { onNavigate } from './lib/ViewController.js';
+import { onNavigate } from '../lib/ViewController.js';
 import { auth, provider } from './main.js';
 import { insertDataUser } from './database.js';
 
