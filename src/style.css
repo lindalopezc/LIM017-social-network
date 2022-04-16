@@ -130,6 +130,7 @@ header {
   font-weight: 600;
   border: none;
   margin-top: 5.5px;
+  cursor: pointer;
 }
 
 .title-register-login {
@@ -338,6 +339,7 @@ form>div>p {
   color: white;
   font-size: 16px;
   padding-left: 0px;
+  cursor: pointer;
 }
 
 #input-description {
@@ -422,6 +424,7 @@ form>div>p {
 .btnBars {
   border: transparent;
   background: transparent;
+  cursor: pointer;
 }
 
 
@@ -544,6 +547,7 @@ form>div>p {
   border-radius: 50%;
   background-color: white;
   border: none;
+  cursor: pointer;
 }
 
 .img-btn {
@@ -642,6 +646,7 @@ form>div>p {
   height: 26px;
   background: white;
   margin-right: 0px;
+  cursor: pointer;
 }
 
 .div-img-post {
