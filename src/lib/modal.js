@@ -15,3 +15,17 @@ export const Modal = (data) => {
   });
   return contentModal;
 };
+export const registerModal = () => {
+  const contentModal = document.createElement('div');
+  contentModal.setAttribute('class', 'div-register-modal');
+  const templateM = `
+                    <img class = "image-register-modal" src ="../img/enviar.png"><br>
+                    <p class="modal-text-register"> Hemos enviado un enlace a tu correo electrónico. Verifica para poder continuar.</p>
+                    <button class = "register-close-modal">Cerrar</button>`;
+  contentModal.innerHTML = templateM;
+  const close = contentModal.querySelector('.register-close-modal');
+  close.addEventListener('click', () => {
+    contentModal.remove();
+  });
+  return contentModal;
+};

@@ -1,9 +1,9 @@
 /* eslint-disable import/no-cycle */
-import { getData, getDataWithFilters } from '../database.js';
+import { getData, getDataWithFilters } from '../firebase/database.js';
 import { templatePosts } from '../lib/Posts.js';
 import { onNavigate } from '../lib/ViewController.js';
-import { Menu } from './Menu.js';
-import { getUserLocalStorage } from '../authentication.js';
+import { Menu } from '../lib/Menu.js';
+import { getUserLocalStorage } from '../firebase/authentication.js';
 
 export const home = () => {
   const sectionHome = document.createElement('section');
@@ -49,7 +49,7 @@ export const home = () => {
   const createPublicationBtn = document.createElement('button');
   createPublicationBtn.setAttribute('class', 'create-publication-btn');
   const imgBtn = document.createElement('img');
-  imgBtn.setAttribute('src', '../img/write.png');
+  imgBtn.setAttribute('src', '../img/anadir-imagen.png');
   imgBtn.setAttribute('class', 'img-btn');
   createPublicationBtn.appendChild(imgBtn);
 

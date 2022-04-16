@@ -33,7 +33,7 @@ header {
 }
 
 .close-modal {
-  padding: 6px 8px;
+  padding: 6px 10px;
   border-radius: 50%;
   background-color: #fff;
   font-weight: bold;
@@ -43,7 +43,8 @@ header {
 }
 
 .modal-text {
-  font-size: 18px;
+  text-align: justify;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 
@@ -76,6 +77,13 @@ header {
 .navMenuItem {
   height: 30px;
   list-style: none;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.navMenuItem:hover{
+  background-color: #F0F2F5;
 }
 
 .navMenuLink {
@@ -158,6 +166,9 @@ form>div>p {
   margin-bottom: 0px;
   font-size: 7px;
 }
+.div-little-messages{
+  width: 85%;
+}
 
 .text-bottom {
   margin-top: 11px;
@@ -190,6 +201,46 @@ form>div>p {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.header-register-modal{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.register-close-modal{
+  text-align: center;
+  border-radius: 7px;
+  background-color: #A64C38;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  width: 100px;
+  height: 30px;
+}
+.modal-text-register {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.div-register-modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 30%;
+  width: 200px;
+  border-radius: 20px;
+  height: 162px;
+  background: white;
+  padding: 15px 20px;
+  box-shadow: 0px 10px 20px -10px rgb(0 0 0 / 50%);
+}
+.image-register-modal{
+  width: 40px;
+  height: 40px;
 }
 
 
@@ -470,7 +521,7 @@ form>div>p {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 60px;
+  height: 44px;
   width: 100%;
   max-width: 400px;
   background-color: #fff;
@@ -479,33 +530,26 @@ form>div>p {
   margin-bottom: 26px;
 }
 
-.create-publication-img {
-  width: 30px;
-  height: 30px;
-}
-
 .create-publication-text {
   font-size: 11px;
-  background-color: #F0F2F5;
   padding: 7px;
   border-radius: 10px;
-  color: #80746F;
   margin-left: 2px;
+  font-weight: 600;
 }
 
 .create-publication-btn {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #F0F2F5;
+  background-color: white;
   border: none;
 }
 
 .img-btn {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
 }
-
 .div-contain {
   background: transparent;
 }
@@ -574,7 +618,7 @@ form>div>p {
 }
 
 .title-and-icons {
-  width: 85%;
+  width: 90%;
   display: flex;
   background-color: white;
   justify-content: space-between;
@@ -590,11 +634,12 @@ form>div>p {
 .div-icons {
   background: white;
   display: flex;
+  align-items: center;
 }
 
 .icon-contact-post {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 26px;
   background: white;
   margin-right: 0px;
 }
@@ -743,6 +788,15 @@ form>div>p {
 .publication-title{
   margin-bottom: 20px;
 }
+.delete-icon, .edit-icon{
+  width: 28px;
+  height: 26px;
+  background-color: white;
+}
+.icons-posts-profile{
+  background-color: white;
+  border: none;
+}
 
 @media (min-width: 700px) {
   #welcome-section {
@@ -809,10 +863,6 @@ form>div>p {
   .div-contain {
     width: 60%;
   }
-  /* .div-central-home {
-    flex-direction: row;
-    align-items: flex-start;
-  } */
   .div-create-publication {
     border-radius: 22px;
     margin-bottom: 0px;
@@ -845,6 +895,13 @@ form>div>p {
     width: 240px;
     height: 40px;
     font-size: 18px;
+  }
+  .div-register-modal{
+    width: 300px;
+    height: 165;
+  }
+  .modal-text-register{
+    font-size: 16px;
   }
   #register-section {
     margin-top: 0px;

@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
-import { uploadAndDownloadImage } from '../Storage.js';
-import { insertData } from '../database.js';
+import { uploadAndDownloadImage } from '../firebase/storage.js';
+import { insertData } from '../firebase/database.js';
 import { onNavigate } from '../lib/ViewController.js';
-import { Menu } from './Menu.js';
-import { getUserLocalStorage } from '../authentication.js';
+import { Menu } from '../lib/Menu.js';
+import { getUserLocalStorage } from '../firebase/authentication.js';
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
