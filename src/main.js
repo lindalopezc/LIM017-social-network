@@ -1,5 +1,6 @@
-// eslint-disable-next-line import/no-unresolved
+/* eslint-disable import/no-unresolved */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
+import { getAuth, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAdfUjeKGbV3sdoMqcYIVg0pEzOBLaihlo',
@@ -13,3 +14,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+export const auth = getAuth();
+export const provider = new GoogleAuthProvider(app);

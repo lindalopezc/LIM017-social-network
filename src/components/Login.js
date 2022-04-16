@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
-import { signIn, signGoogle } from '../authentication.js';
+import { signIn, signGoogle, setUserLocalStorage } from '../authentication.js';
+import { getDataUsers } from '../database.js';
 
 export const login = () => {
   const loginSection = document.createElement('section');
@@ -129,7 +131,41 @@ export const login = () => {
   aLinkRegister.addEventListener('click', () => onNavigate('/register'));
   aLinkGoogle.addEventListener('click', signGoogle);
   loginBtn.addEventListener('click', () => {
-    signIn(inputEmail, inputPassword, pInvalidEmail, pInvalidPassword, pErrorDefault, pEmailVerified);
+    signIn(inputEmail.value, inputPassword.value)
+      .then((user) => {
+        getDataUsers(user.uid).then((result) => {
+          if (!result.empty) {
+            const userData = result.docs[0].data();
+            setUserLocalStorage(userData);
+            if (user.emailVerified) {
+              onNavigate('/home');
+            } else {
+              pEmailVerified.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
+            }
+          } else {
+            console.log('usuario no registrado');
+          }
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        switch (errorCode) {
+          case 'auth/user-not-found':
+            pInvalidEmail.innerText = 'No hay usuario registrado con ese correo., verifica e intente de nuevo.';
+            inputEmail.style.borderColor = '#F62D2D';
+            break;
+          case 'auth/wrong-password':
+            pInvalidPassword.innerText = 'La contraseña no es válida, verifica e intente de nuevo.';
+            inputPassword.style.borderColor = '#F62D2D';
+            break;
+          case 'auth/email-already-exists':
+            pInvalidEmail.innerText = 'El correo electrónico proporcionado esta siendo utilizado por otro miembro, verifica e intente de nuevo.';
+            inputEmail.style.borderColor = '#F62D2D';
+            break;
+          default:
+            pErrorDefault.innerText = errorCode;
+        }
+      });
   });
   return loginSection;
 };
