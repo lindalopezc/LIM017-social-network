@@ -1,6 +1,9 @@
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
-import { createUser, signGoogle } from '../authentication.js';
+import {
+  createUser, signGoogle, setUserLocalStorage, getUserLocalStorage, sendEmail,
+} from '../authentication.js';
+import { insertDataUser } from '../database.js';
 
 /* eslint-disable max-len */
 export const register = () => {
@@ -142,7 +145,38 @@ export const register = () => {
   registerSection.appendChild(divRegister);
 
   aLinkLogin.addEventListener('click', () => onNavigate('/login'));
-  registerBtn.addEventListener('click', () => createUser(inputEmail, inputPassword, pWrongEmail, pMinPassword, pErrorDefault, inputName.value));
+  registerBtn.addEventListener('click', () => {
+    createUser(inputEmail.value, inputPassword.value, inputName.value)
+      .then((user) => {
+        setUserLocalStorage(user);
+        const dataUsers = getUserLocalStorage();
+        insertDataUser(dataUsers);
+        sendEmail(user);
+        const pMessage = document.createElement('p');
+        pMessage.innerText = 'Hemos enviado un enlace a tu correo electrónico. ';
+        (onNavigate('/login')).appendChild(pMessage);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        switch (errorCode) {
+          case 'auth/email-already-in-use':
+            pWrongEmail.innerText = 'El correo ingresado ya está en uso';
+            inputEmail.style.borderColor = '#F62D2D';
+            break;
+          case 'auth/weak-password':
+            pMinPassword.style.color = 'red';
+            pMinPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
+            inputPassword.style.borderColor = '#F62D2D';
+            break;
+          case 'auth/invalid-email':
+            pWrongEmail.textContent = 'El correo ingresado es inválido';
+            inputEmail.style.borderColor = '#F62D2D';
+            break;
+          default:
+            pErrorDefault.innerText = errorCode;
+        }
+      });
+  });
   aLinkGoogle.addEventListener('click', signGoogle);
 
   return registerSection;

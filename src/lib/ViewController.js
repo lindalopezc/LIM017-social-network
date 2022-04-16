@@ -7,7 +7,6 @@ import { login } from '../components/Login.js';
 import { home } from '../components/Home.js';
 import { publications } from '../components/Publications.js';
 import { profile } from '../components/Profile.js';
-// import { auth } from '../authentication.js';
 
 const rootDiv = document.getElementById('root');
 
