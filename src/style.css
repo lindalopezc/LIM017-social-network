@@ -79,7 +79,6 @@ header {
   list-style: none;
   width: 100%;
   align-items: center;
-  justify-content: center;
   display: flex;
 }
 .navMenuItem:hover{
@@ -91,6 +90,8 @@ header {
   color: #34332F;
   font-weight: 600;
   font-size: 14px;
+  width: 100%;
+  text-align: center;
 }
 
 .logo {
@@ -157,7 +158,8 @@ header {
 #wrong-password,
 .error-default,
 #invalid-email,
-#invalid-password {
+#invalid-password,
+#message-name {
   font-size: 7px;
   color: red;
 }
@@ -1003,7 +1005,8 @@ form>div>p {
   #wrong-password,
   .error-default,
   #invalid-email,
-  #invalid-password {
+  #invalid-password,
+  #message-name {
     font-size: 9px;
   }
   #input-title {

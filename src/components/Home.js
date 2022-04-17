@@ -1,8 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { getData, getDataWithFilters } from '../firebase/database.js';
-import { templatePosts } from '../lib/Posts.js';
+import { templatePosts } from '../templates/Posts.js';
 import { onNavigate } from '../lib/ViewController.js';
-import { Menu } from '../lib/Menu.js';
+import { Menu } from '../templates/Menu.js';
 import { getUserLocalStorage } from '../firebase/authentication.js';
 
 export const home = () => {

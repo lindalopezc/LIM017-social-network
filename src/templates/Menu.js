@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 // eslint-disable-next-line import/no-cycle
-import { onNavigate } from './ViewController.js';
+import { onNavigate } from '../lib/ViewController.js';
 import { signOutFun } from '../firebase/authentication.js';
 
 export const Menu = () => {
