@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { Menu } from '../lib/Menu.js';
+import { Menu } from '../templates/Menu.js';
 import { getUserLocalStorage } from '../firebase/authentication.js';
 import { getPublicationsUser } from '../firebase/database.js';
 

@@ -4,7 +4,7 @@ import {
   createUser, signGoogle, setUserLocalStorage, getUserLocalStorage, sendEmail,
 } from '../firebase/authentication.js';
 import { insertDataUser } from '../firebase/database.js';
-import { registerModal } from '../lib/modal.js';
+import { registerModal } from '../templates/modal.js';
 
 /* eslint-disable max-len */
 export const register = () => {
@@ -45,6 +45,12 @@ export const register = () => {
   inputName.setAttribute('placeholder', 'Nombre');
   inputName.setAttribute('class', 'input');
   inputName.setAttribute('id', 'register-name');
+
+  const divMessageName = document.createElement('div');
+  divMessageName.setAttribute('class', 'div-little-messages');
+  const pMessageName = document.createElement('p');
+  pMessageName.setAttribute('id', 'message-name');
+  divMessageName.appendChild(pMessageName);
 
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('type', 'email');
@@ -97,6 +103,7 @@ export const register = () => {
   divErrorDefault.appendChild(pErrorDefault);
 
   formRegister.appendChild(inputName);
+  formRegister.appendChild(divMessageName);
   formRegister.appendChild(inputEmail);
   formRegister.appendChild(divWrongEmail);
   formRegister.appendChild(inputPassword);
@@ -151,34 +158,40 @@ export const register = () => {
 
   aLinkLogin.addEventListener('click', () => onNavigate('/login'));
   registerBtn.addEventListener('click', () => {
-    createUser(inputEmail.value, inputPassword.value, inputName.value)
-      .then((user) => {
-        setUserLocalStorage(user);
-        const dataUsers = getUserLocalStorage();
-        insertDataUser(dataUsers);
-        sendEmail(user);
-        (onNavigate('/login')).appendChild(registerModal()); // Aquí le estamos pasando el modal que muestra mensaje de link.
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        switch (errorCode) {
-          case 'auth/email-already-in-use':
-            pWrongEmail.innerText = 'El correo ingresado ya está en uso';
-            inputEmail.style.borderColor = '#F62D2D';
-            break;
-          case 'auth/weak-password':
-            pMinPassword.style.color = 'red';
-            pMinPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
-            inputPassword.style.borderColor = '#F62D2D';
-            break;
-          case 'auth/invalid-email':
-            pWrongEmail.textContent = 'El correo ingresado es inválido';
-            inputEmail.style.borderColor = '#F62D2D';
-            break;
-          default:
-            pErrorDefault.innerText = errorCode;
-        }
-      });
+    if (inputName.value === '') { // Con esta condición el usuario debe ingresar su nombre de manera obligatoria.
+      pMessageName.innerText = 'Campo vacío. Por favor escriba su nombre.';
+    } else if (inputPassword.value !== inputConfirmPassword.value) { // Las contraseñas deben ser iguales.
+      pWrongPassword.innerText = 'Las contraseñas no coinciden.';
+    } else {
+      createUser(inputEmail.value, inputPassword.value, inputName.value)
+        .then((user) => {
+          setUserLocalStorage(user);
+          const dataUsers = getUserLocalStorage();
+          insertDataUser(dataUsers);
+          sendEmail(user);
+          (onNavigate('/login')).appendChild(registerModal()); // Aquí le estamos pasando el modal que muestra mensaje de link.
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          switch (errorCode) {
+            case 'auth/email-already-in-use':
+              pWrongEmail.innerText = 'El correo ingresado ya está en uso';
+              inputEmail.style.borderColor = '#F62D2D';
+              break;
+            case 'auth/weak-password':
+              pMinPassword.style.color = 'red';
+              pMinPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
+              inputPassword.style.borderColor = '#F62D2D';
+              break;
+            case 'auth/invalid-email':
+              pWrongEmail.textContent = 'El correo ingresado es inválido';
+              inputEmail.style.borderColor = '#F62D2D';
+              break;
+            default:
+              pErrorDefault.innerText = errorCode;
+          }
+        });
+    }
   });
   aLinkGoogle.addEventListener('click', signGoogle);
 

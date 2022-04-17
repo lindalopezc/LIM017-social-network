@@ -3,7 +3,7 @@
 import { uploadAndDownloadImage } from '../firebase/storage.js';
 import { insertData } from '../firebase/database.js';
 import { onNavigate } from '../lib/ViewController.js';
-import { Menu } from '../lib/Menu.js';
+import { Menu } from '../templates/Menu.js';
 import { getUserLocalStorage } from '../firebase/authentication.js';
 
 export const publications = () => {
@@ -171,6 +171,7 @@ export const publications = () => {
       Fecha: new Date(),
       uidUser: userPublication.uid,
       photoUser: userPublication.photoURL,
+      Likes: [],
     };
     insertData(publication);
     return onNavigate('/home');
