@@ -1,4 +1,7 @@
+/* eslint-disable import/no-cycle */
 import { Modal } from './modal.js';
+import { getUserLocalStorage } from '../firebase/authentication.js';
+import { removeLikes, addLikes } from '../firebase/database.js';
 
 export const templatePosts = (doc) => {
   const sectionPost = document.createElement('section');
@@ -30,11 +33,35 @@ export const templatePosts = (doc) => {
               <div class ="state-like-post">
                 <p>Estado</p>
                 <p>${doc.data().Estado}</p>
-                <img class = "icon-like-post" src="../img/heart.png">
+                <div class="div-likes">
+                <button class = "btn-like-post"  ><img  class = "icon-like-post" src="../img/heart.png"></button>
+                <p class="counter-likes"></p>
+                </div>
               </div>
             </div>
           </div>`;
   sectionPost.innerHTML = template;
+  const btnLike = sectionPost.querySelector('.btn-like-post');
+  let counterLikes = sectionPost.querySelector('.counter-likes');
+  const userData = getUserLocalStorage();
+  let arrayLikes = doc.data().Likes;
+  console.log(arrayLikes);
+  let arrayLength = arrayLikes.length;
+  if (arrayLength === 0) {
+    counterLikes.style.display = 'none';
+  }
+  counterLikes.innerHTML = arrayLength;
+
+  btnLike.addEventListener('click', () => {
+    if (arrayLikes.includes(userData.uid)) {
+      counterLikes.innerHTML = arrayLength - 1;
+      removeLikes(doc.id, userData.uid);
+    } else {
+      counterLikes.innerHTML = arrayLength + 1;
+      counterLikes.style.display = 'block';
+      addLikes(doc.id, userData.uid);
+    }
+  });
   const iconContact = sectionPost.querySelector('.icon-contact-post');
   iconContact.addEventListener('click', () => {
     const root = document.getElementById('root');

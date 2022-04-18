@@ -594,6 +594,7 @@ form>div>p {
   padding-top: 2px;
 }
 
+
 .Donar {
   background: #1E9B98;
 }
@@ -713,15 +714,29 @@ form>div>p {
   align-items: center;
   background: white;
 }
+.div-likes{
+  margin-top: 11px;
+  display: flex;
+  align-items: center;
+}
 
 .state-like-post>p {
   font-weight: 600;
   font-size: 11px;
   background: white;
 }
+.counter-likes{
+  font-size: 12px;
+  font-weight: 600;
+}
+.btn-like-post{
+  border: none;
+    background: white;
+    display: flex;
+}
 
 .icon-like-post {
-  margin-top: 11px;
+  
   width: 25px;
   height: 25px;
   background: white;

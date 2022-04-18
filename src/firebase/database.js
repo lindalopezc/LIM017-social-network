@@ -9,6 +9,10 @@ import {
   query,
   orderBy,
   where,
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 import { app } from './main.js';
 
@@ -58,4 +62,20 @@ export async function getPublicationsUser(uid) {
   const dataSort = await query(collection(db, 'publications'), where('uidUser', '==', uid));
   const querySnapshot = await getDocs(dataSort);
   return querySnapshot;
+}
+
+// Funcion para remover likes
+export function removeLikes(docId, userId) {
+  const removeLikePost = doc(db, 'publications', docId);
+  updateDoc(removeLikePost, {
+    Likes: arrayRemove(userId),
+  });
+}
+
+// Funcion para añadir likes
+export function addLikes(docId, userId) {
+  const addLikePost = doc(db, 'publications', docId);
+  updateDoc(addLikePost, {
+    Likes: arrayUnion(userId),
+  });
 }
