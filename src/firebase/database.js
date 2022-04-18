@@ -68,7 +68,7 @@ export async function getPublicationsUser(uid) {
 export function removeLikes(docId, userId) {
   const removeLikePost = doc(db, 'publications', docId);
   updateDoc(removeLikePost, {
-    Likes: arrayRemove(userId),
+    Likes: arrayRemove(userId), // Aquí estamos borrando el id del user en el array Likes.
   });
 }
 
@@ -76,6 +76,6 @@ export function removeLikes(docId, userId) {
 export function addLikes(docId, userId) {
   const addLikePost = doc(db, 'publications', docId);
   updateDoc(addLikePost, {
-    Likes: arrayUnion(userId),
+    Likes: arrayUnion(userId), // Aquí estamos añadiendo el id del user en el array Likes.
   });
 }
