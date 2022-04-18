@@ -731,15 +731,16 @@ form>div>p {
 }
 .btn-like-post{
   border: none;
-    background: white;
-    display: flex;
-}
-
-.icon-like-post {
-  
+  cursor: pointer;
   width: 25px;
   height: 25px;
-  background: white;
+  background: url("./img/heart.png");
+  background-size: cover;
+}
+
+.icon-like-red{
+  background: url("./img/heart-red.png");
+  background-size: cover;
 }
 
 /* Estilos vista perfil */
