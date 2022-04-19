@@ -166,8 +166,8 @@ export const register = () => {
       createUser(inputEmail.value, inputPassword.value, inputName.value)
         .then((user) => {
           setUserLocalStorage(user);
-          const dataUsers = getUserLocalStorage();
-          insertDataUser(dataUsers);
+          const dataUser = getUserLocalStorage();
+          insertDataUser(dataUser);
           sendEmail(user);
           (onNavigate('/login')).appendChild(registerModal()); // Aquí le estamos pasando el modal que muestra mensaje de link.
         })

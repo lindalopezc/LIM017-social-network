@@ -302,7 +302,7 @@ form>div>p {
 .div-nav {
   display: flex;
   font-size: 12px;
-  justify-content: space-between;;
+  justify-content: space-between;
   width: 85%;
   max-width: 400px;
   margin: 22px auto 10px auto;
@@ -400,7 +400,29 @@ form>div>p {
   width: 208px;
   padding-left: 16px;
 }
+.div-photo-perfil>p {
+  margin-right: 36%;
+}
+.title-and-icons>p {
+  background-color: white;
+}
 
+.div-title>p {
+  background: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.description-post>p {
+  font-size: 11px;
+  background: white;
+  text-align: justify;
+}
+.state-like-post>p {
+  font-weight: 600;
+  font-size: 11px;
+  background: white;
+}
 #div-considerations>p {
   font-size: 10px;
   margin-bottom: 6px;
@@ -511,10 +533,6 @@ form>div>p {
   width: 100%;
 }
 
-.div-photo-perfil>p {
-  margin-right: 36%;
-}
-
 .img-profile {
   width: 45px;
   height: 45px;
@@ -556,9 +574,7 @@ form>div>p {
   width: 26px;
   height: 26px;
 }
-.div-contain {
-  background: transparent;
-}
+
 
 
 /* Estilos para los posts */
@@ -634,10 +650,6 @@ form>div>p {
   margin-bottom: 10px;
 }
 
-.title-and-icons>p {
-  background-color: white;
-}
-
 .div-icons {
   background: white;
   display: flex;
@@ -696,18 +708,6 @@ form>div>p {
   align-items: center;
 }
 
-.div-title>p {
-  background: white;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.description-post>p {
-  font-size: 11px;
-  background: white;
-  text-align: justify;
-}
-
 .state-like-post {
   display: flex;
   flex-direction: column;
@@ -720,11 +720,6 @@ form>div>p {
   align-items: center;
 }
 
-.state-like-post>p {
-  font-weight: 600;
-  font-size: 11px;
-  background: white;
-}
 .counter-likes{
   font-size: 12px;
   font-weight: 600;
@@ -739,7 +734,7 @@ form>div>p {
 }
 
 .icon-like-red{
-  background: url("./img/heart-red.png");
+  background: url("./img/heart-pastel.png");
   background-size: cover;
 }
 
@@ -811,15 +806,45 @@ form>div>p {
 .publication-title{
   margin-bottom: 20px;
 }
+.btn-delete{
+  background: url("./img/delete.png");
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  border: none;
+}
+.btn-edit-post{
+  background: url("./img/editar.png");
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  border: none;
+}
 .delete-icon, .edit-icon{
   width: 28px;
   height: 26px;
   background-color: white;
 }
-.icons-posts-profile{
+
+.div-delete-post{
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 30%;
+  width: 158px;
+  border-radius: 20px;
+  height: 82px;
+  background: white;
+  padding: 15px 20px;
+  box-shadow: 0px 10px 20px -10px rgb(0 0 0 / 50%);
+}
+/* .icons-posts-profile{
   background-color: white;
   border: none;
-}
+} */
 
 @media (min-width: 700px) {
   #welcome-section {
@@ -868,10 +893,17 @@ form>div>p {
   }
   .description-like-post {
     max-width: 230px;
+    margin-top: 373px;
   }
   .div-photo-perfil {
     justify-content: space-evenly;
     width: 300px;
+  }
+  
+  form>div>p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 9px;
   }
   .div-photo-perfil>p {
     margin-right: 0%;
@@ -980,9 +1012,6 @@ form>div>p {
   .description-post>p {
     font-size: 13px;
   }
-  .description-like-post {
-    margin-top: 373px;
-  }
   .state-like-post>p {
     font-size: 13px;
   }
@@ -1010,11 +1039,6 @@ form>div>p {
   }
   #min-password {
     color: #AF8462;
-    font-size: 9px;
-  }
-  form>div>p {
-    margin-top: 0px;
-    margin-bottom: 0px;
     font-size: 9px;
   }
   #wrong-email,

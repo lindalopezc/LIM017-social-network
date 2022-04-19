@@ -1,7 +1,9 @@
 /* eslint-disable import/no-cycle */
 import { Menu } from '../templates/Menu.js';
 import { getUserLocalStorage } from '../firebase/authentication.js';
-import { getPublicationsUser } from '../firebase/database.js';
+import { getPublicationsUser, editPost } from '../firebase/database.js';
+import { deletePostConfirm } from '../templates/modal.js';
+import { onNavigate } from '../lib/ViewController.js';
 
 export const profile = () => {
   // Aquí llamamos y almacenamos la función de localStorage que nos devuelva datos del user.
@@ -56,11 +58,9 @@ export const profile = () => {
                                         <p>${doc.data().Título}</p>
                                       </div>
                                       <div class = "div-icons">
-                                        <button class = "icons-posts-profile">
-                                          <img class = "delete-icon" src = "../img/delete.png" >
+                                        <button class = "btn-delete" data-id = "${doc.id}" >
                                         </button>
-                                        <button class = "icons-posts-profile">
-                                          <img class = "edit-icon" src = "../img/editar.png">
+                                        <button class = "btn-edit-post" data-id = "${doc.id}">
                                         </button>
                                       </div>
                                     </div>
@@ -70,6 +70,32 @@ export const profile = () => {
                                   </div>
                                 </div>`;
       divPostProfile.innerHTML += templatePostUser;
+
+      // LLamamos a los botones para borrar post
+      const btnDelete = divPostProfile.querySelectorAll('.btn-delete');
+
+      btnDelete.forEach((btn) => {
+        btn.addEventListener('click', ({ target: { dataset } }) => {
+          const idPost = dataset.id;
+          // Aquí traemos el modal
+          const root = document.getElementById('root');
+          const modal = document.querySelector('.div-delete-post');
+          if (modal) {
+            modal.remove();
+          }
+          root.appendChild(deletePostConfirm(idPost));
+        });
+      });
+
+      // Llamamos a los botones de editar
+      const btnEdit = divPostProfile.querySelectorAll('.btn-edit-post');
+      btnEdit.forEach((btn) => {
+        btn.addEventListener('click', ({ target: { dataset } }) => {
+          const idPost = dataset.id;
+          onNavigate('/publications');
+          // console.log(editPost(idPost, { Título: 'Linda chompa roja' }));
+        });
+      });
     });
   });
 

@@ -1,4 +1,7 @@
-import { getDataUsers } from '../firebase/database.js';
+/* eslint-disable import/no-cycle */
+/* eslint-disable no-console */
+import { getDataUsers, deletePost } from '../firebase/database.js';
+import { onNavigate } from '../lib/ViewController.js';
 
 export const Modal = (uid) => {
   const contentModal = document.createElement('div');
@@ -33,6 +36,32 @@ export const registerModal = () => {
                     <button class = "register-close-modal">Cerrar</button>`;
   contentModal.innerHTML = templateM;
   const close = contentModal.querySelector('.register-close-modal');
+  close.addEventListener('click', () => {
+    contentModal.remove();
+  });
+  return contentModal;
+};
+
+export const deletePostConfirm = (idPost) => {
+  const contentModal = document.createElement('div');
+  contentModal.setAttribute('class', 'div-delete-post');
+  const templateM = `
+                    <p class="modal-text-delete"> ¿Está seguro que desea eliminar esta publicación?</p>
+                    <div class = "div-buttons-delete">
+                    <button class = "btn-yes">Sí</button>
+                    <button class = "btn-no">No</button>
+                    </div>`;
+  contentModal.innerHTML = templateM;
+
+  // Eliminar post
+  const btnConfirmDelete = contentModal.querySelector('.btn-yes');
+  btnConfirmDelete.addEventListener('click', () => {
+    deletePost(idPost);
+    onNavigate('/profile'); // Actualizamos para que no sean visibles los posts eliminados, y no tener que recargar la pag.
+  });
+
+  // Cerrar modal
+  const close = contentModal.querySelector('.btn-no');
   close.addEventListener('click', () => {
     contentModal.remove();
   });
