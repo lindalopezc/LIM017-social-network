@@ -66,6 +66,9 @@ export const templatePosts = (doc) => {
       btnLike.classList.toggle('icon-like-red'); // Hacemos que cambie de color al quitarle la clase.
       arrayLength -= 1;
       removeLikes(doc.id, userData.uid); // Llamamos a la función que se encarla de eliminar el id del user que ya no le gusta el post
+      if (arrayLength === 0) {
+        counterLikes.style.display = 'none';
+      }
     } else {
       btnLike.classList.add('icon-like-red'); // Añadimos la clase para darle color rojo al corazón
       arrayLength += 1;

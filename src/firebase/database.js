@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
@@ -13,18 +14,15 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  deleteDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 import { app } from './main.js';
 
 const db = getFirestore(app);
 
 // Esta función se encarga de crear una colección de posts:
-export async function insertData(publication) {
-  try {
-    await addDoc(collection(db, 'publications'), publication);
-  } catch (e) {
-    console.error('Error adding document: ', e);
-  }
+export function insertData(publication) {
+  addDoc(collection(db, 'publications'), publication);
 }
 
 // Esta función se encarga de traer los datos de la colección 'publications' de database:
@@ -43,13 +41,10 @@ export async function getDataWithFilters(categoria) {
 }
 
 // Esta función se encarga de crear una colección de datos del usuario:
-export async function insertDataUser(user) {
-  try {
-    await addDoc(collection(db, 'users'), user);
-  } catch (e) {
-    console.error('Error adding document: ', e);
-  }
+export function insertDataUser(user) {
+  addDoc(collection(db, 'users'), user);
 }
+
 // Esta función se encarga de traer los datos de la colección 'users' de database.
 export async function getDataUsers(uid) {
   const dataSort = await query(collection(db, 'users'), where('uid', '==', uid));
@@ -78,4 +73,15 @@ export function addLikes(docId, userId) {
   updateDoc(addLikePost, {
     Likes: arrayUnion(userId), // Aquí estamos añadiendo el id del user en el array Likes.
   });
+}
+
+// Función que se encarga de borrar un post
+export function deletePost(docId) {
+  deleteDoc(doc(db, 'publications', docId));
+}
+
+// Función que se encarga de editar posts.
+export function editPost(docId, publication) { // publication es el objeto que contiene los campos que quiero editar
+  const editPostUser = doc(db, 'publications', docId);
+  updateDoc(editPostUser, publication);
 }

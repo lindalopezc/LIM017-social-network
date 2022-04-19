@@ -17,9 +17,7 @@ import { insertDataUser } from './database.js';
 
 // Función que almacena los campos del user al localStorage.
 export const setUserLocalStorage = (user) => {
-  // para que esto se guarde en el localStorage debe ser
-  // un string y para eso utilizamos JSON.stringify
-  localStorage.setItem('user', JSON.stringify({
+  localStorage.setItem('user', JSON.stringify({ // para que se guarde en el localStorage debe ser un string y para eso utilizamos JSON.stringify
     uid: user.uid,
     displayName: user.displayName,
     email: user.email,
@@ -35,7 +33,7 @@ export const createUser = async (registerEmail, registerPassword, name) => {
   const userCredential = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
   const user = userCredential.user;
   user.displayName = name;
-  user.photoURL = './img/user.png';
+  user.photoURL = '../img/user.png';
   return user;
 };
 
@@ -54,31 +52,21 @@ export const signIn = async (loginEmail, loginPassword) => {
 export const signGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
+      // const credential = GoogleAuthProvider.credentialFromResult(result);
+      // const token = credential.accessToken;
       const user = result.user;
-
-      // Los mismos pasos como en CreateUser
       setUserLocalStorage(user);
-      const dataUsers = getUserLocalStorage();
-      insertDataUser(dataUsers);
-
+      const dataUser = getUserLocalStorage();
+      insertDataUser(dataUser);
       onNavigate('/home');
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
+      // const email = error.email;
+      // const credential = GoogleAuthProvider.credentialFromError(error);
     });
 };
 
 // Función para cerrar sesión
-export const signOutFun = () => {
-  signOut(auth).then(() => {
-    console.log('Usted cerró sesión');
-    onNavigate('/');
-  }).catch((error) => {
-    console.log('No se pudo cerrar seción');
-  });
-};
+export const signOutFun = () => signOut(auth);
