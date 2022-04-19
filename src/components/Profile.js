@@ -92,7 +92,9 @@ export const profile = () => {
       btnEdit.forEach((btn) => {
         btn.addEventListener('click', ({ target: { dataset } }) => {
           const idPost = dataset.id;
-          onNavigate('/publications');
+          const params = new URLSearchParams();
+          params.set('editPostId', idPost);
+          onNavigate('/publications', params);
           // console.log(editPost(idPost, { Título: 'Linda chompa roja' }));
         });
       });

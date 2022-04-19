@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-cycle */
@@ -19,9 +20,9 @@ const routes = {
   '/profile': profile,
 };
 
-export const onNavigate = (pathname) => {
-  window.history.pushState({}, pathname, window.location.origin + pathname);
-
+export const onNavigate = (pathname, urlParam) => {
+  window.history.pushState({}, pathname, window.location.origin + pathname + (urlParam ? `?${urlParam.toString()}` : ''));
+  console.log(urlParam.get);
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
   }
@@ -29,6 +30,7 @@ export const onNavigate = (pathname) => {
   return rootDiv.appendChild(routes[pathname]());
 };
 const component = routes[window.location.pathname];
+rootDiv.appendChild(component());
 // Es el compomente por defecto que carga la ruta,
 // en este caso es el welcome y se ejecuta solo una vez
 
@@ -54,4 +56,3 @@ const component = routes[window.location.pathname];
 //   }
 //   console.log('no hay usuario');
 // });
-rootDiv.appendChild(component());
