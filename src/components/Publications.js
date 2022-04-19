@@ -7,6 +7,7 @@ import { Menu } from '../templates/Menu.js';
 import { getUserLocalStorage } from '../firebase/authentication.js';
 
 export const publications = () => {
+  
   const sectionPublications = document.createElement('section');
   sectionPublications.setAttribute('class', 'section-publications');
 
