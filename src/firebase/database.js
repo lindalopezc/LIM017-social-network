@@ -7,6 +7,7 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
   query,
   orderBy,
   where,
@@ -84,4 +85,10 @@ export function deletePost(docId) {
 export function editPost(docId, publication) { // publication es el objeto que contiene los campos que quiero editar
   const editPostUser = doc(db, 'publications', docId);
   updateDoc(editPostUser, publication);
+}
+
+export async function getDataPost(docId) {
+  const editPostUser = doc(db, 'publications', docId);
+  const querySnapshot = await getDoc(editPostUser);
+  return querySnapshot;
 }

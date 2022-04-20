@@ -22,15 +22,17 @@ const routes = {
 
 export const onNavigate = (pathname, urlParam) => {
   window.history.pushState({}, pathname, window.location.origin + pathname + (urlParam ? `?${urlParam.toString()}` : ''));
-  console.log(urlParam.get);
+  console.log(urlParam);
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
   }
-
+  if (urlParam) {
+    return rootDiv.appendChild(routes[pathname](urlParam));
+  }
   return rootDiv.appendChild(routes[pathname]());
 };
-const component = routes[window.location.pathname];
-rootDiv.appendChild(component());
+const pathname = window.location.pathname;
+onNavigate(pathname);
 // Es el compomente por defecto que carga la ruta,
 // en este caso es el welcome y se ejecuta solo una vez
 

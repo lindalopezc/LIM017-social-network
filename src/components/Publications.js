@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
 import { uploadAndDownloadImage } from '../firebase/storage.js';
-import { insertData } from '../firebase/database.js';
+import { getDataPost, insertData } from '../firebase/database.js';
 import { onNavigate } from '../lib/ViewController.js';
 import { Menu } from '../templates/Menu.js';
 import { getUserLocalStorage } from '../firebase/authentication.js';
 
-export const publications = () => {
-  
+export const publications = (urlParam) => {
+
   const sectionPublications = document.createElement('section');
   sectionPublications.setAttribute('class', 'section-publications');
 
@@ -177,6 +177,10 @@ export const publications = () => {
     insertData(publication);
     return onNavigate('/home');
   });
-
+  if (urlParam) {
+    getDataPost(urlParam.get('editPostId')).then((postData) => {
+      console.log(postData);
+    });
+  }
   return sectionPublications;
 };
