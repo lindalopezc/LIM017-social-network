@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-unresolved */
@@ -20,9 +21,20 @@ const routes = {
   '/profile': profile,
 };
 
-export const onNavigate = (pathname, urlParam) => {
-  window.history.pushState({}, pathname, window.location.origin + pathname + (urlParam ? `?${urlParam.toString()}` : ''));
-  console.log(urlParam.get);
+// export const onNavigate = (pathname, urlParam) => {
+//    window.history.pushState({}, pathname, window.location.origin + pathname + (urlParam ? `?${urlParam.toString()}` : ''));
+//   console.log(urlParam.get);
+//   while (rootDiv.firstChild) {
+//     rootDiv.removeChild(rootDiv.firstChild);
+//   }
+
+//   return rootDiv.appendChild(routes[pathname]());
+// };
+// const component = routes[window.location.pathname];
+// rootDiv.appendChild(component()); // Es el compomente por defecto que carga la ruta,
+
+export const onNavigate = (pathname) => {
+  window.history.pushState({}, pathname, window.location.origin + pathname);
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
   }
@@ -30,9 +42,7 @@ export const onNavigate = (pathname, urlParam) => {
   return rootDiv.appendChild(routes[pathname]());
 };
 const component = routes[window.location.pathname];
-rootDiv.appendChild(component());
-// Es el compomente por defecto que carga la ruta,
-// en este caso es el welcome y se ejecuta solo una vez
+rootDiv.appendChild(component()); // Es el compomente por defecto que carga la ruta,
 
 // window.onpopstate = () => {
 //     debugger
@@ -42,17 +52,3 @@ rootDiv.appendChild(component());
 //     }
 //     rootDiv.appendChild(component());
 // };
-
-/* window.onpopstate = () => {
-    while (rootDiv.firstChild) {
-        rootDiv.removeChild(rootDiv.firstChild);
-    }
-    rootDiv.appendChild(component());
-}; */
-// auth.onAuthStateChanged((user) => {
-//   if (user) {
-//     console.log(JSON.parse(JSON.stringify(user)));
-//     return JSON.parse(JSON.stringify(user));
-//   }
-//   console.log('no hay usuario');
-// });

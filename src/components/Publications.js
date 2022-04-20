@@ -7,7 +7,15 @@ import { Menu } from '../templates/Menu.js';
 import { getUserLocalStorage } from '../firebase/authentication.js';
 
 export const publications = () => {
-  
+  // const params = new URLSearchParams(window.location.search);
+  // const editPostId = params.get('editPostId');
+// Faltaría traer los campos del post de firebase pero ya tengo el id :)
+
+  // const formPublication = `<form id = form-publication>
+  // <label class = "label-image>
+  // <input type = "file" name = file-image" class = "input->
+  //     </form>`
+
   const sectionPublications = document.createElement('section');
   sectionPublications.setAttribute('class', 'section-publications');
 
@@ -21,6 +29,11 @@ export const publications = () => {
   divTitlePublications.appendChild(titlePublications);
   divTitlePublications.appendChild(divMenu);
 
+  // if (editPostId) {
+  //   console.log(editPostId);
+
+  //   // Falta poner el template.
+  // } else {
   const formPublication = document.createElement('form');
   formPublication.setAttribute('id', 'form-publication');
   const labelImage = document.createElement('label');
@@ -177,6 +190,7 @@ export const publications = () => {
     insertData(publication);
     return onNavigate('/home');
   });
+  // }
 
   return sectionPublications;
 };

@@ -2,8 +2,10 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
-import { signIn, signGoogle, setUserLocalStorage } from '../firebase/authentication.js';
-import { getDataUsers } from '../firebase/database.js';
+import {
+  signIn, signGoogle, setUserLocalStorage, getUserLocalStorage,
+} from '../firebase/authentication.js';
+import { getDataUsers, insertDataUser } from '../firebase/database.js';
 
 export const login = () => {
   const loginSection = document.createElement('section');
@@ -132,7 +134,23 @@ export const login = () => {
   loginSection.appendChild(divLogin);
 
   aLinkRegister.addEventListener('click', () => onNavigate('/register'));
-  aLinkGoogle.addEventListener('click', signGoogle);
+  aLinkGoogle.addEventListener('click', () => {
+    signGoogle().then((result) => {
+      // const credential = GoogleAuthProvider.credentialFromResult(result);
+      // const token = credential.accessToken;
+      const user = result.user;
+      setUserLocalStorage(user);
+      const dataUser = getUserLocalStorage();
+      insertDataUser(dataUser);
+      onNavigate('/home');
+    });
+    // .catch((error) => {
+    //  const errorCode = error.code;
+    //  const errorMessage = error.message;
+    //  const email = error.email;
+    //  const credential = GoogleAuthProvider.credentialFromError(error);
+    // });
+  });
   loginBtn.addEventListener('click', () => {
     signIn(inputEmail.value, inputPassword.value)
       .then((user) => {
