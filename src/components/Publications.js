@@ -20,11 +20,6 @@ export const publications = (urlParam) => {
   divTitlePublications.appendChild(titlePublications);
   divTitlePublications.appendChild(divMenu);
 
-  // if (editPostId) {
-  //   console.log(editPostId);
-
-  //   // Falta poner el template.
-  // } else {
   const formPublication = document.createElement('form');
   formPublication.setAttribute('id', 'form-publication');
   const labelImage = document.createElement('label');
@@ -188,7 +183,6 @@ export const publications = (urlParam) => {
   if (urlParam) {
     getDataPost(urlParam.get('editPostId')).then((postDoc) => {
       const postdata = postDoc.data();
-      console.log(postdata);
       image.setAttribute('src', postdata.Foto);
       inputTitle.value = postdata.Título;
       selectCategory.value = postdata.Categoría;
