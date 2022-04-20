@@ -10,7 +10,7 @@ export const Modal = (uid) => {
     if (!result.empty) {
       const userData = result.docs[0].data();
       const templateM = `<header>
-                          <h2 class="header-title">Contáctame</h2>
+                          <p class="header-title">Contáctame</p>
                           <button class="close-modal">X</button>
                         </header>
                         <p class="modal-text">¡Hola! Puedes enviarme un mensaje por correo y te responderé en breve.</p>
@@ -46,7 +46,7 @@ export const deletePostConfirm = (idPost) => {
   const contentModal = document.createElement('div');
   contentModal.setAttribute('class', 'div-delete-post');
   const templateM = `
-                    <p class="modal-text-delete"> ¿Está seguro que desea eliminar esta publicación?</p>
+                    <p class="modal-text-delete"> ¿Está segur@ que desea eliminar esta publicación?</p>
                     <div class = "div-buttons-delete">
                     <button class = "btn-yes">Sí</button>
                     <button class = "btn-no">No</button>

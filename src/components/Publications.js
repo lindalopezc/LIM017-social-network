@@ -7,7 +7,6 @@ import { Menu } from '../templates/Menu.js';
 import { getUserLocalStorage } from '../firebase/authentication.js';
 
 export const publications = (urlParam) => {
-
   const sectionPublications = document.createElement('section');
   sectionPublications.setAttribute('class', 'section-publications');
 
@@ -184,7 +183,6 @@ export const publications = (urlParam) => {
   if (urlParam) {
     getDataPost(urlParam.get('editPostId')).then((postDoc) => {
       const postdata = postDoc.data();
-      console.log(postdata);
       image.setAttribute('src', postdata.Foto);
       inputTitle.value = postdata.Título;
       selectCategory.value = postdata.Categoría;

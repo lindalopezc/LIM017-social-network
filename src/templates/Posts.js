@@ -81,7 +81,7 @@ export const templatePosts = (doc) => {
 
   const iconContact = sectionPost.querySelector('.icon-contact-post');
   iconContact.addEventListener('click', () => {
-    const root = document.getElementById('root');
+    const root = document.getElementById(doc.id);
 
     // Aquí traemos el modal
     const modal = document.querySelector('.content-modal');
