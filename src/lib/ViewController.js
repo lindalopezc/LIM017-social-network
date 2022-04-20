@@ -31,8 +31,13 @@ export const onNavigate = (pathname, urlParam) => {
   }
   return rootDiv.appendChild(routes[pathname]());
 };
-const pathname = window.location.pathname;
-onNavigate(pathname);
+const pathname = window.location.pathname; // Me da la ruta actual
+const querystring = window.location.search;
+// usando el querystring, creamos un objeto del tipo URLSearchParams
+const params = new URLSearchParams(querystring);
+onNavigate(pathname, params);
+
+
 // Es el compomente por defecto que carga la ruta,
 // en este caso es el welcome y se ejecuta solo una vez
 

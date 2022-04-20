@@ -94,7 +94,6 @@ export const profile = () => {
           const idPost = dataset.id;
           const params = new URLSearchParams();
           params.set('editPostId', idPost);
-          debugger
           onNavigate('/publications', params);
           // console.log(editPost(idPost, { Título: 'Linda chompa roja' }));
         });

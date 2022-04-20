@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
 import { uploadAndDownloadImage } from '../firebase/storage.js';
-import { getDataPost, insertData } from '../firebase/database.js';
+import { editPost, getDataPost, insertData } from '../firebase/database.js';
 import { onNavigate } from '../lib/ViewController.js';
 import { Menu } from '../templates/Menu.js';
 import { getUserLocalStorage } from '../firebase/authentication.js';
@@ -165,7 +165,7 @@ export const publications = (urlParam) => {
   btnSubmit.addEventListener('click', () => {
     const publication = {
       Título: inputTitle.value,
-      Foto: getImageUrl,
+      Foto: image.getAttribute('src'),
       Estado: selectState.value,
       Categoría: selectCategory.value,
       Description: inputDescription.value,
@@ -174,12 +174,22 @@ export const publications = (urlParam) => {
       photoUser: userPublication.photoURL,
       Likes: [],
     };
-    insertData(publication);
+    if (urlParam) {
+      editPost(urlParam.get('editPostId'), publication);
+    } else {
+      insertData(publication);
+    }
     return onNavigate('/home');
   });
   if (urlParam) {
-    getDataPost(urlParam.get('editPostId')).then((postData) => {
-      console.log(postData);
+    getDataPost(urlParam.get('editPostId')).then((postDoc) => {
+      const postdata = postDoc.data();
+      console.log(postdata);
+      image.setAttribute('src', postdata.Foto);
+      inputTitle.value = postdata.Título;
+      selectCategory.value = postdata.Categoría;
+      selectState.value = postdata.Estado;
+      inputDescription.value = postdata.Description;
     });
   }
   return sectionPublications;
