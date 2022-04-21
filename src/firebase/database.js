@@ -87,6 +87,7 @@ export function editPost(docId, publication) { // publication es el objeto que c
   updateDoc(editPostUser, publication);
 }
 
+// Función que se encarga de traer un solo post cuando le pasamos el id.
 export async function getDataPost(docId) {
   const editPostUser = doc(db, 'publications', docId);
   const querySnapshot = await getDoc(editPostUser);

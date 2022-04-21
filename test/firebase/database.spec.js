@@ -1,14 +1,10 @@
-import { insertData } from '../src/firebase/database.js';
-
-const firebase = {
-    
-}
+import { insertData } from '../../src/firebase/database.js';
 
 const objectPublication = {
-  Título: 'publicación 1',
+  Titulo: 'publicación 1',
   Foto: '../src/img/facebook.png',
   Estado: '7/10',
-  Categoría: 'Vender',
+  Categoria: 'Vender',
   Description: 'Hola esta es mi publicacion 1',
   Fecha: new Date(),
   uidUser: '123linda',
