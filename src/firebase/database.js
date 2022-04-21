@@ -16,7 +16,7 @@ import {
   arrayUnion,
   arrayRemove,
   deleteDoc,
-} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+} from './firebase-utils.js';
 import { app } from './main.js';
 
 const db = getFirestore(app);

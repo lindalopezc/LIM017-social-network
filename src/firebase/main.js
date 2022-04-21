@@ -1,6 +1,4 @@
-/* eslint-disable import/no-unresolved */
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
-import { getAuth, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
+import { initializeApp, getAuth, GoogleAuthProvider } from './firebase-utils.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAdfUjeKGbV3sdoMqcYIVg0pEzOBLaihlo',

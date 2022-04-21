@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   signOut,
   sendEmailVerification,
-} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
+} from './firebase-utils.js';
 import { auth, provider } from './main.js';
 
 // Función que almacena los campos del user al localStorage.
