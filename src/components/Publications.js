@@ -173,14 +173,14 @@ export const publications = (urlParam) => {
       photoUser: userPublication.photoURL,
       Likes: [],
     };
-    if (urlParam) {
+    if (urlParam.has('editPostId')) {
       editPost(urlParam.get('editPostId'), publication);
     } else {
       insertData(publication);
     }
     return onNavigate('/home');
   });
-  if (urlParam) {
+  if (urlParam.has('editPostId')) {
     getDataPost(urlParam.get('editPostId')).then((postDoc) => {
       const postdata = postDoc.data();
       image.setAttribute('src', postdata.Foto);
