@@ -45,6 +45,7 @@ export const login = () => {
   inputEmail.setAttribute('placeholder', 'Email');
   inputEmail.setAttribute('class', 'input');
   inputEmail.setAttribute('id', 'login-email');
+  inputEmail.setAttribute('autocomplete', 'useremail');
 
   const divInvalidEmail = document.createElement('div');
   divInvalidEmail.setAttribute('class', 'div-little-messages');
@@ -57,6 +58,7 @@ export const login = () => {
   inputPassword.setAttribute('placeholder', 'Contraseña');
   inputPassword.setAttribute('class', 'input');
   inputPassword.setAttribute('id', 'login-password');
+  inputPassword.setAttribute('autocomplete', 'currentpassword');
 
   const divInvalidPassword = document.createElement('div');
   divInvalidPassword.setAttribute('class', 'div-little-messages');

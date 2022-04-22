@@ -1,15 +1,12 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
-/* eslint-disable eol-last */
-/* eslint-disable import/no-cycle */
 /* eslint-disable import/no-unresolved */
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import {
   getStorage,
   ref,
   uploadBytes,
   getDownloadURL,
-} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-storage.js';
+} from './firebase-utils.js';
 import { app } from './main.js';
 
 const storage = getStorage(app);

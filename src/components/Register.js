@@ -45,6 +45,7 @@ export const register = () => {
   inputName.setAttribute('placeholder', 'Nombre');
   inputName.setAttribute('class', 'input');
   inputName.setAttribute('id', 'register-name');
+  inputName.setAttribute('autocomplete', 'username');
 
   const divMessageName = document.createElement('div');
   divMessageName.setAttribute('class', 'div-little-messages');
@@ -57,6 +58,7 @@ export const register = () => {
   inputEmail.setAttribute('placeholder', 'Email');
   inputEmail.setAttribute('class', 'input');
   inputEmail.setAttribute('id', 'register-email');
+  inputEmail.setAttribute('autocomplete', 'email');
 
   const divWrongEmail = document.createElement('div');
   divWrongEmail.setAttribute('class', 'div-little-messages');
@@ -69,6 +71,7 @@ export const register = () => {
   inputPassword.setAttribute('placeholder', 'Contraseña');
   inputPassword.setAttribute('class', 'input');
   inputPassword.setAttribute('id', 'register-password');
+  inputPassword.setAttribute('autocomplete', 'new-password');
 
   const divMinPassword = document.createElement('div');
   divMinPassword.setAttribute('class', 'div-little-messages');
@@ -82,6 +85,7 @@ export const register = () => {
   inputConfirmPassword.setAttribute('placeholder', 'Confirmar contraseña');
   inputConfirmPassword.setAttribute('class', 'input');
   inputConfirmPassword.setAttribute('id', 'register-confirm');
+  inputConfirmPassword.setAttribute('autocomplete', 'new-password');
 
   const divWrongPassword = document.createElement('div');
   divWrongPassword.setAttribute('class', 'div-little-messages');
@@ -193,7 +197,23 @@ export const register = () => {
         });
     }
   });
-  aLinkGoogle.addEventListener('click', signGoogle);
+  aLinkGoogle.addEventListener('click', () => {
+    signGoogle().then((result) => {
+      // const credential = GoogleAuthProvider.credentialFromResult(result);
+      // const token = credential.accessToken;
+      const user = result.user;
+      setUserLocalStorage(user);
+      const dataUser = getUserLocalStorage();
+      insertDataUser(dataUser);
+      onNavigate('/home');
+    });
+    // .catch((error) => {
+    //  const errorCode = error.code;
+    //  const errorMessage = error.message;
+    //  const email = error.email;
+    //  const credential = GoogleAuthProvider.credentialFromError(error);
+    // });
+  });
 
   return registerSection;
 };
