@@ -1,9 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
-import {
-  createUser, signGoogle, setUserLocalStorage, getUserLocalStorage, sendEmail,
-} from '../firebase/authentication.js';
-import { insertDataUser } from '../firebase/database.js';
+import { createUser, signGoogle } from '../lib/index.js';
 import { registerModal } from '../templates/modal.js';
 
 /* eslint-disable max-len */
@@ -168,13 +165,7 @@ export const register = () => {
       pWrongPassword.innerText = 'Las contraseñas no coinciden.';
     } else {
       createUser(inputEmail.value, inputPassword.value, inputName.value)
-        .then((user) => {
-          setUserLocalStorage(user);
-          const dataUser = getUserLocalStorage();
-          insertDataUser(dataUser);
-          sendEmail(user);
-          (onNavigate('/login')).appendChild(registerModal()); // Aquí le estamos pasando el modal que muestra mensaje de link.
-        })
+        .then(() => (onNavigate('/login')).appendChild(registerModal()))
         .catch((error) => {
           const errorCode = error.code;
           switch (errorCode) {
@@ -198,21 +189,9 @@ export const register = () => {
     }
   });
   aLinkGoogle.addEventListener('click', () => {
-    signGoogle().then((result) => {
-      // const credential = GoogleAuthProvider.credentialFromResult(result);
-      // const token = credential.accessToken;
-      const user = result.user;
-      setUserLocalStorage(user);
-      const dataUser = getUserLocalStorage();
-      insertDataUser(dataUser);
+    signGoogle().then(() => {
       onNavigate('/home');
     });
-    // .catch((error) => {
-    //  const errorCode = error.code;
-    //  const errorMessage = error.message;
-    //  const email = error.email;
-    //  const credential = GoogleAuthProvider.credentialFromError(error);
-    // });
   });
 
   return registerSection;

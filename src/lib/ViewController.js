@@ -1,7 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable no-console */
-/* eslint-disable consistent-return */
-/* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-cycle */
 import { welcome } from '../components/Welcome.js';
 import { register } from '../components/Register.js';
@@ -31,8 +28,7 @@ export const onNavigate = (pathname, urlParam) => {
   }
   return rootDiv.appendChild(routes[pathname]());
 };
-// const component = routes[window.location.pathname];
-// rootDiv.appendChild(component()); // Es el compomente por defecto que carga la ruta,
+
 const pathname = window.location.pathname; // Me da la ruta actual
 const querystring = window.location.search;// esto me da lo que esta despues del signo de interrogacion
 // usando el querystring, creamos un objeto del tipo URLSearchParams

@@ -16,7 +16,7 @@ export const welcome = () => {
   const imgLogo = document.createElement('img');
   imgLogo.setAttribute('src', '../img/logoblanco.png');
   imgLogo.setAttribute('alt', 'Imagen de bienvenida');
-  imgLogo.setAttribute('class', 'logo'); // Cambiar por clase o id, temporal
+  imgLogo.setAttribute('class', 'logo');
   divLogo.appendChild(imgLogo);
 
   const divTextWelcome = document.createElement('div');
