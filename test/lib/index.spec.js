@@ -6,7 +6,7 @@ jest.mock('../../src/firebase/firebase-utils.js');
 
 describe('Función createUser', () => {
   it('Debería retornar el nombre de usuario registrado', async () => {
-    createUser('hola@gmail.com', '123456', 'linda')
+    createUser('hola@gmail.com', '123456', 'angelica')
       .then((user) => {
         expect(user.displayName).toBe('angelica');
       });
