@@ -19,3 +19,4 @@ export const signInWithEmailAndPassword = jest.fn(() => Promise.resolve({ user: 
 export const getDocs = jest.fn(({}) => Promise.resolve(
   { docs: [{ data: () => ({}) }] },
 ));
+export const getStorage = () => ({});
