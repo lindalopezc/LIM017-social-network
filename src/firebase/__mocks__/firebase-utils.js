@@ -1,3 +1,5 @@
+/* eslint-disable no-empty-pattern */
+/* eslint-disable max-len */
 export const createUserWithEmailAndPassword = jest.fn(() => Promise.resolve({
   user: {
     displayName: '',
@@ -9,11 +11,12 @@ export const getAuth = () => ({});
 export class GoogleAuthProvider {}
 export const getFirestore = () => ({});
 export const sendEmailVerification = jest.fn();
-export const sendEmailFirebase = jest.fn();
 export const collection = () => ({});
 export const addDoc = jest.fn();
-export const insertDataUser = jest.fn();
-export const signInWithPopup = jest.fn();
-export const signGoogleFirebase = jest.fn(() => Promise.resolve({
-  user: { hola: 'lala' },
-}));
+export const where = jest.fn();
+export const query = jest.fn(() => Promise.resolve({}));
+export const signInWithEmailAndPassword = jest.fn(() => Promise.resolve({ user: { uid: '12345' } }));
+export const getDocs = jest.fn(({}) => Promise.resolve(
+  { docs: [{ data: () => ({}) }] },
+));
+export const getStorage = () => ({});
