@@ -1,8 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
 import { createUser, signGoogle } from '../lib/index.js';
+import { errorCasesRegister } from '../lib/errorCases.js';
 import { registerModal } from '../templates/modal.js';
-
 /* eslint-disable max-len */
 export const register = () => {
   const registerSection = document.createElement('section');
@@ -159,32 +159,18 @@ export const register = () => {
 
   aLinkLogin.addEventListener('click', () => onNavigate('/login'));
   registerBtn.addEventListener('click', () => {
-    if (inputName.value === '') { // Con esta condición el usuario debe ingresar su nombre de manera obligatoria.
-      pMessageName.innerText = 'Campo vacío. Por favor escriba su nombre.';
+    if (!inputName.value) { // Con esta condición el usuario debe ingresar su nombre de manera obligatoria.
+      pMessageName.textContent = 'Campo vacío. Por favor escriba su nombre.';
     } else if (inputPassword.value !== inputConfirmPassword.value) { // Las contraseñas deben ser iguales.
-      pWrongPassword.innerText = 'Las contraseñas no coinciden.';
+      pWrongPassword.textContent = 'Las contraseñas no coinciden.';
     } else {
       createUser(inputEmail.value, inputPassword.value, inputName.value)
-        .then(() => (onNavigate('/login')).appendChild(registerModal()))
+        .then(() => {
+          onNavigate('/login').appendChild(registerModal());
+        })
         .catch((error) => {
           const errorCode = error.code;
-          switch (errorCode) {
-            case 'auth/email-already-in-use':
-              pWrongEmail.innerText = 'El correo ingresado ya está en uso';
-              inputEmail.style.borderColor = '#F62D2D';
-              break;
-            case 'auth/weak-password':
-              pMinPassword.style.color = 'red';
-              pMinPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
-              inputPassword.style.borderColor = '#F62D2D';
-              break;
-            case 'auth/invalid-email':
-              pWrongEmail.textContent = 'El correo ingresado es inválido';
-              inputEmail.style.borderColor = '#F62D2D';
-              break;
-            default:
-              pErrorDefault.innerText = errorCode;
-          }
+          errorCasesRegister(errorCode);
         });
     }
   });

@@ -3,6 +3,7 @@
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
 import { signGoogle, signIn } from '../lib/index.js';
+import { errorCasesLogin } from '../lib/errorCases.js';
 
 export const login = () => {
   const loginSection = document.createElement('section');
@@ -145,26 +146,7 @@ export const login = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        switch (errorCode) {
-          case 'auth/user-not-found':
-            pInvalidEmail.innerText = 'No hay usuario registrado con ese correo., verifica e intente de nuevo.';
-            inputEmail.style.borderColor = '#F62D2D';
-            break;
-          case 'auth/invalid-email':
-            pInvalidEmail.textContent = 'El correo ingresado es inválido.';
-            inputEmail.style.borderColor = '#F62D2D';
-            break;
-          case 'auth/wrong-password':
-            pInvalidPassword.innerText = 'La contraseña no es válida, verifica e intente de nuevo.';
-            inputPassword.style.borderColor = '#F62D2D';
-            break;
-          case 'auth/email-already-exists':
-            pInvalidEmail.innerText = 'El correo electrónico proporcionado esta siendo utilizado por otro miembro, verifica e intente de nuevo.';
-            inputEmail.style.borderColor = '#F62D2D';
-            break;
-          default:
-            pErrorDefault.innerText = errorCode;
-        }
+        errorCasesLogin(errorCode);
       });
   });
   return loginSection;
