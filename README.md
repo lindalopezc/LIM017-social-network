@@ -1,17 +1,17 @@
 # Creando una Red Social
 
-##Introducción
+## Introducción
  Slowly es una red social permite crear una comunidad alrededor de la idea de que se le puede dar una ‘segunda vida’a las prendas, brindando la oportunidad de conectar personas que puedan intercambiar, vender, comprar y donar ropa de segunda mano en lugar de desecharlas.
  Slowly significa *lentamente*, la idea que nos inspiró fue un movimiento llamado Slow Fashion que aboga por la compra de prendas de mejor calidad, que duren mas tiempo y que valora el trato justo de las personas, los animales y el planeta en todo el proceso de producción.
  
-##Descripción del proyecto
+## Descripción del proyecto
 
-#### **¿Quiénes son los principales usuarios del producto? **
+#### ** ¿Quiénes son los principales usuarios del producto? **
 Los principales usuarios de Slowly son mujeres en el rango de edad entre 18 y 40 años que se encuentren interesadas por la moda sostenible, bajo la tendencia de slow fashion; la cual aboga por la compra de prendas de mejor calidad que duren más tiempo, valora el trato justo de las personas, los animales y el planeta a lo largo del proceso; además de animar a comprar menos prendas con menos frecuencia, y a optar por la segunda mano mientras sea posible. 
 
 De acuerdo a la investigación realizada para conocer los hábitos de nuestros usuarios con respecto al tratamiento que le dan a la ropa que ya no usan, se encontró que el 80% de los encuestados hacen una donación, el 23% la desecha y el 8% la vende. 
 
-#### **¿Qué problema resuelve el producto? **
+#### ** ¿Qué problema resuelve el producto? **
 
 La industria de la moda es la segunda más contaminante en el mundo. Según la Agencia Internacional de la Energía, en 2015 la producción textil emitió el equivalente a 1,2 billones de toneladas de CO2, más que las que expulsaron a la atmósfera el transporte marítimo y la aviación internacional, juntos.
 
