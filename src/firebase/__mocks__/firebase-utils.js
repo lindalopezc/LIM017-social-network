@@ -31,3 +31,6 @@ export const getStorage = () => ({});
 // Solo momentáneamente mokeo a las funciones que marcan codigos de error
 export const errorCasesLogin = jest.fn();
 export const errorCasesRegister = jest.fn();
+export const userData = () => ({
+  photoURL: '',
+});
