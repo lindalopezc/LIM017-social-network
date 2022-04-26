@@ -2,55 +2,32 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-multi-assign */
 import { onNavigate } from '../../src/lib/ViewController.js';
+import { register } from '../../src/components/Register.js';
+import { login } from '../../src/components/Login.js';
+// import { publications } from '../../src/components/Publications.js';
 
 jest.mock('../../src/firebase/firebase-utils.js');
 
-const welcome = () => {
-  const welcomeView = document.createElement('div');
-  welcomeView.textContent('Estoy en vista Welcome');
-  return welcomeView;
-};
-const register = () => {
-  const registerView = document.createElement('div');
-  registerView.textContent('Estoy en vista Register');
-  return registerView;
-};
-const login = () => {
-  const loginView = document.createElement('div');
-  loginView.textContent('Estoy en vista Login');
-  return loginView;
-};
-const home = () => {
-  const homeView = document.createElement('div');
-  homeView.textContent('Estoy en vista Home');
-  return homeView;
-};
-const publications = () => {
-  const publicationsView = document.createElement('div');
-  publicationsView.textContent('Estoy en vista Publications');
-  return publicationsView;
-};
-const profile = () => {
-  const profileView = document.createElement('div');
-  profileView.textContent('Estoy en vista Profile');
-  return profileView;
-};
-
-const routes = {
-  '/': welcome,
-  '/register': register,
-  '/login': login,
-  '/home': home,
-  '/publications': publications,
-  '/profile': profile,
-};
-
-describe('Función onNavigate', () => {
-  it('La función onNavigate debe cargar vista Welcome', () => {
-    // const root = document.createElement('div');
-    // root.setAttribute('id', 'root');
-    document.body.innerHTML = '<div id = "root"></div>'; // No entiendo porqué no sale :(
-    const rootDiv = document.querySelector('#root');
-    expect(onNavigate(routes['/'])).toEqual(welcome);
+describe('Función onNavigate sin argumento urlParam', () => {
+  it('La función onNavigate debe cargar vista Register', () => {
+    document.body.innerHTML = '<div id="root"></div>';
+    const registerComponent = register();
+    expect(onNavigate('/register')).toEqual(registerComponent);
+  });
+  it('La función onNavigate debe cargar vista Login', () => {
+    document.body.innerHTML = '<div id="root"></div>';
+    const loginComponent = login();
+    expect(onNavigate('/login')).toEqual(loginComponent);
   });
 });
+
+// describe('Función onNavigate con argumento urlParam', () => {
+//   document.body.innerHTML = '<div id="root"></div>';
+//   const idPost = '1dzqT4iMtQJ2umAQoq6F';
+//   const params = new URLSearchParams();
+//   params.set('editPostId', idPost);
+//   const publicationComponent = publications(params);
+//   it('La función onNavigate debe cargar vista Register', () => {
+//     expect(onNavigate('/publications', params)).toEqual(publicationComponent);
+//   });
+// });

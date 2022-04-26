@@ -29,10 +29,12 @@ export const welcome = () => {
   const loginBtn = document.createElement('button');
   loginBtn.textContent = 'Inicia sesión';
   loginBtn.setAttribute('class', 'button');
+  loginBtn.setAttribute('id', 'login-btn-welcome');
 
   const registerBtn = document.createElement('button');
   registerBtn.textContent = 'Regístrate';
   registerBtn.setAttribute('class', 'button');
+  registerBtn.setAttribute('id', 'register-btn-welcome');
 
   divBtn.appendChild(loginBtn);
   divBtn.appendChild(registerBtn);

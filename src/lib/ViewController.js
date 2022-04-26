@@ -7,8 +7,6 @@ import { home } from '../components/Home.js';
 import { publications } from '../components/Publications.js';
 import { profile } from '../components/Profile.js';
 
-const rootDiv = document.getElementById('root');
-
 const routes = {
   '/': welcome,
   '/register': register,
@@ -19,6 +17,7 @@ const routes = {
 };
 
 export const onNavigate = (pathname, urlParam) => {
+  const rootDiv = document.getElementById('root');
   window.history.pushState({}, pathname, window.location.origin + pathname + (urlParam ? `?${urlParam.toString()}` : ''));
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
@@ -29,8 +28,12 @@ export const onNavigate = (pathname, urlParam) => {
   return rootDiv.appendChild(routes[pathname]());
 };
 
-const pathname = window.location.pathname; // Me da la ruta actual
-const querystring = window.location.search;// esto me da lo que esta despues del signo de interrogacion
-// usando el querystring, creamos un objeto del tipo URLSearchParams
-const params = new URLSearchParams(querystring);
-onNavigate(pathname, params); // Esta funcion es para navegar entre rutas
+window.addEventListener('DOMContentLoaded', () => {
+  // const component = routes[window.location.pathname];
+  // rootDiv.appendChild(component()); // Es el compomente por defecto que carga la ruta,
+  const pathname = window.location.pathname; // Me da la ruta actual
+  const querystring = window.location.search;// esto me da lo que esta despues del signo de interrogacion
+  // usando el querystring, creamos un objeto del tipo URLSearchParams
+  const params = new URLSearchParams(querystring);
+  onNavigate(pathname, params); // Esta funcion es para navegar entre rutas
+});
