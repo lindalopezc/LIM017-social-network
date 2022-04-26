@@ -173,22 +173,26 @@ export const publications = (urlParam) => {
       photoUser: userPublication.photoURL,
       Likes: [],
     };
-    if (urlParam.has('editPostId')) {
-      editPost(urlParam.get('editPostId'), publication);
+    if (urlParam) {
+      if (urlParam.has('editPostId')) {
+        editPost(urlParam.get('editPostId'), publication);
+      }
     } else {
       insertData(publication);
     }
     return onNavigate('/home');
   });
-  if (urlParam.has('editPostId')) {
-    getDataPost(urlParam.get('editPostId')).then((postDoc) => {
-      const postdata = postDoc.data();
-      image.setAttribute('src', postdata.Foto);
-      inputTitle.value = postdata.Titulo;
-      selectCategory.value = postdata.Categoria;
-      selectState.value = postdata.Estado;
-      inputDescription.value = postdata.Description;
-    });
+  if (urlParam) {
+    if (urlParam.has('editPostId')) {
+      getDataPost(urlParam.get('editPostId')).then((postDoc) => {
+        const postdata = postDoc.data();
+        image.setAttribute('src', postdata.Foto);
+        inputTitle.value = postdata.Titulo;
+        selectCategory.value = postdata.Categoria;
+        selectState.value = postdata.Estado;
+        inputDescription.value = postdata.Description;
+      });
+    }
   }
   return sectionPublications;
 };
