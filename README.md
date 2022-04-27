@@ -21,7 +21,7 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 
 #### Historias de usuario
 
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/HU1.png)
+![Imagen text](https://github.com/lindalopezc/LIM017-social-network/blob/dev/src/img/img-readme/Historias%20de%20usuario.png)
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
