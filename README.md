@@ -123,7 +123,6 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 
 #### Diseño final Mobile 
 
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-welcome-mobile.png)
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-home-mobile.png)
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-publicar-mobile.png)
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-perfil-mobile.png)
