@@ -1,20 +1,18 @@
-# Creando una Red Social
+# Proyecto de Red Social: Slowly
 
-## Introducción
+## Introducción 
  Slowly es una red social permite crear una comunidad alrededor de la idea de que se le puede dar una ‘segunda vida’a las prendas, brindando la oportunidad de conectar personas que puedan intercambiar, vender, comprar y donar ropa de segunda mano en lugar de desecharlas.
  Slowly significa *lentamente*, la idea que nos inspiró fue un movimiento llamado Slow Fashion que aboga por la compra de prendas de mejor calidad, que duren mas tiempo y que valora el trato justo de las personas, los animales y el planeta en todo el proceso de producción.
  
 ## Descripción del proyecto
 
 #### ¿Quiénes son los principales usuarios del producto?
-Los principales usuarios de Slowly son mujeres en el rango de edad entre 18 y 40 años que se encuentren interesadas por la moda sostenible, bajo la tendencia de slow fashion; la cual aboga por la compra de prendas de mejor calidad que duren más tiempo, valora el trato justo de las personas, los animales y el planeta a lo largo del proceso; además de animar a comprar menos prendas con menos frecuencia, y a optar por la segunda mano mientras sea posible. 
-
-De acuerdo a la investigación realizada para conocer los hábitos de nuestros usuarios con respecto al tratamiento que le dan a la ropa que ya no usan, se encontró que el 80% de los encuestados hacen una donación, el 23% la desecha y el 8% la vende. 
+Los principales usuarios de Slowly son todas aquellas personas que se encuentren interesadas por la moda sostenible, bajo la tendencia de *Slow fashion*; la cual aboga por la compra de prendas de mejor calidad que duren más tiempo, valora el trato justo de las personas, los animales y el planeta a lo largo del proceso; además de animar a comprar menos prendas con menos frecuencia, y a optar por la segunda mano mientras sea posible. 
+De acuerdo a la investigación realizada por nuestro equipo con el fin de conocer los hábitos de nuestros usuarios con respecto al tratamiento que le dan a la ropa que ya no usan, se encontró que el 80% de los encuestados hacen una donación, el 23% la desecha y el 8% la vende. 
 
 #### ¿Qué problema resuelve el producto? 
 
 La industria de la moda es la segunda más contaminante en el mundo. Según la Agencia Internacional de la Energía, en 2015 la producción textil emitió el equivalente a 1,2 billones de toneladas de CO2, más que las que expulsaron a la atmósfera el transporte marítimo y la aviación internacional, juntos.
-
 Además, el sector textil gasta, cada año, una media de 93.000 millones de metros cúbicos de agua, a lo que hay que añadir la contaminación por tintes y por el tratado de los tejidos, prácticas culpables del 20% de la polución global del agua.
 
 ### Proceso creativo del diseño
@@ -161,23 +159,13 @@ más comentado.
 
 ## 2. Resumen del proyecto
 
-En este proyecto construirás una Red Social sobre lo que decidan tú y tu equipo.
-Podría ser, por ejemplo, sobre alimentación saludable, feminismo, educación,
-salud, energías renovables, amantes de las [Empanadas](https://es.wikipedia.org/wiki/Empanada)
-o de los [Tacos de Canasta](https://es.wikipedia.org/wiki/Taco), de la
-[Feijoada](https://es.wikipedia.org/wiki/Feijoada), o de lo que sea.
 
-Tu Red Social tendrá que permitir a cualquier usuario crear una cuenta de
-acceso y loguearse con ella; crear, editar, borrar y _"likear"_ publicacciones.
+## Objetivos de aprendizaje
 
 El objetivo principal de aprendizaje de este proyecto es construir una
 [Single-page Application (SPA)](https://es.wikipedia.org/wiki/Single-page_application)
 [_responsive_](https://curriculum.laboratoria.la/es/topics/css/02-responsive) (con más de una vista / página)
 en la que podamos **leer y escribir datos**.
-
-## 3. Objetivos de aprendizaje
-
-Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en tu proyecto. Piensa en eso al decidir tu estrategia de trabajo.
 
 ### HTML
 
@@ -421,34 +409,6 @@ Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en t
   * [Reglas de seguridad de Firestore - Documentación oficial](https://firebase.google.com/docs/rules?hl=es)
   * [Obtén actualizaciones en tiempo real con Cloud Firestore - Documentación oficial](https://firebase.google.com/docs/firestore/query-data/listen?hl=es)
 </p></details>
-
-## 4. Consideraciones generales
-
-* Este proyecto se debe trabajar en equipos de tres.
-
-* La lógica del proyecto debe estar implementada completamente en JavaScript
-  (ES6+), HTML y CSS :smiley:. Para este proyecto **no está permitido** utilizar
-  _frameworks_ o librerías de CSS y JS.
-
-* La división y organización del trabajo debe permitir, sin excepciones, que
-  **cada integrante** del equipo practique el aprendizaje de todo lo involucrado
-  en **cada historia**. _No se dividan el trabajo como en una fábrica._
-  - ¿Hasta acá has avanzado en tus proyectos con cierta fluidez y sin mayores
-    problemas? Sé generosa con tus compañeras, permíteles aprender y practicar
-    sin restricciones, aunque tome un poco más de tiempo. Aproveha de
-    _coachearlas_, de hacer _pair programming_, una de las mejores maneras de
-    aprender es explicando verbalmente.
-
-  - ¿Se te está haciendo difícil y te cuesta un poco más avanzar? No te quedes
-    con las partes "fáciles" del proyecto, conversa, negocia, exige tu oportunidad
-    para practicar y aprender lo que se te hace más difícil.
-
-* Solamente pueden trabajar en una única historia por vez, no pueden avanzar a
-  la siguiente sin haber completado la anterior. La historia se completa cuando
-  se cumplen **todos** sus Criterios de Aceptación + **toda** su Definición
-  de Terminado.
-
-Para comenzar tendrás que hacer un _fork_ y _clonar_ este repositorio.
 
 ## 5. Criterios de aceptación mínimos del proyecto
 
