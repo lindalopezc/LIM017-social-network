@@ -15,7 +15,8 @@
     "stylelint": "stylelint --aei src/**/*.css",
     "pretest.out": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --env=jsdom --coverage",
-    "start": "serve -s src/"
+    "start": "serve -s src/",
+    "deploy": "gh-pages -d src"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
@@ -181,6 +182,7 @@
     "get-stdin": "^8.0.0",
     "get-stream": "^6.0.1",
     "get-symbol-description": "^1.0.0",
+    "gh-pages": "^3.1.0",
     "glob": "^7.2.0",
     "glob-base": "^0.3.0",
     "glob-parent": "^6.0.2",
