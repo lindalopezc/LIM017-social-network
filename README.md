@@ -18,6 +18,7 @@ La industria de la moda es la segunda más contaminante en el mundo. Según la A
 Además, el sector textil gasta, cada año, una media de 93.000 millones de metros cúbicos de agua, a lo que hay que añadir la contaminación por tintes y por el tratado de los tejidos, prácticas culpables del 20% de la polución global del agua.
 
 ### Proceso creativo del diseño
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/Historias%20de%20usuario.png)
 
 #### Criterios de aceptación
 
