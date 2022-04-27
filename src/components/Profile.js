@@ -53,12 +53,12 @@ export const profile = () => {
       postUser.setAttribute('class', 'perfilPost');
       postUser.setAttribute('id', doc.id);
       const templatePostUser = `<div class = "div-category-post">
-                                    <p class = "category-post ${doc.data().Categoría}">${doc.data().Categoría}</p>
+                                    <p class = "category-post ${doc.data().Categoria}">${doc.data().Categoria}</p>
                                   </div>
                                   <div class ="container-post">
                                     <div class = "title-and-icons">
                                       <div class ="div-title">
-                                        <p>${doc.data().Título}</p>
+                                        <p>${doc.data().Titulo}</p>
                                       </div>
                                       <div class = "div-icons">
                                         <button class = "btn-delete" data-id = "${doc.id}" >
@@ -95,7 +95,6 @@ export const profile = () => {
       btnEdit.forEach((btn) => {
         btn.addEventListener('click', ({ target: { dataset } }) => {
           const idPost = dataset.id;
-          onNavigate('/publications');
           const params = new URLSearchParams();
           params.set('editPostId', idPost);
           onNavigate('/publications', params);

@@ -16,14 +16,14 @@ import {
   arrayUnion,
   arrayRemove,
   deleteDoc,
-} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+} from './firebase-utils.js';
 import { app } from './main.js';
 
 const db = getFirestore(app);
 
 // Esta función se encarga de crear una colección de posts:
 export function insertData(publication) {
-  addDoc(collection(db, 'publications'), publication);
+  return addDoc(collection(db, 'publications'), publication);
 }
 
 // Esta función se encarga de traer los datos de la colección 'publications' de database:
@@ -43,7 +43,7 @@ export async function getDataWithFilters(categoria) {
 
 // Esta función se encarga de crear una colección de datos del usuario:
 export function insertDataUser(user) {
-  addDoc(collection(db, 'users'), user);
+  return addDoc(collection(db, 'users'), user);
 }
 
 // Esta función se encarga de traer los datos de la colección 'users' de database.
@@ -63,7 +63,7 @@ export async function getPublicationsUser(uid) {
 // Funcion para remover likes
 export function removeLikes(docId, userId) {
   const removeLikePost = doc(db, 'publications', docId);
-  updateDoc(removeLikePost, {
+  return updateDoc(removeLikePost, {
     Likes: arrayRemove(userId), // Aquí estamos borrando el id del user en el array Likes.
   });
 }
@@ -71,22 +71,23 @@ export function removeLikes(docId, userId) {
 // Funcion para añadir likes
 export function addLikes(docId, userId) {
   const addLikePost = doc(db, 'publications', docId);
-  updateDoc(addLikePost, {
+  return updateDoc(addLikePost, {
     Likes: arrayUnion(userId), // Aquí estamos añadiendo el id del user en el array Likes.
   });
 }
 
 // Función que se encarga de borrar un post
 export function deletePost(docId) {
-  deleteDoc(doc(db, 'publications', docId));
+  return deleteDoc(doc(db, 'publications', docId));
 }
 
 // Función que se encarga de editar posts.
 export function editPost(docId, publication) { // publication es el objeto que contiene los campos que quiero editar
   const editPostUser = doc(db, 'publications', docId);
-  updateDoc(editPostUser, publication);
+  return updateDoc(editPostUser, publication);
 }
 
+// Función que se encarga de traer un solo post cuando le pasamos el id.
 export async function getDataPost(docId) {
   const editPostUser = doc(db, 'publications', docId);
   const querySnapshot = await getDoc(editPostUser);

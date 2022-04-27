@@ -162,9 +162,7 @@ export const home = () => {
   });
 
   // Evento para el botón de crear publicaciones:
-  createPublicationBtn.addEventListener('click', () => {
-    onNavigate('/publications');
-  });
+  createPublicationBtn.addEventListener('click', () => onNavigate('/publications'));
 
   return sectionHome;
 };

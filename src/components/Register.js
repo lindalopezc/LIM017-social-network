@@ -1,11 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
-import {
-  createUser, signGoogle, setUserLocalStorage, getUserLocalStorage, sendEmail,
-} from '../firebase/authentication.js';
-import { insertDataUser } from '../firebase/database.js';
+import { createUser, signGoogle } from '../lib/index.js';
+import { errorCasesRegister } from '../lib/errorCases.js';
 import { registerModal } from '../templates/modal.js';
-
 /* eslint-disable max-len */
 export const register = () => {
   const registerSection = document.createElement('section');
@@ -45,6 +42,7 @@ export const register = () => {
   inputName.setAttribute('placeholder', 'Nombre');
   inputName.setAttribute('class', 'input');
   inputName.setAttribute('id', 'register-name');
+  inputName.setAttribute('autocomplete', 'username');
 
   const divMessageName = document.createElement('div');
   divMessageName.setAttribute('class', 'div-little-messages');
@@ -57,6 +55,7 @@ export const register = () => {
   inputEmail.setAttribute('placeholder', 'Email');
   inputEmail.setAttribute('class', 'input');
   inputEmail.setAttribute('id', 'register-email');
+  inputEmail.setAttribute('autocomplete', 'email');
 
   const divWrongEmail = document.createElement('div');
   divWrongEmail.setAttribute('class', 'div-little-messages');
@@ -69,6 +68,7 @@ export const register = () => {
   inputPassword.setAttribute('placeholder', 'Contraseña');
   inputPassword.setAttribute('class', 'input');
   inputPassword.setAttribute('id', 'register-password');
+  inputPassword.setAttribute('autocomplete', 'new-password');
 
   const divMinPassword = document.createElement('div');
   divMinPassword.setAttribute('class', 'div-little-messages');
@@ -82,6 +82,7 @@ export const register = () => {
   inputConfirmPassword.setAttribute('placeholder', 'Confirmar contraseña');
   inputConfirmPassword.setAttribute('class', 'input');
   inputConfirmPassword.setAttribute('id', 'register-confirm');
+  inputConfirmPassword.setAttribute('autocomplete', 'new-password');
 
   const divWrongPassword = document.createElement('div');
   divWrongPassword.setAttribute('class', 'div-little-messages');
@@ -158,42 +159,26 @@ export const register = () => {
 
   aLinkLogin.addEventListener('click', () => onNavigate('/login'));
   registerBtn.addEventListener('click', () => {
-    if (inputName.value === '') { // Con esta condición el usuario debe ingresar su nombre de manera obligatoria.
-      pMessageName.innerText = 'Campo vacío. Por favor escriba su nombre.';
+    if (!inputName.value) { // Con esta condición el usuario debe ingresar su nombre de manera obligatoria.
+      pMessageName.textContent = 'Campo vacío. Por favor escriba su nombre.';
     } else if (inputPassword.value !== inputConfirmPassword.value) { // Las contraseñas deben ser iguales.
-      pWrongPassword.innerText = 'Las contraseñas no coinciden.';
+      pWrongPassword.textContent = 'Las contraseñas no coinciden.';
     } else {
       createUser(inputEmail.value, inputPassword.value, inputName.value)
-        .then((user) => {
-          setUserLocalStorage(user);
-          const dataUser = getUserLocalStorage();
-          insertDataUser(dataUser);
-          sendEmail(user);
-          (onNavigate('/login')).appendChild(registerModal()); // Aquí le estamos pasando el modal que muestra mensaje de link.
+        .then(() => {
+          onNavigate('/login').appendChild(registerModal());
         })
         .catch((error) => {
           const errorCode = error.code;
-          switch (errorCode) {
-            case 'auth/email-already-in-use':
-              pWrongEmail.innerText = 'El correo ingresado ya está en uso';
-              inputEmail.style.borderColor = '#F62D2D';
-              break;
-            case 'auth/weak-password':
-              pMinPassword.style.color = 'red';
-              pMinPassword.innerText = 'Debe ingresar al menos 6 caracteres.';
-              inputPassword.style.borderColor = '#F62D2D';
-              break;
-            case 'auth/invalid-email':
-              pWrongEmail.textContent = 'El correo ingresado es inválido';
-              inputEmail.style.borderColor = '#F62D2D';
-              break;
-            default:
-              pErrorDefault.innerText = errorCode;
-          }
+          errorCasesRegister(errorCode);
         });
     }
   });
-  aLinkGoogle.addEventListener('click', signGoogle);
+  aLinkGoogle.addEventListener('click', () => {
+    signGoogle().then(() => {
+      onNavigate('/home');
+    });
+  });
 
   return registerSection;
 };

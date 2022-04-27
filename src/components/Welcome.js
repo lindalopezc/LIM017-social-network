@@ -16,7 +16,7 @@ export const welcome = () => {
   const imgLogo = document.createElement('img');
   imgLogo.setAttribute('src', '../img/logoblanco.png');
   imgLogo.setAttribute('alt', 'Imagen de bienvenida');
-  imgLogo.setAttribute('class', 'logo'); // Cambiar por clase o id, temporal
+  imgLogo.setAttribute('class', 'logo');
   divLogo.appendChild(imgLogo);
 
   const divTextWelcome = document.createElement('div');
@@ -29,10 +29,12 @@ export const welcome = () => {
   const loginBtn = document.createElement('button');
   loginBtn.textContent = 'Inicia sesión';
   loginBtn.setAttribute('class', 'button');
+  loginBtn.setAttribute('id', 'login-btn-welcome');
 
   const registerBtn = document.createElement('button');
   registerBtn.textContent = 'Regístrate';
   registerBtn.setAttribute('class', 'button');
+  registerBtn.setAttribute('id', 'register-btn-welcome');
 
   divBtn.appendChild(loginBtn);
   divBtn.appendChild(registerBtn);

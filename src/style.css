@@ -46,9 +46,8 @@ header {
   font-size: 12px;
   border: none;
   box-shadow: 0px 10px 20px -10px rgb(0 0 0 / 50%);
-  cursor:pointer;
+  cursor: pointer;
 }
-
 .modal-text {
   margin-bottom: 10px;
 }

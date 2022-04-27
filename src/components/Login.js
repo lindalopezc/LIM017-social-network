@@ -2,10 +2,8 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
-import {
-  signIn, signGoogle, setUserLocalStorage, getUserLocalStorage,
-} from '../firebase/authentication.js';
-import { getDataUsers, insertDataUser } from '../firebase/database.js';
+import { signGoogle, signIn } from '../lib/index.js';
+import { errorCasesLogin } from '../lib/errorCases.js';
 
 export const login = () => {
   const loginSection = document.createElement('section');
@@ -45,6 +43,7 @@ export const login = () => {
   inputEmail.setAttribute('placeholder', 'Email');
   inputEmail.setAttribute('class', 'input');
   inputEmail.setAttribute('id', 'login-email');
+  inputEmail.setAttribute('autocomplete', 'useremail');
 
   const divInvalidEmail = document.createElement('div');
   divInvalidEmail.setAttribute('class', 'div-little-messages');
@@ -57,6 +56,7 @@ export const login = () => {
   inputPassword.setAttribute('placeholder', 'Contraseña');
   inputPassword.setAttribute('class', 'input');
   inputPassword.setAttribute('id', 'login-password');
+  inputPassword.setAttribute('autocomplete', 'currentpassword');
 
   const divInvalidPassword = document.createElement('div');
   divInvalidPassword.setAttribute('class', 'div-little-messages');
@@ -134,62 +134,19 @@ export const login = () => {
   loginSection.appendChild(divLogin);
 
   aLinkRegister.addEventListener('click', () => onNavigate('/register'));
-  aLinkGoogle.addEventListener('click', () => {
-    signGoogle().then((result) => {
-      // const credential = GoogleAuthProvider.credentialFromResult(result);
-      // const token = credential.accessToken;
-      const user = result.user;
-      setUserLocalStorage(user);
-      const dataUser = getUserLocalStorage();
-      insertDataUser(dataUser);
-      onNavigate('/home');
-    });
-    // .catch((error) => {
-    //  const errorCode = error.code;
-    //  const errorMessage = error.message;
-    //  const email = error.email;
-    //  const credential = GoogleAuthProvider.credentialFromError(error);
-    // });
-  });
+  aLinkGoogle.addEventListener('click', () => signGoogle().then(() => onNavigate('/home')));
   loginBtn.addEventListener('click', () => {
     signIn(inputEmail.value, inputPassword.value)
       .then((user) => {
-        getDataUsers(user.uid).then((result) => {
-          if (!result.empty) {
-            const userData = result.docs[0].data();
-            setUserLocalStorage(userData);
-            if (user.emailVerified) {
-              onNavigate('/home');
-            } else {
-              pEmailVerified.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
-            }
-          } else {
-            console.log('usuario no registrado');
-          }
-        });
+        if (user.emailVerified) {
+          onNavigate('/home');
+        } else {
+          pEmailVerified.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
-        switch (errorCode) {
-          case 'auth/user-not-found':
-            pInvalidEmail.innerText = 'No hay usuario registrado con ese correo., verifica e intente de nuevo.';
-            inputEmail.style.borderColor = '#F62D2D';
-            break;
-          case 'auth/invalid-email':
-            pInvalidEmail.textContent = 'El correo ingresado es inválido.';
-            inputEmail.style.borderColor = '#F62D2D';
-            break;
-          case 'auth/wrong-password':
-            pInvalidPassword.innerText = 'La contraseña no es válida, verifica e intente de nuevo.';
-            inputPassword.style.borderColor = '#F62D2D';
-            break;
-          case 'auth/email-already-exists':
-            pInvalidEmail.innerText = 'El correo electrónico proporcionado esta siendo utilizado por otro miembro, verifica e intente de nuevo.';
-            inputEmail.style.borderColor = '#F62D2D';
-            break;
-          default:
-            pErrorDefault.innerText = errorCode;
-        }
+        errorCasesLogin(errorCode);
       });
   });
   return loginSection;

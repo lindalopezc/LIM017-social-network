@@ -163,10 +163,10 @@ export const publications = (urlParam) => {
   const userPublication = getUserLocalStorage();
   btnSubmit.addEventListener('click', () => {
     const publication = {
-      Título: inputTitle.value,
+      Titulo: inputTitle.value,
       Foto: image.getAttribute('src'),
       Estado: selectState.value,
-      Categoría: selectCategory.value,
+      Categoria: selectCategory.value,
       Description: inputDescription.value,
       Fecha: new Date(),
       uidUser: userPublication.uid,
@@ -174,21 +174,25 @@ export const publications = (urlParam) => {
       Likes: [],
     };
     if (urlParam) {
-      editPost(urlParam.get('editPostId'), publication);
+      if (urlParam.has('editPostId')) {
+        editPost(urlParam.get('editPostId'), publication);
+      }
     } else {
       insertData(publication);
     }
     return onNavigate('/home');
   });
   if (urlParam) {
-    getDataPost(urlParam.get('editPostId')).then((postDoc) => {
-      const postdata = postDoc.data();
-      image.setAttribute('src', postdata.Foto);
-      inputTitle.value = postdata.Título;
-      selectCategory.value = postdata.Categoría;
-      selectState.value = postdata.Estado;
-      inputDescription.value = postdata.Description;
-    });
+    if (urlParam.has('editPostId')) {
+      getDataPost(urlParam.get('editPostId')).then((postDoc) => {
+        const postdata = postDoc.data();
+        image.setAttribute('src', postdata.Foto);
+        inputTitle.value = postdata.Titulo;
+        selectCategory.value = postdata.Categoria;
+        selectState.value = postdata.Estado;
+        inputDescription.value = postdata.Description;
+      });
+    }
   }
   return sectionPublications;
 };
