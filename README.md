@@ -6,7 +6,7 @@
  
 ## Descripción del proyecto
 
-#### ¿Quiénes son los principales usuarios del producto? 
+#### ¿Quiénes son los principales usuarios del producto?
 Los principales usuarios de Slowly son mujeres en el rango de edad entre 18 y 40 años que se encuentren interesadas por la moda sostenible, bajo la tendencia de slow fashion; la cual aboga por la compra de prendas de mejor calidad que duren más tiempo, valora el trato justo de las personas, los animales y el planeta a lo largo del proceso; además de animar a comprar menos prendas con menos frecuencia, y a optar por la segunda mano mientras sea posible. 
 
 De acuerdo a la investigación realizada para conocer los hábitos de nuestros usuarios con respecto al tratamiento que le dan a la ropa que ya no usan, se encontró que el 80% de los encuestados hacen una donación, el 23% la desecha y el 8% la vende. 
@@ -19,9 +19,48 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 
 ### Proceso creativo del diseño
 
-#### Historias de usuario
+#### Criterios de aceptación
 
-![Imagen text](https://github.com/lindalopezc/LIM017-social-network/blob/dev/src/img/img-readme/Historias%20de%20usuario.png)
+#### Historia Usuario 1 
+
+* El usuario  puede ingresar su correo valido
+* El usuario no puede ingresar con correo electrónico ya existente en la plataforma
+* Informar al usuario si su correo es válido o no
+* El usuario puede iniciar sesión con su cuenta de google
+* El usuario ingrese mínimo 6 caracteres
+
+#### Historia Usuario 2 
+
+* Crear un espacio donde el usuario pueda subir una foto.
+* Crear campos donde el usuario pueda colocar título, estado, categoría y breve descripción de la prenda que desea publicar.
+* Conectar Firestorage con la imagen que el usuario ha cargado de sus archivos.
+* Conectar la base de datos de firestore con los textos que el usuario ha colocado en cada campo y retornarlo en la vista Home.
+
+#### Historia Usuario 3 
+
+* Implementar botones en la vista Home para filtrar por categoría.
+* Mostrar los post filtrados de acuerdo a la categoría elegida por el usuario.Home.
+
+#### Historia Usuario 4 
+
+* Implementar una vista 'perfil' donde el usuario puede introducir sus datos de contacto.
+* Conectar los datos de contacto con el post que realiza el usuario y que se visualice la foto de perfil.
+* Implementar una ventana modal para mostrar los datos de contacto a otras personas.
+
+#### Historia Usuario 5 
+
+* Implementar un botón de editar post.
+* Implemantar un botón de eliminar post.
+* Colocar ícono de dar like y quitar like a una publicación.
+
+
+
+
+
+
+
+
+
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
