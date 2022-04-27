@@ -20,39 +20,102 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 ### Proceso creativo del diseño
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/Historias%20de%20usuario.png)
 
-#### Criterios de aceptación
+#### Criterios de aceptación y Definición de terminado
 
 #### Historia Usuario 1 
 
-* El usuario  puede ingresar su correo valido
-* El usuario no puede ingresar con correo electrónico ya existente en la plataforma
-* Informar al usuario si su correo es válido o no
-* El usuario puede iniciar sesión con su cuenta de google
-* El usuario ingrese mínimo 6 caracteres
+*Criterios de aceptación*
+
+* El usuario  puede ingresar su correo valido.
+* El usuario no puede ingresar con correo electrónico ya existente en la plataforma.
+* Informar al usuario si su correo es válido o no.
+* El usuario puede iniciar sesión con su cuenta de google.
+* El usuario ingrese mínimo 6 caracteres.
+
+*Definición de terminado*
+
+* Las funciones pasan test.
+* Almacenamiento de nuevos usuarios.
+* Diseño responsive.
+* Producto final es semejante a prototipo de alta fidelidad.
+* Despliegue de aplicación con etiqueta de la versión (Git Tag).
 
 #### Historia Usuario 2 
+
+*Criterios de aceptación*
 
 * Crear un espacio donde el usuario pueda subir una foto.
 * Crear campos donde el usuario pueda colocar título, estado, categoría y breve descripción de la prenda que desea publicar.
 * Conectar Firestorage con la imagen que el usuario ha cargado de sus archivos.
 * Conectar la base de datos de firestore con los textos que el usuario ha colocado en cada campo y retornarlo en la vista Home.
 
-#### Historia Usuario 3 
+*Definición de terminado*
+
+* Las funciones pasan test.
+* Almacenamiento de fotos por publicación en firestorage.
+* Diseño responsive.
+* Producto final es semejante a prototipo de alta fidelidad.
+* Despliegue de aplicación con etiqueta de la versión (Git Tag).
+
+#### Historia Usuario 3
+
+*Criterios de aceptación*
 
 * Implementar botones en la vista Home para filtrar por categoría.
 * Mostrar los post filtrados de acuerdo a la categoría elegida por el usuario.Home.
 
+*Definición de terminado*
+
+* Las funciones pasan test.
+* Diseño responsive.
+* Producto final es semejante a prototipo de alta fidelidad.
+* Despliegue de aplicación con etiqueta de la versión (Git Tag).
+
 #### Historia Usuario 4 
+
+*Criterios de aceptación*
 
 * Implementar una vista 'perfil' donde el usuario puede introducir sus datos de contacto.
 * Conectar los datos de contacto con el post que realiza el usuario y que se visualice la foto de perfil.
 * Implementar una ventana modal para mostrar los datos de contacto a otras personas.
 
+*Definición de terminado*
+
+* Las funciones pasan test.
+* Las personas pueden ver la información de contacto de otros usuarios en sus post a través de la ventana modal.
+* Se puede ver la foto de perfil de los usuarios en cada uno de sus posts.
+* El usuario puede introducir sus datos de contacto. 
+* Diseño responsive.
+* Producto final es semejante a prototipo de alta fidelidad.
+* Despliegue de aplicación con etiqueta de la versión (Git Tag).
+
+
 #### Historia Usuario 5 
+
+*Criterios de aceptación*
 
 * Implementar un botón de editar post.
 * Implemantar un botón de eliminar post.
 * Colocar ícono de dar like y quitar like a una publicación.
+
+*Definición de terminado*
+
+* El usuario puede editar un post y modificar los campos que desee.
+* El usuario puede dar like y quitarlo, además ver cuántos likes posee una foto.
+* El diseño de la red social es responsive.
+* Las funciones implementadas pasan los test.
+* Se realizó test de usabilidad.
+* Producto final es semejante a prototipo de alta fidelidad.
+* Despliegue de aplicación con etiqueta de la versión (Git Tag).
+
+
+#### Diseño de alta fidelidad Mobile
+
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/welcome-mobile.png)
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/login-mobile.png)
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/Registro-mobile.png)
+![Imagen text]()
+![Imagen text]()
 
 
 
