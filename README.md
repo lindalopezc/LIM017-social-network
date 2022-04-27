@@ -114,18 +114,13 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/welcome-mobile.png)
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/login-mobile.png)
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/Registro-mobile.png)
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/home-mobile.png)
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/publicaciones-mobile.png)
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/perfil-mobile.png)
+
 
 #### Diseño de alta fidelidad Desktop
 
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/welcome-desktop.png)
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/inicio-desktop.png)
-![Imagen text]()
-![Imagen text]()
-![Imagen text]()
-![Imagen text]()
+
 
 
 
