@@ -121,14 +121,18 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/welcome-desktop.png)
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/inicio-desktop.png)
 
+#### Diseño final Mobile 
 
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-welcome-mobile.png)
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-home-mobile.png)
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-publicar-mobile.png)
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-perfil-mobile.png)
 
+#### Diseño final Desktop 
 
-
-
-
-
-
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-home-desktop.png)
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-publicar-desktop.png)
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-perfil-deskttop.png)
 
 ## Índice
 
