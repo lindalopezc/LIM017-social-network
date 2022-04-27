@@ -19,6 +19,9 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 
 ### Proceso creativo del diseño
 
+#### Historias de usuario
+
+![Imagen text](https://github.com/lindalopezc/LIM017-social-network/blob/dev/src/img/img-readme/Historias%20de%20usuario.png)
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
