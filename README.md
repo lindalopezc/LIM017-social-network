@@ -1,11 +1,11 @@
-# Proyecto de Red Social: Slowly
+# 📱Red Social: Slowly
 
-## Introducción 
+## 📝Introducción 
 
 Slowly es una red social que permite crear una comunidad alrededor de la idea de que se le puede dar una 'segunda vida' a las prendas, brindando la oportunidad de poder intercambiar, vender, comprar y/o donar ropa de segunda mano en lugar de desecharlas.
 Slowly significa *lentamente*, la idea que nos inspiró fue un movimiento llamado *Slow Fashion* que aboga por la compra de prendas de mejor calidad, que duren mas tiempo y que valora el trato justo de las personas, los animales y el planeta en todo el proceso de producción.
  
-## Descripción del proyecto
+## 📎Descripción del proyecto
 
 #### ¿Quiénes son los principales usuarios del producto?
 
@@ -22,7 +22,7 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 
 #### Criterios de aceptación y Definición de terminado
 
-#### Historia Usuario 1 
+#### 📍Historia Usuario 1 
 
 *Criterios de aceptación*
 
@@ -40,7 +40,7 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 * Producto final es semejante a prototipo de alta fidelidad.
 * Despliegue de aplicación con etiqueta de la versión (Git Tag).
 
-#### Historia Usuario 2 
+#### 📍Historia Usuario 2 
 
 *Criterios de aceptación*
 
@@ -71,7 +71,7 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 * Producto final es semejante a prototipo de alta fidelidad.
 * Despliegue de aplicación con etiqueta de la versión (Git Tag).
 
-#### Historia Usuario 4 
+#### 📍Historia Usuario 4 
 
 *Criterios de aceptación*
 
@@ -90,7 +90,7 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 * Despliegue de aplicación con etiqueta de la versión (Git Tag).
 
 
-#### Historia Usuario 5 
+#### 📍Historia Usuario 5 
 
 *Criterios de aceptación*
 
