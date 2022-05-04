@@ -2,8 +2,8 @@
 
 ## 📝Introducción 
 
-Slowly es una red social que permite crear una comunidad alrededor de la idea de que se le puede dar una 'segunda vida' a las prendas, brindando la oportunidad de poder intercambiar, vender, comprar y/o donar ropa de segunda mano en lugar de desecharlas.
-Slowly significa *lentamente*, la idea que nos inspiró fue un movimiento llamado *Slow Fashion* que aboga por la compra de prendas de mejor calidad, que duren mas tiempo y que valora el trato justo de las personas, los animales y el planeta en todo el proceso de producción.
+**Slowly** es una red social que permite crear una comunidad alrededor de la idea de que se le puede dar una 'segunda vida' a las prendas, brindando la oportunidad de poder intercambiar, vender, comprar y/o donar ropa de segunda mano en lugar de desecharlas.
+Slowly significa *lentamente*, la idea que nos inspiró fue un movimiento llamado **Slow Fashion** que aboga por la compra de prendas de mejor calidad, que duren mas tiempo y que valora el trato justo de las personas, los animales y el planeta en todo el proceso de producción.
  
 ## 📎Descripción del proyecto
 
