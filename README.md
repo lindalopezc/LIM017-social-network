@@ -1,9 +1,14 @@
 # 📱Red Social: Slowly
 
+## 💻Preámbulo
+
+Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. Las redes sociales han invadido nuestras vidas. Las amamos u odiamos, y muchos no podemos vivir sin ellas. Hay redes sociales de todo tipo y para todo tipo de intereses, que permiten a personas, en (casi) cualquier lugar del mundo, compartir contenido en tiempo real y de manera eficiente y rápida. Formamos así comunidades en donde la discusión e interacción es posible.
+![imagen-redes-sociales](https://blog.up.edu.mx/hubfs/PrepaUP/PrepaUP-Femenil/Blog-Images/RRSS.jpg)
+
 ## 📝Introducción 
 
-**Slowly** es una red social que permite crear una comunidad alrededor de la idea de que se le puede dar una 'segunda vida' a las prendas, brindando la oportunidad de poder intercambiar, vender, comprar y/o donar ropa de segunda mano en lugar de desecharlas.
-Slowly significa *lentamente*, la idea que nos inspiró fue un movimiento llamado **Slow Fashion** que aboga por la compra de prendas de mejor calidad, que duren mas tiempo y que valora el trato justo de las personas, los animales y el planeta en todo el proceso de producción.
+Frente a la busqueda de una temática innovadora para la creación de una red social, nos inspiramos de un movimiento llamado **Slow Fashion** que aboga por la compra de prendas de mejor calidad, que duren mas tiempo y que valora el trato justo de las personas, los animales y el planeta en todo el proceso de producción.
+Con esa idea nace **SLOWLY** es una red social que permite crear una comunidad alrededor de la idea de que se le puede dar una 'segunda vida' a las prendas, brindando la oportunidad de poder intercambiar, vender, comprar y/o donar ropa de segunda mano en lugar de desecharlas.
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/inicio-desktop.png)
  
 ## 📎Descripción del proyecto
@@ -110,19 +115,12 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 * Despliegue de aplicación con etiqueta de la versión (Git Tag).
 
 
-#### Diseño de alta fidelidad Mobile
-
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/welcome-mobile.png)
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/login-mobile.png)
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/Registro-mobile.png)
-
-
-#### Diseño de alta fidelidad Desktop
+#### Diseño de alta fidelidad
 
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/welcome-desktop.png)
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/inicio-desktop.png)
 
-#### Diseño final Desktop 
+#### Producto final
 
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-home-desktop.png)
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-publicar-desktop.png)
