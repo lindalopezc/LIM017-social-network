@@ -1,17 +1,10 @@
 # 📱Red Social: Slowly
 
-## 💻Preámbulo
-
-Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. Las redes sociales han invadido nuestras vidas. Las amamos u odiamos, y muchos no podemos vivir sin ellas.
-
-![adem-ay-Tk9m_HP4rgQ-unsplash](https://user-images.githubusercontent.com/110297/135544666-4efa54f1-4ff6-4c4c-b398-6df04ef56117.jpg)
-
-Hay redes sociales de todo tipo y para todo tipo de intereses, que permiten a personas, en (casi) cualquier lugar del mundo, compartir contenido en tiempo real y de manera eficiente y rápida. Formamos así comunidades en donde la discusión e interacción es posible.
-
 ## 📝Introducción 
 
 **Slowly** es una red social que permite crear una comunidad alrededor de la idea de que se le puede dar una 'segunda vida' a las prendas, brindando la oportunidad de poder intercambiar, vender, comprar y/o donar ropa de segunda mano en lugar de desecharlas.
 Slowly significa *lentamente*, la idea que nos inspiró fue un movimiento llamado **Slow Fashion** que aboga por la compra de prendas de mejor calidad, que duren mas tiempo y que valora el trato justo de las personas, los animales y el planeta en todo el proceso de producción.
+![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/inicio-desktop.png)
  
 ## 📎Descripción del proyecto
 
@@ -128,12 +121,6 @@ Además, el sector textil gasta, cada año, una media de 93.000 millones de metr
 
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/welcome-desktop.png)
 ![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/inicio-desktop.png)
-
-#### Diseño final Mobile 
-
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-home-mobile.png)
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-publicar-mobile.png)
-![Imagen text](https://github.com/angelicabolivar/LIM017-social-network/blob/dev/src/img/img-readme/final-perfil-mobile.png)
 
 #### Diseño final Desktop 
 
