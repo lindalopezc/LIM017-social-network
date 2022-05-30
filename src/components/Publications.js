@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
 import { uploadAndDownloadImage } from '../firebase/storage.js';
 import { editPost, getDataPost, insertData } from '../firebase/database.js';
@@ -148,10 +147,10 @@ export const publications = (urlParam) => {
   sectionPublications.appendChild(divTitlePublications);
   sectionPublications.appendChild(formPublication);
 
-  let getImageUrl; // Aquí almacenaremos la URL de la foto que nos devuelve storage.
+  let getImageUrl;
   inputImage.addEventListener('change', () => {
     const imageUpload = inputImage.files[0];
-    uploadAndDownloadImage(imageUpload).then((url) => {
+    return uploadAndDownloadImage(imageUpload).then((url) => {
       getImageUrl = url;
       image.style.objectFit = 'contain';
       image.style.border = 'none';
@@ -173,26 +172,22 @@ export const publications = (urlParam) => {
       photoUser: userPublication.photoURL,
       Likes: [],
     };
-    if (urlParam) {
-      if (urlParam.has('editPostId')) {
-        editPost(urlParam.get('editPostId'), publication);
-      }
-    } else {
-      insertData(publication);
+    if (urlParam && urlParam.has('editPostId')) {
+      editPost(urlParam.get('editPostId'), publication);
+      onNavigate('/home');
     }
-    return onNavigate('/home');
+    insertData(publication);
+    onNavigate('/home');
   });
-  if (urlParam) {
-    if (urlParam.has('editPostId')) {
-      getDataPost(urlParam.get('editPostId')).then((postDoc) => {
-        const postdata = postDoc.data();
-        image.setAttribute('src', postdata.Foto);
-        inputTitle.value = postdata.Titulo;
-        selectCategory.value = postdata.Categoria;
-        selectState.value = postdata.Estado;
-        inputDescription.value = postdata.Description;
-      });
-    }
+  if (urlParam && urlParam.has('editPostId')) {
+    getDataPost(urlParam.get('editPostId')).then((postDoc) => {
+      const postdata = postDoc.data();
+      image.setAttribute('src', postdata.Foto);
+      inputTitle.value = postdata.Titulo;
+      selectCategory.value = postdata.Categoria;
+      selectState.value = postdata.Estado;
+      inputDescription.value = postdata.Description;
+    });
   }
   return sectionPublications;
 };

@@ -15,7 +15,7 @@ export const sendEmailVerification = jest.fn();
 export const collection = () => ({});
 export const addDoc = jest.fn();
 export const where = jest.fn();
-export const query = jest.fn(() => Promise.resolve({}));
+export const query = jest.fn();
 export const signInWithEmailAndPassword = jest.fn(() => Promise.resolve({
   user: {
     displayName: '',
@@ -23,14 +23,7 @@ export const signInWithEmailAndPassword = jest.fn(() => Promise.resolve({
     emailVerified: false,
   },
 }));
-export const getDocs = jest.fn(({}) => Promise.resolve(
+export const getDocs = jest.fn(() => Promise.resolve(
   { docs: [{ data: () => ({}) }] },
 ));
 export const getStorage = () => ({});
-
-// Solo momentáneamente mokeo a las funciones que marcan codigos de error
-export const errorCasesLogin = jest.fn();
-export const errorCasesRegister = jest.fn();
-export const userData = () => ({
-  photoURL: '',
-});

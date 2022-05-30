@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import {
   createUserFirebase,
@@ -10,7 +9,6 @@ import {
 } from '../firebase/authentication.js';
 import { insertDataUser, getDataUsers } from '../firebase/database.js';
 
-// Se redifinió la función createUser:
 export const createUser = async (registerEmail, registerPassword, name) => {
   const userCredential = await createUserFirebase(registerEmail, registerPassword);
   const user = userCredential.user;
@@ -22,7 +20,7 @@ export const createUser = async (registerEmail, registerPassword, name) => {
   sendEmailFirebase(user);
   return user;
 };
-// Se redifinió la función signIn, pero sin pasar como parámetros a los inputs
+
 export const signIn = async (loginEmail, loginPassword) => {
   const userCredential = await signInFirebase(loginEmail, loginPassword);
   const user = userCredential.user;

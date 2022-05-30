@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { getData, getDataWithFilters } from '../firebase/database.js';
 import { templatePosts } from '../templates/Posts.js';
@@ -25,15 +26,15 @@ export const home = () => {
   divPhotoPerfil.setAttribute('class', 'div-photo-perfil');
   const navMenu = Menu();
 
-  const userData = getUserLocalStorage(); // Aquí llamamos la función que trae datos user.
+  const userData = getUserLocalStorage();
 
   const imageProfile = document.createElement('img');
-  imageProfile.setAttribute('class', 'img-profile'); // Le añadí temporalmente la misma clase
+  imageProfile.setAttribute('class', 'img-profile');
   const iconDefault = '../img/user.png';
   imageProfile.setAttribute('src', `${userData.photoURL ? userData.photoURL : iconDefault}`);
 
   const titleHome = document.createElement('p');
-  titleHome.textContent = userData.displayName; // Aquí traigo el nombre del usuario.
+  titleHome.textContent = userData.displayName;
 
   divPhotoPerfil.appendChild(imageProfile);
   divPhotoPerfil.appendChild(titleHome);
@@ -56,11 +57,9 @@ export const home = () => {
   divCreatePublication.appendChild(createPublicationText);
   divCreatePublication.appendChild(createPublicationBtn);
 
-  // Creamos in div que contenga los párrafos de categoría:
   const divFilters = document.createElement('div');
   divFilters.setAttribute('class', 'div-filters');
 
-  // Creamos dos 'p' que van a ser hijos de 'btn' para el primer filtro:
   const pFirstFilter = document.createElement('p');
   pFirstFilter.textContent = 'Vender';
   const pFirstFilterLine = document.createElement('p');
@@ -70,8 +69,6 @@ export const home = () => {
   btnFirstFilter.setAttribute('class', 'btn-filters');
   btnFirstFilter.appendChild(pFirstFilter);
   btnFirstFilter.appendChild(pFirstFilterLine);
-
-  // Creamos dos 'p' que van a ser hijos de 'btn' para el segundo filtro:
 
   const pSecondFilter = document.createElement('p');
   pSecondFilter.textContent = 'Intercambiar';
@@ -83,7 +80,6 @@ export const home = () => {
   btnSecondFilter.appendChild(pSecondFilter);
   btnSecondFilter.appendChild(pSecondFilterLine);
 
-  // Creamos dos 'p' que van a ser hijos de 'btn' para el tercer filtro:
   const pThirdFilter = document.createElement('p');
   pThirdFilter.textContent = 'Donar';
   const pThirdFilterLine = document.createElement('p');
@@ -98,14 +94,12 @@ export const home = () => {
   divFilters.appendChild(btnSecondFilter);
   divFilters.appendChild(btnThirdFilter);
 
-  // Creamos un div padre para divFilters y divCreatePublication:
   const divPublicationsFilters = document.createElement('div');
   divPublicationsFilters.setAttribute('class', 'div-publications-filters');
 
   divPublicationsFilters.appendChild(divCreatePublication);
   divPublicationsFilters.appendChild(divFilters);
 
-  // Div que contiene todos los posts:
   const postsContainer = document.createElement('div');
   postsContainer.setAttribute('class', 'div-posts');
 
@@ -115,53 +109,32 @@ export const home = () => {
   sectionHome.appendChild(divTitleHome);
   sectionHome.appendChild(divCentralHome);
 
-  // Llamamos a la función que nos traerá todos los posts:
-  getData().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      postsContainer.appendChild(templatePosts(doc));
-    });
-  });
+  getData().then((querySnapshot) => querySnapshot.forEach((doc) => postsContainer.appendChild(templatePosts(doc))));
 
-  // Evento para filtrar por categoría 'Vender':
   btnFirstFilter.addEventListener('click', () => {
     pFirstFilterLine.style.display = 'block';
     pSecondFilterLine.style.display = 'none';
     pThirdFilterLine.style.display = 'none';
-    getDataWithFilters('Vender').then((querySnapshot) => {
-      postsContainer.innerHTML = '';
-      querySnapshot.forEach((doc) => {
-        postsContainer.appendChild(templatePosts(doc));
-      });
-    });
+    postsContainer.innerHTML = '';
+    return getDataWithFilters('Vender').then((querySnapshot) => querySnapshot.forEach((doc) => postsContainer.appendChild(templatePosts(doc))));
   });
 
-  // Evento para filtrar por categoría 'Intercambiar':
   btnSecondFilter.addEventListener('click', () => {
     pSecondFilterLine.style.display = 'block';
     pFirstFilterLine.style.display = 'none';
     pThirdFilterLine.style.display = 'none';
-    getDataWithFilters('Intercambiar').then((querySnapshot) => {
-      postsContainer.innerHTML = '';
-      querySnapshot.forEach((doc) => {
-        postsContainer.appendChild(templatePosts(doc));
-      });
-    });
+    postsContainer.innerHTML = '';
+    return getDataWithFilters('Intercambiar').then((querySnapshot) => querySnapshot.forEach((doc) => postsContainer.appendChild(templatePosts(doc))));
   });
 
-  // Evento para filtrar por categoría 'Donar':
   btnThirdFilter.addEventListener('click', () => {
     pThirdFilterLine.style.display = 'block';
     pFirstFilterLine.style.display = 'none';
     pSecondFilterLine.style.display = 'none';
-    getDataWithFilters('Donar').then((querySnapshot) => {
-      postsContainer.innerHTML = '';
-      querySnapshot.forEach((doc) => {
-        postsContainer.appendChild(templatePosts(doc));
-      });
-    });
+    postsContainer.innerHTML = '';
+    getDataWithFilters('Donar').then((querySnapshot) => querySnapshot.forEach((doc) => postsContainer.appendChild(templatePosts(doc))));
   });
 
-  // Evento para el botón de crear publicaciones:
   createPublicationBtn.addEventListener('click', () => onNavigate('/publications'));
 
   return sectionHome;

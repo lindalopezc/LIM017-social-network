@@ -13,10 +13,8 @@ describe('notificación de botón Login', () => {
     btn.dispatchEvent(new Event('click'));
     setTimeout(() => {
       const messageNotification = result.querySelector('#verified-email');
-      expect(messageNotification.textContent).toEqual(
-        'Por favor verifica tu correo para ingresar a Slowly',
-      );
-    }, 2000);
+      expect(messageNotification.textContent).toEqual('Por favor verifica tu correo para ingresar a Slowly');
+    });
   });
 });
 

@@ -1,4 +1,3 @@
-// Se creó una función que contiene los errores cuando el usuario Inicia sesión.
 export const errorCasesLogin = (errorCode) => {
   const pInvalidEmail = document.querySelector('#invalid-email');
   const inputEmail = document.querySelector('#login-email');
@@ -27,7 +26,6 @@ export const errorCasesLogin = (errorCode) => {
   }
 };
 
-// Se creó una función que contiene los errores cuando el usuario cuando se registra.
 export const errorCasesRegister = (errorCode) => {
   const pWrongEmail = document.querySelector('#wrong-email');
   const inputEmail = document.querySelector('#register-email');

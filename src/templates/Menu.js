@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../lib/ViewController.js';
@@ -22,20 +21,12 @@ export const Menu = () => {
   const navMenuLink = navResponsive.querySelector('.navMenuLink');
   const signOutMenu = navResponsive.querySelector('#sign-out-menu');
   signOutMenu.addEventListener('click', () => {
-    signOutFun()
-      .then(() => onNavigate('/'))
-      .catch((error) => {
-        console.log('No pudo cerrar sesión', error);
-      });
+    signOutFun().then(() => onNavigate('/'));
   });
 
-  btnBars.addEventListener('click', () => {
-    navMenu.classList.toggle('navMenuHide');
-  });
+  btnBars.addEventListener('click', () => navMenu.classList.toggle('navMenuHide'));
 
-  navMenu.addEventListener('click', () => {
-    navMenu.classList.toggle('navMenuHide');
-  });
+  navMenu.addEventListener('click', () => navMenu.classList.toggle('navMenuHide'));
   navMenuLink.addEventListener('click', (e) => {
     e.preventDefault();
     const href = e.target.getAttribute('href');

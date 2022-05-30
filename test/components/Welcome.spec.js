@@ -15,6 +15,7 @@ describe('Componente Welcome', () => {
     expect(registerBtn.textContent).toBe('Regístrate');
   });
 });
+
 describe('Texto de componente', () => {
   it('Debe retornar texto de bienvenida', () => {
     const result = welcome();

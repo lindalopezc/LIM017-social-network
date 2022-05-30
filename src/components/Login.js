@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
 import { signGoogle, signIn } from '../lib/index.js';
@@ -34,7 +32,7 @@ export const login = () => {
 
   const secondDiv = document.createElement('div');
   const formLogin = document.createElement('form');
-  formLogin.setAttribute('action', ''); // Falta especificar el valor de action
+  formLogin.setAttribute('action', '');
   formLogin.setAttribute('class', 'form');
   secondDiv.appendChild(formLogin);
 
@@ -135,19 +133,14 @@ export const login = () => {
 
   aLinkRegister.addEventListener('click', () => onNavigate('/register'));
   aLinkGoogle.addEventListener('click', () => signGoogle().then(() => onNavigate('/home')));
-  loginBtn.addEventListener('click', () => {
-    signIn(inputEmail.value, inputPassword.value)
-      .then((user) => {
-        if (user.emailVerified) {
-          onNavigate('/home');
-        } else {
-          pEmailVerified.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
-        }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        errorCasesLogin(errorCode);
-      });
-  });
+  loginBtn.addEventListener('click', () => signIn(inputEmail.value, inputPassword.value)
+    .then((user) => {
+      if (user.emailVerified) {
+        onNavigate('/home');
+      }
+      pEmailVerified.innerText = 'Por favor verifica tu correo para ingresar a Slowly';
+    })
+    .catch((error) => errorCasesLogin(error.code)));
+
   return loginSection;
 };

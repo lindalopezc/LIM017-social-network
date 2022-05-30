@@ -3,7 +3,7 @@ import { onNavigate } from '../lib/ViewController.js';
 import { createUser, signGoogle } from '../lib/index.js';
 import { errorCasesRegister } from '../lib/errorCases.js';
 import { registerModal } from '../templates/modal.js';
-/* eslint-disable max-len */
+
 export const register = () => {
   const registerSection = document.createElement('section');
   registerSection.setAttribute('id', 'register-section');
@@ -33,7 +33,7 @@ export const register = () => {
 
   const secondDiv = document.createElement('div');
   const formRegister = document.createElement('form');
-  formRegister.setAttribute('action', ''); // Falta especificar el valor de action
+  formRegister.setAttribute('action', '');
   formRegister.setAttribute('class', 'form');
   secondDiv.appendChild(formRegister);
 
@@ -159,26 +159,17 @@ export const register = () => {
 
   aLinkLogin.addEventListener('click', () => onNavigate('/login'));
   registerBtn.addEventListener('click', () => {
-    if (!inputName.value) { // Con esta condición el usuario debe ingresar su nombre de manera obligatoria.
+    if (!inputName.value) {
       pMessageName.textContent = 'Campo vacío. Por favor escriba su nombre.';
-    } else if (inputPassword.value !== inputConfirmPassword.value) { // Las contraseñas deben ser iguales.
+    } else if (inputPassword.value !== inputConfirmPassword.value) {
       pWrongPassword.textContent = 'Las contraseñas no coinciden.';
     } else {
       createUser(inputEmail.value, inputPassword.value, inputName.value)
-        .then(() => {
-          onNavigate('/login').appendChild(registerModal());
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          errorCasesRegister(errorCode);
-        });
+        .then(() => onNavigate('/login').appendChild(registerModal()))
+        .catch((error) => errorCasesRegister(error.code));
     }
   });
-  aLinkGoogle.addEventListener('click', () => {
-    signGoogle().then(() => {
-      onNavigate('/home');
-    });
-  });
+  aLinkGoogle.addEventListener('click', () => signGoogle().then(() => onNavigate('/home')));
 
   return registerSection;
 };

@@ -11,12 +11,12 @@ import { app } from './main.js';
 
 const storage = getStorage(app);
 
-// Esta función sube a storage la foto y luego retorna la url.
 export const uploadAndDownloadImage = async (imageUpload) => {
-  let getImageUrl; // En esta variable vamos almacenar la Url de la imagen que nos regresa storage.
+  let getImageUrl;
   try {
     const storageRef = await ref(storage, '/imagenes');
-    const imageRef = await ref(storage, `imagenes/${imageUpload.name}`); // Estamos creando una referencia para el nombre de la imagen que queremos subir a firestorage:
+    // Estamos creando una referencia para el nombre de la imagen que queremos subir a firestorage:
+    const imageRef = await ref(storage, `imagenes/${imageUpload.name}`);
     const snapshot = await uploadBytes(imageRef, imageUpload);
     getImageUrl = await getDownloadURL(imageRef);
   } catch (error) {

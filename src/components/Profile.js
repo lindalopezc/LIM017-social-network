@@ -1,16 +1,12 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-cycle */
 import { Menu } from '../templates/Menu.js';
 import { getUserLocalStorage } from '../firebase/authentication.js';
-import { getPublicationsUser, editPost } from '../firebase/database.js';
+import { getPublicationsUser } from '../firebase/database.js';
 import { deletePostConfirm } from '../templates/modal.js';
 import { onNavigate } from '../lib/ViewController.js';
 
 export const profile = () => {
-  // Aquí llamamos y almacenamos la función de localStorage que nos devuelva datos del user.
   const user = getUserLocalStorage();
-
-  // Aquí llamamos y almacenamos la función de database que nos dará los posts por user.
   const postByUser = getPublicationsUser(user.uid);
 
   const profileSection = document.createElement('section');
@@ -46,7 +42,6 @@ export const profile = () => {
   const divPostProfile = document.createElement('div');
   divPostProfile.setAttribute('id', 'post-profile');
 
-  // Llamamos la variable que nos devuelve los posts por usuario.
   postByUser.then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       const postUser = document.createElement('div');
@@ -74,13 +69,10 @@ export const profile = () => {
       postUser.innerHTML = templatePostUser;
       divPostProfile.appendChild(postUser);
 
-      // LLamamos a los botones para borrar post
       const btnDelete = divPostProfile.querySelectorAll('.btn-delete');
-
       btnDelete.forEach((btn) => {
         btn.addEventListener('click', ({ target: { dataset } }) => {
           const idPost = dataset.id;
-          // Aquí traemos el modal
           const root = document.getElementById(idPost);
           const modal = document.querySelector('.div-delete-post');
           if (modal) {
@@ -90,7 +82,6 @@ export const profile = () => {
         });
       });
 
-      // Llamamos a los botones de editar
       const btnEdit = divPostProfile.querySelectorAll('.btn-edit-post');
       btnEdit.forEach((btn) => {
         btn.addEventListener('click', ({ target: { dataset } }) => {
